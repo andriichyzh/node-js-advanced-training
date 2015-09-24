@@ -3,7 +3,7 @@
 var fs = require('fs');
 
 // I/O operation
-fs.readFile(__filename, function() {
+fs.stat(__filename, function() {
     console.log(' - I/O operation');
 });
 

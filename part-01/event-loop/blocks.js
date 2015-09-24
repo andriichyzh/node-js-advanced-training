@@ -7,11 +7,11 @@ var steps = 0;
 function run() {
     steps++;
 
-    for (var i = 0, max = 1e6; i < max; i++) {
+    for (var i = 0, max = 1e7; i < max; i++) {
         Math.pow(Math.random(), Math.random());
     }
 
-    if (steps === 100) {
+    if (steps === 10) {
         return;
     }
 

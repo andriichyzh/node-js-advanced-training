@@ -1,8 +1,5 @@
 'use strict';
 
-
-'use strict';
-
 var mode = process.argv[2];
 
 var steps = 0;

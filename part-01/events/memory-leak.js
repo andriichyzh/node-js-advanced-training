@@ -22,5 +22,5 @@ setInterval(function() {
     var memory = process.memoryUsage().heapUsed;
     console.log(' - Memory used', (memory / 1024 / 1024).toFixed(3), 'MB');
 
-    //console.log('Event listeners', server.listeners('request'));
+    //console.log('Event listeners:', server.listeners('request').length);
 }, 500);

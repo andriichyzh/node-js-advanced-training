@@ -12,11 +12,6 @@ setTimeout(function() {
     console.log(' - setTimeout 0');
 }, 0);
 
-// setTimeout 5
-setTimeout(function() {
-    console.log(' - setTimeout 5');
-}, 5);
-
 // setTimeout 25
 setTimeout(function() {
     console.log(' - setTimeout 25');

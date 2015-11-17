@@ -1,5 +1,7 @@
 # Node.js Advanced Training
 
+***
+
 ## Base JavaScript (self-study materials)
 
 ### Tutorials
@@ -12,5 +14,12 @@
  - [Stoyan Stefanov - JavaScript Patterns](http://it-ebooks.info/book/275/)
  - [Douglas Crockford - JavaScript: The Good Parts](http://it-ebooks.info/book/274/)
  - [John Resig - Secrets of the JavaScript Ninja](http://it-ebooks.info/book/2274/)
+ 
+***
+
+## Advanced JavaScript (self-study materials) 
+ 
+### Books
+
  - [Addy Osmani - Learning JavaScript Design Patterns](http://it-ebooks.info/book/724/)
  - [Simon Timms - Mastering JavaScript Design Patterns](http://it-ebooks.info/book/4648/)

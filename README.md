@@ -8,8 +8,8 @@
  
 ### Books 
 
- - [Marijn Haverbeke - Eloquent JavaScript. A Modern Introduction to Programming (2nd Edition)](http://it-ebooks.info/book/4712/)
- - [Stoyan Stefanov - JavaScript Patterns. Build Better Applications with Coding and Design Patterns](http://it-ebooks.info/book/275/)
- - [Douglas Crockford - JavaScript: The Good Parts. Unearthing the Excellence in JavaScript](http://it-ebooks.info/book/274/)
+ - [Marijn Haverbeke - Eloquent JavaScript (2nd Edition)](http://it-ebooks.info/book/4712/)
+ - [Stoyan Stefanov - JavaScript Patterns](http://it-ebooks.info/book/275/)
+ - [Douglas Crockford - JavaScript: The Good Parts](http://it-ebooks.info/book/274/)
  - [John Resig - Secrets of the JavaScript Ninja](http://it-ebooks.info/book/2274/)
  - [Addy Osmani - Learning JavaScript Design Patterns](http://addyosmani.com/resources/essentialjsdesignpatterns/book/)

@@ -1,7 +1,7 @@
 # Node.js Advanced Training
 
 
-## Base JavaScript (self-study materials)
+## Preconditions: Base JavaScript (self-study materials)
 
 ### Tutorials
 
@@ -15,7 +15,7 @@
  - [John Resig - Secrets of the JavaScript Ninja](http://it-ebooks.info/book/2274/)
 
 
-## Advanced JavaScript (self-study materials) 
+## Preconditions: Advanced JavaScript (self-study materials) 
  
 ### Books
 

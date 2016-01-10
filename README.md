@@ -32,10 +32,10 @@
 
 #### Philosophy
 
- - Small core
- - Small modules
- - Small surface area
- - Simplicity and pragmatism
+ - **Small core**
+ - **Small modules**
+ - **Small surface area**
+ - **Simplicity and pragmatism**
 
 #### Design Fundamentals
 
@@ -50,57 +50,57 @@
 
 #### Getting started on practice
 
- - Requirements
- - Installation Node.js (direct and NVM)
- - CLI commands
- - First script
- - Understanding of errors
- - Approaches and tools for debug
+ - **Requirements**
+ - **Installation Node.js (direct and NVM)**
+ - **CLI commands**
+ - **First script**
+ - **Understanding of errors**
+ - **Approaches and tools for debug**
  
 #### Loading system of modules and NPM
 
- - How it works?
- - Supported formats
- - Order of load and resolving algorithm
- - The module cache
- - NPM registry
+ - **How it works?**
+ - **Supported formats**
+ - **Order of load and resolving algorithm**
+ - **The module cache**
+ - **NPM registry**
 
 #### Core modules
 
- - Console
- - Timers
- - Errors
- - Events
- - Stream
- - File System
- - HTTP
- - Crypto
- - Child Processes
+ - **Console**
+ - **Timers**
+ - **Errors**
+ - **Events**
+ - **Stream**
+ - **File System**
+ - **HTTP**
+ - **Crypto**
+ - **Child Processes**
  - ...
 
 #### Useful NPM modules
 
- - Lodash
- - Async / Neo-async
- - WS
- - MongoDB
- - Redis
- - Postgres
+ - **Lodash**
+ - **Async / Neo-async**
+ - **WS**
+ - **MongoDB**
+ - **Redis**
+ - **Postgres**
  - ...
 
 #### Build your own modules
 
- - File structure
- - Deep with package.json
- - Local packages
- - Publish to NPM Registry
- - Using in application
+ - **File structure**
+ - **Deep with package.json**
+ - **Local packages**
+ - **Publish to NPM Registry**
+ - **Using in application**
  - ...
  
 #### Common Patterns in Node.js  
 
- - Callbacks
- - Error-first
+ - **Callbacks**
+ - **Error-first**
  - ...
 
 #### Design Patterns in Node.js
@@ -142,40 +142,40 @@
 
 #### Wiring modules
 
- - Hardcoded dependency
- - Dependency injection
- - Service locator
- - Dependency injection container
+ - **Hardcoded dependency**
+ - **Dependency injection**
+ - **Service locator**
+ - **Dependency injection container**
 
 #### Recipes for yours applications
 
- - Connection to MongoDB
- - Repository pattern
- - Run heavy CPU operations
+ - **Connection to MongoDB**
+ - **Repository pattern**
+ - **Run heavy CPU operations**
  - ...
 
 #### Testing in Node.js
 
- - What we test?
- - How to do your testing most effective and fast?
- - Approaches (eg TDD, BDD, etc)
- - Tools and libraries
- - Code Coverage
- - Best practices in testing
- - Continuous Integration (Travis CI)
+ - **What we test?**
+ - **How to do your testing most effective and fast?**
+ - **Approaches (eg TDD, BDD, etc)**
+ - **Tools and libraries**
+ - **Code Coverage**
+ - **Best practices in testing**
+ - **Continuous Integration (Travis CI)**
 
 #### Documentation
 
- - README Driven Development
- - REST API (RAML)
- - Tips and Tricks
+ - **README Driven Development**
+ - **REST API (RAML)**
+ - **Tips and Tricks**
 
 #### The design and architecture of the application
 
- - MVC
- - DDD
- - SOA
- - Micro-services
+ - **MVC**
+ - **DDD**
+ - **SOA**
+ - **Micro-services**
  - ...
  
 #### Projects: Common recommendations
@@ -187,22 +187,22 @@
 
 #### Project 1: Simple web-site
 
- - Express
- - Serving static content by Node.js
- - Using Nginx as reverse proxy and server of static content
+ - **Express**
+ - **Serving static content by Node.js**
+ - **Using Nginx as reverse proxy and server of static content**
 
 #### Project 2: Service with REST API
 
- - Express
- - REST API design
- - REST API testing
+ - **Express**
+ - **REST API design**
+ - **REST API testing**
 
 #### Project 3: Tiny cloud (micro-services)
 
- - Micro-services overview
- - Communication between services
- - HTTP and Message Broker for communication
- - Testing of micro-services
+ - **Micro-services overview**
+ - **Communication between services**
+ - **HTTP and Message Broker for communication**
+ - **Testing of micro-services**
 
 #### Performance and Scaling of application and system
 
@@ -233,16 +233,16 @@
 
 #### Yours applications in production
 
- - Best practices of logging
- - Orchestration (Ansible)
+ - **Best practices of logging**
+ - **Orchestration (Ansible)**
  - ...
 
 #### Docker is the best friend of your applications (overview)
 
- - What is Docker?
- - Create Docker image with your application
- - Run your applications
- - How run tiny cloud everywhere in 1 click (Docker Compose)
+ - **What is Docker?**
+ - **Create Docker image with your application**
+ - **Run your applications**
+ - **How run tiny cloud everywhere in 1 click (Docker Compose)**
  - ...
 
 #### Final test and questions

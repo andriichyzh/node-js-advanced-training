@@ -16,8 +16,6 @@
    - let
    - const
    - function-in-blocks
-
- - **Classes**
  
  - **Collections**
    - Map
@@ -25,6 +23,7 @@
    - Set
    - WeakSet
 
+ - **Clases**
  - **Typed arrays**
  - **Generators**
  - **Binary and Octal literals**

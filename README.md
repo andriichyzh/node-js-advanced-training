@@ -81,6 +81,10 @@
 
 #### The design and architecture of the application
 
+ - MVC
+ - DDD
+ - ...
+
 #### Project 1: Simple web-site
 
 #### Project 2: Service with REST API
@@ -88,6 +92,16 @@
 #### Project 3: Tiny cloud (micro-services)
 
 #### Performance and Scaling of application and system
+
+ - **Scaling**
+   - What is scaling?
+
+ - **Performance**
+   - What is performance? 
+   - What should we measure?
+   - Tools for performance tests (Yandex.Tank, ab, siege)
+   - Analysis of the results
+   - Recommendations for scaling
 
 #### Profiling and optimizations of application and system
 

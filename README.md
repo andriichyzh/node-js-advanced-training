@@ -1,5 +1,7 @@
 # Node.js Advanced Training
 
+[Node.js](http://dab1nmslvvntp.cloudfront.net/wp-content/uploads/2015/07/1436439824nodejs-logo.png)
+
 ## Required
 
  - [JavaScript Base](requirements/javascript-base.md)

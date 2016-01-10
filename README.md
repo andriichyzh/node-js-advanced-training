@@ -82,6 +82,8 @@
    - ...
  
  - **Behavioral Design Patterns**
+   - Observer
+   - ...
 
 #### Wiring modules
 

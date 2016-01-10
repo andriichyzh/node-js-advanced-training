@@ -42,16 +42,23 @@
 
 #### Design Fundamentals
 
+ - **Conceptions**
+   - Event Loop
+   - IO operations
+   - Non blocking
+
  - **Components**
    - V8
    - libuv
 
 #### Getting started on practice
 
+ - Requirements
  - Installation Node.js (direct and NVM)
  - CLI commands
- - First script and program
- - Debug tools
+ - First script
+ - Understanding of errors
+ - Approaches and tools for debug
  
 #### Loading system of modules and NPM
 
@@ -77,35 +84,29 @@
 #### Useful NPM modules
 
  - Lodash
- - Async
+ - Async / Neo-async
+ - WS
+ - MongoDB
+ - Redis
+ - Postgres
  - ...
 
 #### Build your own modules
 
- - Structure
- - Required steps
+ - File structure
+ - Deep with package.json
+ - Local packages
+ - Publish to NPM Registry
  - Using in application
  - ...
+ 
+#### Common Patterns in Node.js  
 
-#### Tips and Tricks
+ - Callbacks
+ - Error-first
+ - ...
 
-#### Asynchronous Control Flow
-
- - **The difficulties**
-   - The callback hell
-
- - **Flows**
-   - Sequential execution
-   - Parallel execution
-   - Limited parallel execution
-
- - **Solutions**
-   - Pure JS functions
-   - Async libraries
-   - Promises
-   - Generators
-
-#### Design Patterns
+#### Design Patterns in Node.js
 
  - **Creational Design Patterns**
    - Singleton
@@ -125,6 +126,22 @@
  - **Behavioral Design Patterns**
    - Observer
    - ...
+   
+#### Asynchronous Control Flow
+
+ - **The difficulties**
+   - The callback hell
+
+ - **Flows**
+   - Sequential execution
+   - Parallel execution
+   - Limited parallel execution
+
+ - **Solutions**
+   - Pure JS functions
+   - Async libraries
+   - Promises
+   - Generators
 
 #### Wiring modules
 
@@ -146,6 +163,7 @@
  - How to do your testing most effective and fast?
  - Approaches (eg TDD, BDD, etc)
  - Tools and libraries
+ - Code Coverage
  - Best practices in testing
  - Continuous Integration (Travis CI)
 
@@ -159,6 +177,15 @@
 
  - MVC
  - DDD
+ - SOA
+ - Micro-services
+ - ...
+ 
+#### Projects: Common recommendations
+
+ - **Configuration**
+ - **Logging**
+ - **Connection to DBs and external services**
  - ...
 
 #### Project 1: Simple web-site
@@ -193,16 +220,35 @@
    - Tools for performance tests (Yandex.Tank, ab, siege)
    - Analysis of the results
    - Recommendations for scaling
-   - Using cache
+ 
+ - **Cache in applications**
 
 #### Profiling and optimizations of application and system
 
+ - **Top most common mistakes**
+ 
+ - **Profiling**
+   - Memory
+   - CPU
+   - Blocking of EventLoop
+ 
+ - **Tools**
+
 #### Yours applications in production
+
+ - Best practices of logging
+ - Orchestration (Ansible)
+ - ...
 
 #### Docker is the best friend of your applications (overview)
 
-#### Final test and questions
+ - What is Docker?
+ - Create Docker image with your application
+ - Run your applications
+ - How run tiny cloud everywhere in 1 click (Docker Compose)
+ - ...
 
+#### Final test and questions
 
 
 # License

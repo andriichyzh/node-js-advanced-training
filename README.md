@@ -23,9 +23,20 @@
  - First script and program
  - Debug tools
  
-#### NPM and installation modules
+#### Modules, loading system of modules and NPM
 
 #### Core modules
+
+ - Console
+ - Timers
+ - Errors
+ - Events
+ - Stream
+ - File System
+ - HTTP
+ - Crypto
+ - Child Processes
+ - ...
 
 #### Useful NPM modules
 

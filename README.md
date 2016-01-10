@@ -148,6 +148,7 @@
  - How to do your testing most effective and fast?
  - Approaches (eg TDD, BDD, etc)
  - Tools and libraries
+ - Best practices in testing
  - Continuous Integration (Travis CI)
 
 #### Documentation

@@ -10,12 +10,11 @@
 
 ### `JavaScript Refresh`
 
-### `ECMAScript 2015 (ES6)`
+### `New from ECMAScript 2015 (ES6)`
 
  - **Block scoping**
    - let
    - const
-   - function-in-blocks
  - **Collections**
    - Map
    - WeakMap
@@ -24,8 +23,6 @@
  - **Clases**
  - **Typed arrays**
  - **Generators**
- - **Binary and Octal literals**
- - **Object literal extensions**
  - **Promises**
  - **Symbols**
  - **Template strings**

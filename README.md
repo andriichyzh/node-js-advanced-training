@@ -143,6 +143,6 @@
 
 #### Yours applications in production
 
-#### Docker is the best friend of your applications (optional)
+#### Docker is the best friend of your applications (overview)
 
 #### Final test and questions

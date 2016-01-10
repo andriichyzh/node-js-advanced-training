@@ -7,6 +7,7 @@
  - [JavaScript Base](requirements/javascript-base.md)
  - [JavaScript Advanced](requirements/javascript-advanced.md)
  - [MongoDB Base](requirements/mongodb-base.md)
+ - [Redis Base](requirements/redis-base.md)
  - [Linux Base](requirements/linux-base.md)
 
 ## Program

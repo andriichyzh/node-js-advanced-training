@@ -35,16 +35,16 @@
 
 #### Asynchronous Control Flow
 
- - The difficulties
+ - **The difficulties**
    - The callback hell
 
- - Flows
+ - **Flows**
    - Sequential execution
    - Parallel execution
    - Limited parallel execution
 
- - Solutions
-   - Short functions
+ - **Solutions**
+   - Pure JS functions
    - Async libraries
    - Promises
    - Generators
@@ -62,6 +62,8 @@
 
  - Connection to MongoDB
  - Repository pattern
+ - Run heavy CPU operations
+ - ...
 
 #### Testing in Node.js
 
@@ -74,7 +76,7 @@
 #### Documentation
 
  - README Driven Development
- - REST API
+ - REST API (RAML)
  - Tips and Tricks
 
 #### The design and architecture of the application

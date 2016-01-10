@@ -95,6 +95,7 @@
 
  - **Scaling**
    - What is scaling?
+   - Methods of scaling applications
 
  - **Performance**
    - What is performance? 

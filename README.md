@@ -244,7 +244,7 @@
  - **What is Docker?**
  - **Create Docker image with your application**
  - **Run your applications**
- - **How run tiny cloud everywhere in 1 click (Docker Compose)**
+ - **How to run tiny cloud in 1 click? (Docker Compose)**
  - ...
 
 #### Final test and questions

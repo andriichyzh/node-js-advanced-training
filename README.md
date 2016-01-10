@@ -50,16 +50,18 @@
 
 #### Getting started on practice
 
- - Installation Node.js
- - CLI
+ - Installation Node.js (direct and NVM)
+ - CLI commands
  - First script and program
  - Debug tools
  
 #### Loading system of modules and NPM
 
  - How it works?
- - Order of load
  - Supported formats
+ - Order of load and resolving algorithm
+ - The module cache
+ - NPM registry
 
 #### Core modules
 

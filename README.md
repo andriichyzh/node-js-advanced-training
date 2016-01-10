@@ -1,23 +1,96 @@
 # Node.js Advanced Training
 
+## Required
 
-## Base JavaScript (self-study materials)
+ - [JavaScript Base](requirements/javascript-base.md)
+ - [JavaScript Advanced](requirements/javascript-advanced.md)
+ - [Linux Base](requirements/linux-base.md)
 
-### Tutorials
+## Program
 
- - [Modern tutorial of JavaScript from Ilya Kantor](https://learn.javascript.ru/js)
+### JavaScript Refresh
+
+### JavaScript ECMAScript 2015 (ES6)
+
+### Node.js
+
+#### Design Fundamentals
+
+#### Getting started on practice
+
+ - Installation Node.js
+ - CLI
+ - First script and program
+ - Debug tools
  
-### Books 
+#### NPM and installation modules
 
- - [Marijn Haverbeke - Eloquent JavaScript (2nd Edition)](http://it-ebooks.info/book/4712/)
- - [Stoyan Stefanov - JavaScript Patterns](http://it-ebooks.info/book/275/)
- - [Douglas Crockford - JavaScript: The Good Parts](http://it-ebooks.info/book/274/)
- - [John Resig - Secrets of the JavaScript Ninja](http://it-ebooks.info/book/2274/)
+#### Core modules
 
+#### Useful NPM modules
 
-## Advanced JavaScript (self-study materials) 
- 
-### Books
+#### Build your own modules
 
- - [Addy Osmani - Learning JavaScript Design Patterns](http://it-ebooks.info/book/724/)
- - [Simon Timms - Mastering JavaScript Design Patterns](http://it-ebooks.info/book/4648/)
+#### Tips and Tricks 
+
+#### Asynchronous Control Flow
+
+ - The difficulties
+   - The callback hell
+
+ - Flows
+   - Sequential execution
+   - Parallel execution
+   - Limited parallel execution
+
+ - Solutions
+   - Short functions
+   - Async libraries
+   - Promises
+   - Generators
+
+#### Patterns
+
+#### Wiring modules
+
+ - Hardcoded dependency
+ - Dependency injection
+ - Service locator
+ - Dependency injection container
+
+#### Recipes for yours applications
+
+ - Connection to MongoDB
+ - Repository pattern
+
+#### Testing in Node.js
+
+ - What we test?
+ - How to do your testing most effective and fast?
+ - Approaches (eg TDD, BDD, etc)
+ - Tools and libraries
+ - Continuous Integration (Travis CI)
+
+#### Documentation
+
+ - README Driven Development
+ - REST API
+ - Tips and Tricks
+
+#### The design and architecture of the application
+
+#### Project 1: Simple web-site
+
+#### Project 2: Service with REST API
+
+#### Project 3: Tiny cloud (micro-services)
+
+#### Performance and Scaling of application and system
+
+#### Profiling and optimizations of application and system
+
+#### Yours applications in production
+
+#### Docker is the best friend of your applications (optional)
+
+#### Final test and questions

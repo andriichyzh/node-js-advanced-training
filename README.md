@@ -129,6 +129,7 @@
 
  - **Scaling**
    - What is scaling?
+   - Scaling Law
    - Methods of scaling applications
 
  - **Performance**

@@ -23,7 +23,7 @@
  - First script and program
  - Debug tools
  
-#### Modules, loading system of modules and NPM
+#### Loading system of modules and NPM
 
 #### Core modules
 
@@ -39,6 +39,10 @@
  - ...
 
 #### Useful NPM modules
+
+ - Lodash
+ - Async
+ - ...
 
 #### Build your own modules
 
@@ -60,7 +64,24 @@
    - Promises
    - Generators
 
-#### Patterns
+#### Design Patterns
+
+ - **Creational Design Patterns**
+   - Singleton
+   - Factory
+   - Abstract Factory
+   - ...
+   
+ - **Structural Design Patterns**
+   - Adapter
+   - Composite
+   - Decorator
+   - Facade
+   - Bridge
+   - Proxy
+   - ...
+ 
+ - **Behavioral Design Patterns**
 
 #### Wiring modules
 

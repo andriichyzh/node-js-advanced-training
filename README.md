@@ -8,13 +8,46 @@
 
 ## Program
 
-### JavaScript Refresh
+### `JavaScript Refresh`
 
-### JavaScript ECMAScript 2015 (ES6)
+### `JavaScript ECMAScript 2015 (ES6)`
 
-### Node.js
+ - **Block scoping**
+   - let
+   - const
+   - function-in-blocks
+
+ - **Classes**
+ 
+ - **Collections**
+   - Map
+   - WeakMap
+   - Set
+   - WeakSet
+
+ - **Typed arrays**
+ - **Generators**
+ - **Binary and Octal literals**
+ - **Object literal extensions**
+ - **Promises**
+ - **Symbols**
+ - **Template strings**
+ - **Arrow Functions**
+
+### `Node.js`
+
+#### Philosophy
+
+ - Small core
+ - Small modules
+ - Small surface area
+ - Simplicity and pragmatism
 
 #### Design Fundamentals
+
+ - **Components**
+   - V8
+   - libuv
 
 #### Getting started on practice
 
@@ -24,6 +57,10 @@
  - Debug tools
  
 #### Loading system of modules and NPM
+
+ - How it works?
+ - Order of load
+ - Supported formats
 
 #### Core modules
 
@@ -46,7 +83,12 @@
 
 #### Build your own modules
 
-#### Tips and Tricks 
+ - Structure
+ - Required steps
+ - Using in application
+ - ...
+
+#### Tips and Tricks
 
 #### Asynchronous Control Flow
 
@@ -121,9 +163,22 @@
 
 #### Project 1: Simple web-site
 
+ - Express
+ - Serving static content by Node.js
+ - Using Nginx as reverse proxy and server of static content
+
 #### Project 2: Service with REST API
 
+ - Express
+ - REST API design
+ - REST API testing
+
 #### Project 3: Tiny cloud (micro-services)
+
+ - Micro-services overview
+ - Communication between services
+ - HTTP and Message Broker for communication
+ - Testing of micro-services
 
 #### Performance and Scaling of application and system
 
@@ -138,6 +193,7 @@
    - Tools for performance tests (Yandex.Tank, ab, siege)
    - Analysis of the results
    - Recommendations for scaling
+   - Using cache
 
 #### Profiling and optimizations of application and system
 

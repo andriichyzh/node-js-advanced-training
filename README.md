@@ -1,6 +1,6 @@
 # Node.js Advanced Training
 
-[Node.js](http://dab1nmslvvntp.cloudfront.net/wp-content/uploads/2015/07/1436439824nodejs-logo.png)
+![Node.js](http://mean.io/system/assets/img/logos/nodejs.png)
 
 ## Required
 

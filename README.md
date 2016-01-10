@@ -10,7 +10,7 @@
 
 ### `JavaScript Refresh`
 
-### `JavaScript ECMAScript 2015 (ES6)`
+### `ECMAScript 2015 (ES6)`
 
  - **Block scoping**
    - let

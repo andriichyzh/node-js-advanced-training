@@ -253,7 +253,7 @@
 
 # Author
 
- - **Andrii Chyzh** [GitHub](https://github.com/andriichyzh)
+ - [**Andrii Chyzh**](https://github.com/andriichyzh)
 
 # License
 

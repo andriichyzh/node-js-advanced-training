@@ -251,6 +251,9 @@
 
 #### Final test and questions
 
+# Author
+
+ - **Andrii Chyzh** [GitHub](https://github.com/andriichyzh)
 
 # License
 

@@ -9,12 +9,27 @@
  - [MongoDB Base](requirements/mongodb-base.md)
  - [Redis Base](requirements/redis-base.md)
  - [Linux Base](requirements/linux-base.md)
+ 
 
-## Program
+## Actual for versions:
+ - **Node.js 4.2+**
+ - **Mongo 3.2+**
+ - **Redis**
 
-### `JavaScript Refresh`
 
-### `New in ECMAScript 2015 (ES6)`
+## Program (total: ?h)
+
+### `JavaScript Init Check Point` (1h)
+
+ - **Variables**
+ - **Conditions**
+ - **Loops**
+ - **Functions**
+ - **Prototypes**
+ - **Asynchronous functions** 
+ - ...
+
+### `New in ECMAScript 2015 (ES6)` (1h)
 
  - **Block scoping**
    - let
@@ -34,16 +49,17 @@
 
 ### `Node.js`
 
-#### Philosophy
+#### Philosophy (30m)
 
  - **Small core**
  - **Small modules**
  - **Small surface area**
  - **Simplicity and pragmatism**
 
-#### Design Fundamentals
+#### Design Fundamentals (1h)
 
  - **Conceptions**
+   - Asynchronous
    - Event Loop
    - IO operations
    - Non blocking
@@ -52,16 +68,16 @@
    - V8
    - libuv
 
-#### Getting started on practice
+#### Getting started on practice (1h)
 
- - **Requirements**
+ - **System requirements**
  - **Installation Node.js (direct and NVM)**
  - **CLI commands**
  - **First script**
- - **Understanding of errors**
+ - **Understanding of errors stack trace**
  - **Approaches and tools for debug**
  
-#### Loading system of modules and NPM
+#### Loading system of modules and NPM (1h)
 
  - **How it works?**
  - **Supported formats**
@@ -69,7 +85,7 @@
  - **The module cache**
  - **NPM registry**
 
-#### Core modules
+#### Core modules (2h)
 
  - **Console**
  - **Timers**
@@ -82,7 +98,7 @@
  - **Child Processes**
  - ...
 
-#### Useful NPM modules
+#### Useful NPM modules (1h)
 
  - **Lodash**
  - **Async / Neo-async**
@@ -92,7 +108,7 @@
  - **Postgres**
  - ...
 
-#### Build your own modules
+#### Build your own modules (1h)
 
  - **File structure**
  - **Deep with package.json**
@@ -101,13 +117,15 @@
  - **Using in application**
  - ...
  
-#### Common Patterns in Node.js  
+#### Common Patterns in Node.js (1h)
 
  - **Callbacks**
  - **Error-first**
+ - **Async function in any case**
+ - **Recursive async functions**
  - ...
 
-#### Design Patterns in Node.js
+#### Design Patterns in Node.js (4h)
 
  - **Creational Design Patterns**
    - Singleton
@@ -128,10 +146,11 @@
    - Observer
    - ...
    
-#### Asynchronous Control Flow
+#### Asynchronous Control Flow (2h)
 
  - **The difficulties**
    - The callback hell
+   - Specific flows
 
  - **Flows**
    - Sequential execution
@@ -140,41 +159,67 @@
 
  - **Solutions**
    - Pure JS functions
-   - Async libraries
+   - Async library
    - Promises
    - Generators
 
-#### Wiring modules
+#### Wiring modules (1h)
 
  - **Hardcoded dependency**
  - **Dependency injection**
  - **Service locator**
  - **Dependency injection container**
 
-#### Recipes for yours applications
+#### Recipes for yours applications (2h)
 
+ - **Run long sync operations**
+ - **Run heavy CPU operations**
  - **Connection to MongoDB**
  - **Repository pattern**
- - **Run heavy CPU operations**
  - ...
 
-#### Testing in Node.js
+#### Testing in Node.js (3h)
 
  - **What we test?**
+   - Cases
+   - Priority
  - **How to do your testing most effective and fast?**
- - **Approaches (eg TDD, BDD, etc)**
+   - Classes
+   - Boundary
+   - Test levels
+   - Piramida
+ - **Approaches**
+   - TDD
+   - BDD 
+   - Pairwise
+   - Mocks
  - **Tools and libraries**
+   - Mocha
+   - Should
+   - Supertest
+   - Sinon
  - **Code Coverage**
- - **Best practices in testing**
- - **Continuous Integration (Travis CI)**
+ - **Patterns and best practices in testing**
+ - **Continuous Integration**
+   - Conception
+   - Travis CI
+ - **Continuous Delivery**
+   - Conception
 
-#### Documentation
+#### Documentation (1h)
 
- - **README Driven Development**
- - **REST API (RAML)**
- - **Tips and Tricks**
+ - **Approaches**
+   - README Driven Development
+   - Reference documentation
+   - Unibutique Language
+   - Changelog
+   - License
 
-#### The design and architecture of the application
+ - **Formats**
+   - Markdown
+   - RAML
+
+#### The design and architecture of the application (1h)
 
  - **MVC**
  - **DDD**
@@ -182,10 +227,13 @@
  - **Micro-services**
  - ...
  
-#### Projects: Common recommendations
+#### Projects: Common recommendations (1h)
 
+ - **12 factors app**
  - **Configuration**
  - **Logging**
+ - **Monitoring**
+ - **Profiling**
  - **Connection to DBs and external services**
  - ...
 
@@ -208,7 +256,7 @@
  - **HTTP and Message Broker for communication**
  - **Testing of micro-services**
 
-#### Performance and Scaling of application and system
+#### Performance and Scaling of application and system (2h)
 
  - **Scaling**
    - What is scaling?
@@ -224,9 +272,9 @@
  
  - **Cache in applications**
 
-#### Profiling and optimizations of application and system
+#### Profiling and optimizations of application and system (2h)
 
- - **Top most common mistakes**
+ - **Top most common mistakes which fail performance**
  
  - **Profiling**
    - Memory
@@ -235,21 +283,22 @@
  
  - **Tools**
 
-#### Yours applications in production
+#### Yours applications in production (1h)
 
  - **Best practices of logging**
  - **Orchestration (Ansible)**
  - ...
 
-#### Docker is the best friend of your applications (overview)
+#### Distribution of your application (Docker) (1h)
 
  - **What is Docker?**
  - **Create Docker image with your application**
  - **Run your applications**
- - **How to run tiny cloud in 1 click? (Docker Compose)**
+ - **How to run own cloud in 1 click? (Docker Compose)**
  - ...
 
-#### Final test and questions
+#### Final Q&A (1h)
+
 
 # Author
 

@@ -14,7 +14,7 @@
 ## Actual for versions:
  - **Node.js 4.2+**
  - **Mongo 3.2+**
- - **Redis**
+ - **Redis 3.0+**
 
 
 ## Program (total: 30h)

@@ -17,7 +17,9 @@
  - **Redis**
 
 
-## Program (total: ?h)
+## Program (total: 30h)
+
+### `Introduction` (15m)
 
 ### `JavaScript Init Check Point` (1h)
 

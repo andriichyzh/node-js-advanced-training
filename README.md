@@ -21,7 +21,7 @@
 
 ### `Introduction` (15m)
 
-### `JavaScript Init Check Point` (1h)
+### `JavaScript Init Check Point` (2h)
 
  - **Variables**
  - **Conditions**
@@ -31,7 +31,7 @@
  - **Asynchronous functions** 
  - ...
 
-### `New in ECMAScript 2015 (ES6)` (1h)
+### [New in ECMAScript 2015 (ES6)](lessons/02-js-ecmascript-2015.md) (1h)
 
  - **Block scoping**
    - let

@@ -57,34 +57,36 @@ console.log(REFERENCE_OBJECT); // { a: { b: true, c: false } }
   
 Block-scoped variables without hoisting.
 
-#### ECMAScript 6 
 ```js
+// ES6 
 for (let i = 0; i < 10; i++) {
     let user = { index: i };
 }
 
 console.log(user); // ReferenceError: user is not defined
 
-
-if (true) {
-    let count = 1;
-}
-  
-console.log(count); // ReferenceError: count is not defined
-```
-
-#### ECMAScript 5 
-```js
+// ES5
 for (var i = 0; i < 10; i++) {
     let var = { index: i };
 }
 
 console.log(user); // { index : 9 }
+```
 
+``` js
+// ES6 
+if (true) {
+    let count = 1;
+}
+  
+console.log(count); // ReferenceError: count is not defined
 
+// ES5
 if (true) {
     var count = 1;
 }
   
 console.log(count); // 1
 ```
+
+

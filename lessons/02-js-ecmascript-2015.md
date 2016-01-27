@@ -4,19 +4,19 @@
 
 Support for constants (also known as "immutable variables"), i.e. variables which cannot be re-assigned new content.
 
-#### ECMAScript 6 
 ```js
+// Base const declaration
 const CHUNK_SIZE = 1024;
 
-
+// Try declarete one const twice
 const MAX_SIZE = 10;
 const MAX_SIZE = 20; // SyntaxError: Identifier 'MAX_SIZE' has already been declared
 
-
+// Try rewrite const
 const RETRY_COUNT = 10;
 RETRY_COUNT = 100; // TypeError: Assignment to constant variable.
 
-// Important
+// Important: rewrite const as object
 const USER_SETTINGS = { size: 1024 };
 USER_SETTINGS.size = 1;
 console.log(USER_SETTINGS); // { size: 1 }
@@ -33,24 +33,19 @@ console.log(USER_SETTINGS); // { size: 1 }
 
 Creating a constant object in which new properties could not be added, modified or removed.
 
-#### ECMAScript 6 
 ```js
+// Freeze const as object
 const USER_SETTINGS = { size: 1024 };
-
 Object.freeze(USER_SETTINGS);
-
 USER_SETTINGS.size = 1; // TypeError: Cannot assign to read only property 'size' of #<Object>
 
-
-// Important
+// Important: not freeze recursive
 const REFERENCE_OBJECT = { a: { b: true } };
-
 Object.freeze(REFERENCE_OBJECT);
-
 REFERENCE_OBJECT.a.c = false;
-
 console.log(REFERENCE_OBJECT); // { a: { b: true, c: false } }
 ```
+
 #### Notes:
 
  * Note that `values that are objects can still be modified`, unless they are also frozen.

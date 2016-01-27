@@ -1,6 +1,6 @@
 # Node.js Advanced Training
 
-![Node.js](http://mean.io/system/assets/img/logos/nodejs.png)
+![Node.js](static/images/logo.png)
 
 ## Required
 

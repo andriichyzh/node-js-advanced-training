@@ -1,4 +1,10 @@
-# New in ECMAScript 2015 (ECMAScript 6)
+# New in ECMAScript 2015 (ES6)
+
+## References
+
+ * [Standard ECMA-262](http://www.ecma-international.org/publications/standards/Ecma-262.htm)
+ * [ECMAScript 2015 (ES6) in Node.js](https://nodejs.org/en/docs/es6/)
+
 
 ## Constants
 
@@ -106,9 +112,25 @@ if (true) {
 console.log(getUser()); // 'USER A'
 ```
 
+Notes:
+
+ * In Node.js supports in `strict mode` only [[reference](https://nodejs.org/en/docs/es6/#ref-1)]
+
 ***
 
 ## Arrow Functions 
+
+#### Shorten functions
+
+```js
+var users = ['Ann', 'Valentino', 'Scott'];
+
+// ES5
+//var namesLength = users.map(function(user) { return user.length });
+
+// ES6
+var namesLength = users.map( user => user.length );
+```
 
 #### Without arguments
 
@@ -164,6 +186,20 @@ var getUser = function(id) {
 }
 ```
 
+#### Statement body
+
+```js 
+// ES6
+var delay = callback => {
+    setTimeout(callback, 200);
+};
+
+// ES5
+var delay = function(callback) {
+    setTimeout(callback, 200);
+};
+```
+
 #### Lexical `this`
 
 ```js
@@ -216,3 +252,30 @@ function Counter() {
 
 var counter = new Counter();
 ```
+
+#### Total
+
+```js
+function () { return 10; }
+() => { return 10; }
+() => 10
+ 
+function (a) { return a * 5; }
+(a) => { return a * 5; }
+(a) => a * 5
+a => a * 5
+ 
+function (a, b) { return a * b; }
+(a, b) => { return a * b; }
+(a, b) => a * b
+ 
+function () { return arguments[0]; }
+(...args) => args[0]
+ 
+() => {} // undefined
+() => ({}) // {}
+```
+
+#### Notes:
+
+ * Arrow functions capture the `this` value of the enclosing context

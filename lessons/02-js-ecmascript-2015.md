@@ -354,6 +354,8 @@ function getMessage(userId, userName = 'User:' + userId) {
 }
 ```
 
+***
+
 ## Template Literals 
 
 Intuitive expression interpolation for single-line and multi-line strings.
@@ -395,6 +397,8 @@ parseInt('2000', 8) === 1024; // true
 0b10000000000 === 1024; // true
 0o2000 === 1024; // true
 ```
+
+***
 
 ## Classes
 

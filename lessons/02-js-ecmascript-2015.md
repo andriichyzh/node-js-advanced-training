@@ -126,7 +126,7 @@ Notes:
 var users = ['Ann', 'Valentino', 'Scott'];
 
 // ES5
-//var namesLength = users.map(function(user) { return user.length });
+var namesLength = users.map(function(user) { return user.length });
 
 // ES6
 var namesLength = users.map( user => user.length );
@@ -172,6 +172,16 @@ var getSum = (num1, num2) => { return num1 + num2 };
 var getSum = function(num1, num2) {
     return num1 + num2;
 }
+```
+
+#### Variable count of arguments (rest parameters)
+
+```js
+// ES5
+var getFirstArg = function() { return arguments[0]; }
+
+// ES6
+var getFirstArg = (...args) => args[0];
 ```
 
 #### Return literal
@@ -256,20 +266,20 @@ var counter = new Counter();
 #### Total
 
 ```js
-function () { return 10; }
+function() { return 10; }
 () => { return 10; }
 () => 10
  
-function (a) { return a * 5; }
+function(a) { return a * 5; }
 (a) => { return a * 5; }
 (a) => a * 5
 a => a * 5
  
-function (a, b) { return a * b; }
+function(a, b) { return a * b; }
 (a, b) => { return a * b; }
 (a, b) => a * b
  
-function () { return arguments[0]; }
+function() { return arguments[0]; }
 (...args) => args[0]
  
 () => {} // undefined
@@ -279,3 +289,250 @@ function () { return arguments[0]; }
 #### Notes:
 
  * Arrow functions capture the `this` value of the enclosing context
+ 
+***
+
+## Default Parameter Values
+
+Simple and intuitive default values for function parameters.
+
+```js
+// ES6
+function createUser(name, age = 18, isExisted = true) {
+    return {
+        name: name,
+        age: age,
+        isExisted: isExisted
+    };
+}
+
+// ES5
+function createUser(name, age, isExisted) {
+    return {
+        name: name,
+        age: age || 18,
+        isExisted: isExisted === undefined ? true : isExisted
+    };
+}
+```
+
+#### Evaluated at call time
+
+```js
+// ES6
+function add(value, cache = []) {
+  cache.push(value);
+  return cache;
+}
+
+add(1); // [1]
+add(2); // [2]
+```
+
+
+#### Default parameters can get default value from other function
+
+```js
+// ES6
+function createAsset() {
+    return { alias: 'default' };
+}
+
+function createUploader(path, asset = createAsset()) {
+    ...
+}
+
+var uploader = createUploader('/tmp/music.mp3');
+```
+
+
+#### Default parameters are available to later default parameters
+
+```js
+function getMessage(userId, userName = 'User:' + userId) {
+    ...
+}
+```
+
+## Template Literals 
+
+Intuitive expression interpolation for single-line and multi-line strings.
+
+#### String Interpolation
+
+```js 
+// ES6
+var customer = { name: 'John' };
+var message = `Hello, ${customer.name}! How are you?`;
+
+console.log(message); // Hello, John! How are you?
+
+
+// ES6
+var car = {
+    vendor: 'BMW',
+    model: 'M4',
+    power: 300
+};
+
+var text = `New car ${car.vendor} ${car.model}
+with engine ${car.power} hp`;
+
+console.log(text);
+
+// New car BMW M4
+// with engine 300 hp
+```
+
+## Extended Literals (Binary & Octal)
+
+```js
+// ES5
+parseInt('10000000000', 2) === 1024; // true
+parseInt('2000', 8) === 1024; // true
+
+// ES6
+0b10000000000 === 1024; // true
+0o2000 === 1024; // true
+```
+
+## Classes
+
+#### Class declarations
+
+```js
+class Edge {
+    constructor(source, target) {
+        this.source = source;
+        this.target = target;
+    }
+}
+
+var edge = new Edge('A', 'B');
+```
+
+```js
+// Class declarations are not hoisted!
+var edge = new Edge(); // ReferenceError: Edge is not defined
+
+class Edge {}
+```
+
+#### Class expressions
+
+```js
+// Unnamed
+var Edge = class {
+    constructor(source, target) {
+        this.source = source;
+        this.target = target;
+    }
+}
+
+// Named
+var Edge = class Edge {
+    constructor(source, target) {
+        this.source = source;
+        this.target = target;
+    }
+}
+```
+
+#### Prototype methods
+
+```js
+class Edge {
+    constructor(source, target) {
+        this.source = source;
+        this.target = target;
+    }
+
+    get title() {
+        return this.getTitle();
+    }
+
+    getTitle() {
+        return this.source + '->' + this.target;
+    }
+}
+
+var edge = new Edge('A', 'B');
+
+console.log(edge.title); // A->B
+```
+
+#### Static methods
+
+```js
+class Edge {
+    constructor(source, target) {
+        this.source = source;
+        this.target = target;
+    }
+
+    static hasCommonVertex(edge1, edge2) {
+        return edge1.source === edge2.source || edge1.target === edge2.target;
+    }
+}
+
+var edge1 = new Edge('A', 'B');
+var edge2 = new Edge('A', 'C');
+
+console.log(Edge.hasCommonVertex(edge1, edge2)); // true
+```
+
+#### Sub classing with extends
+
+```js
+class BaseEdge {
+    constructor(source, target) {
+        this.source = source;
+        this.target = target;
+    }
+
+    isValid() {
+        return typeof this.source === 'string' && typeof this.target === 'string';
+    }
+}
+
+class Edge extends BaseEdge {
+    static hasCommonVertex(edge1, edge2) {
+        return edge1.source === edge2.source || edge1.target === edge2.target;
+    }
+}
+
+var edge1 = new Edge('A', 'B');
+var edge2 = new Edge('A', 'C');
+
+console.log(Edge.hasCommonVertex(edge1, edge2)); // true
+console.log(edge1.isValid()); // true
+```
+
+#### Super class calls with super
+
+```js
+class BaseEdge {
+    constructor(source, target) {
+        this.source = source;
+        this.target = target;
+    }
+
+    isValid() {
+        return typeof this.source === 'string' && typeof this.target === 'string';
+    }
+}
+
+class Edge extends BaseEdge {
+    isValid() {
+        return super.isValid() && this.source !== this.target;
+    }
+}
+
+var edge = new Edge('A', 'B');
+
+console.log(edge.isValid()); // true
+```
+
+#### Notes:
+
+ * `Class declarations` are not hoisted!

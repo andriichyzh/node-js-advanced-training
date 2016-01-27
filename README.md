@@ -1,6 +1,7 @@
-# Node.js Advanced Training
 
 ![Node.js](static/images/logo.png)
+
+# Node.js Advanced Training
 
 ## Required
 

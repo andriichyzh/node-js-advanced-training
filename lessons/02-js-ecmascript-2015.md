@@ -20,7 +20,7 @@ RETRY_COUNT = 100;
 console.log(RETRY_COUNT); // 10
 
 
-const USER_SETTINGS = { size : 1024 };
+const USER_SETTINGS = { size: 1024 };
 USER_SETTINGS = { size: 1 };
 console.log(USER_SETTINGS); // { size : 1024 }
 ```

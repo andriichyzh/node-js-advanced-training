@@ -21,7 +21,7 @@
 
 ### `Introduction` (15m)
 
-### `JavaScript Init Check Point` (2h)
+### [JavaScript Init Check Point](https://docs.google.com/presentation/d/1My6RpHXvAHyc1BCx5bEJhw_FmCyxBKgy5PKhjezjHCQ/edit?usp=sharing) (2h)
 
  - **Variables**
  - **Conditions**

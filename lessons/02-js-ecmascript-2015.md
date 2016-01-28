@@ -180,7 +180,7 @@ var getSum = function(num1, num2) {
 // ES5
 var getFirstArg = function() { return arguments[0]; }
 
-// ES6
+// ES6, Not works in Node 4.2
 var getFirstArg = (...args) => args[0];
 ```
 
@@ -278,7 +278,7 @@ a => a * 5
 function(a, b) { return a * b; }
 (a, b) => { return a * b; }
 (a, b) => a * b
- 
+
 function() { return arguments[0]; }
 (...args) => args[0]
  
@@ -297,12 +297,12 @@ function() { return arguments[0]; }
 Simple and intuitive default values for function parameters.
 
 ```js
-// ES6
+// ES6, Not works in Node 4.2
 function createUser(name, age = 18, isExisted = true) {
     return {
-        name: name,
-        age: age,
-        isExisted: isExisted
+        name,
+        age,
+        isExisted
     };
 }
 
@@ -333,7 +333,7 @@ add(2); // [2]
 #### Default parameters can get default value from other function
 
 ```js
-// ES6
+// Not works in Node 4.2
 function createAsset() {
     return { alias: 'default' };
 }
@@ -349,6 +349,7 @@ var uploader = createUploader('/tmp/music.mp3');
 #### Default parameters are available to later default parameters
 
 ```js
+// Not works in Node 4.2
 function getMessage(userId, userName = 'User:' + userId) {
     ...
 }
@@ -386,6 +387,8 @@ console.log(text);
 // with engine 300 hp
 ```
 
+***
+
 ## Extended Literals (Binary & Octal)
 
 ```js
@@ -396,6 +399,86 @@ parseInt('2000', 8) === 1024; // true
 // ES6
 0b10000000000 === 1024; // true
 0o2000 === 1024; // true
+```
+
+***
+
+## Objects
+
+#### Function `Object.assign`
+
+```js
+var target = { a: 100 };
+var first = { a: 1, b: { c: true } };
+var second = { b: { c: false, d: 'hello' } };
+
+// target <- first <- second
+console.log(Object.assign(target, first, second)); // { a: 1, b: { c: false, d: 'hello' } }
+console.log(target);                               // { a: 1, b: { c: false, d: 'hello' } }
+```
+
+```js
+var first = { a: 1, b: { c: true } };
+
+var clone = Object.assign({}, first); // { a: 1, b: { c: true } }
+```
+
+#### Function `Object.is`
+
+```js
+console.log(Object.is({ b: 1 }, { b: 1 })); // false
+console.log({ b: 1 } === { b: 1 });         // false
+
+console.log(Object.is(+0, -0)); // false
+console.log(+0 === -0);         // true
+
+console.log(Object.is(NaN, NaN)); // true
+console.log(NaN === NaN);         // false
+```
+
+***
+
+## Symbol
+
+```js 
+// Without `new` as primitive
+let sym = Symbol();
+console.log(typeof sym); // symbol
+
+
+console.log(Symbol('id') == Symbol('id')); // false
+```
+
+#### Global Symbol
+
+```js
+let id = Symbol.for('id');
+
+console.log(Symbol.for('id') === id); // true
+console.log(Symbol.keyFor(id)); // 'id'
+```
+
+#### Example of usage
+
+```js 
+let revision = Symbol('revision');
+let privateId = Symbol('privateId');
+let globalZone = Symbol.for('zone');
+
+let document = {
+    id: '123',
+    [revision]: 10,
+    [privateId]: '123abc',
+    [globalZone]: 'US'
+};
+
+console.log(document); // { id: '123' }
+console.log(JSON.stringify(document)); // {"id":"123"}
+
+console.log(document[revision]); // 10
+console.log(document[privateId]); // 123abc
+
+console.log(document[Symbol.for('zone')]); // 'US'
 ```
 
 ***
@@ -540,3 +623,106 @@ console.log(edge.isValid()); // true
 #### Notes:
 
  * `Class declarations` are not hoisted!
+
+***
+
+## Collections
+
+### Map
+
+```js
+var store = new Map();
+
+store.set('ABC', 'done');
+store.set('123', { user: '123' });
+
+console.log(store.size); // 2
+
+console.log(store.has('123')); // true
+console.log(store.get('123')); // { user: '123' }
+
+store.delete('123');
+
+console.log(store.has('123')); // false
+console.log(store.get('123')); // undefined
+
+console.log(store.size); // 1
+
+store.clear();
+
+console.log(store.size); // 0
+```
+
+#### Iterating Maps with `for..of`
+
+```js
+var store = new Map();
+
+store.set(1, 'one');
+store.set(2, 'two');
+store.set(3, 'three');
+
+for (var key of store.keys()) {
+    console.log(key);
+}
+
+// 1
+// 2
+// 3
+
+for (var value of store.values()) {
+    console.log(value);
+}
+
+// 'one'
+// 'two'
+// 'three'
+
+// Not works in Node 4.2
+for (var [key, value] of store.entries()) {
+    console.log(key + ' => ' + value);
+}
+
+// Not works in Node 4.2
+for (var [key, value] of store) {
+    console.log(key + ' => ' + value);
+}
+
+// 1 => one
+// 2 => two
+// 3 => three
+```
+
+#### Iterating Maps with `forEach()`
+
+```js
+var store = new Map();
+
+store.set(1, 'one');
+store.set(2, 'two');
+store.set(3, 'three');
+
+store.forEach(function(value, key) {
+    console.log(key + ' => ' + value);
+}, store);
+
+// 1 => one
+// 2 => two
+// 3 => three
+```
+
+#### Relation with `Array`
+
+```js
+var sourceData = [[1, 'one'], [2, 'two'], [3, 'three']];
+
+var store = new Map(sourceData);
+
+store.forEach(function(value, key) {
+    console.log(key + ' => ' + value);
+}, store);
+
+// 1 => one
+// 2 => two
+// 3 => three
+```

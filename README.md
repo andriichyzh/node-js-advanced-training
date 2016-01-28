@@ -49,6 +49,8 @@
  - **Template strings**
  - **Arrow Functions**
  - ...
+ 
+### [JavaScript Code Style](https://github.com/airbnb/javascript) 
 
 ### `Node.js`
 

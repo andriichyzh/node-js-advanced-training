@@ -32,7 +32,7 @@
  - **Asynchronous functions** 
  - ...
 
-### [New in ECMAScript 2015 (ES6)](lessons/02-js-ecmascript-2015/materials.md) (1-2h) ([Homework](lessons/02-js-ecmascript-2015/homework.md))
+### [New in ECMAScript 2015 (ES6)](lessons/02-js-ecmascript-2015/materials.md) (1-2h) 
 
  - **Block scoping**
    - let
@@ -49,6 +49,8 @@
  - **Template strings**
  - **Arrow Functions**
  - ...
+ 
+ [**[Homework]**](lessons/02-js-ecmascript-2015/homework.md)
  
 ### [JavaScript Code Style](https://github.com/airbnb/javascript) 
 

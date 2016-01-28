@@ -2,6 +2,7 @@
 
 ## References
 
+ * [ECMAScript 6 — New Features: Overview & Comparison](http://es6-features.org/#Constants)
  * [Standard ECMA-262](http://www.ecma-international.org/publications/standards/Ecma-262.htm)
  * [ECMAScript 2015 (ES6) in Node.js](https://nodejs.org/en/docs/es6/)
  * [ECMAScript 2015 (ES6) compatibility table](https://kangax.github.io/compat-table/es6/)

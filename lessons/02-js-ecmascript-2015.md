@@ -790,3 +790,252 @@ set.clear();
 
 console.log(set.size); // 0
 ```
+
+### WeakMap / WeakSet
+
+```js 
+let activeJobs = [
+    { title: 'create', id: '001' },
+    { title: 'update', id: '002' },
+    { title: 'delete', id: '003' }
+];
+
+let weakMap = new WeakMap();
+
+weakMap[activeJobs[0]] = { user: 'User A' };
+weakMap[activeJobs[1]] = { user: 'User B' };
+weakMap[activeJobs[2]] = { user: 'User A' };
+
+console.log(weakMap[activeJobs[0]]); // { user: 'User A' }
+
+activeJobs.splice(0, 1); // should return 2 records in weakMap
+activeJobs.splice(0, 1); // should return 1 record in weakMap
+```
+
+***
+
+### Promise
+
+```js
+let promise = new Promise(function(resolve, reject) {
+    ...
+});
+
+// onFulfilled - on resolve
+// onRejected - on reject
+promise.then(onFulfilled, onRejected);
+
+// or
+promise
+    .then(onFulfilled)
+    .catch(onRejected);
+```
+
+#### Sync throw
+
+```js
+let checker = new Promise((resolve, reject) => {
+    throw new Error('Not found!');
+});
+
+checker.catch(err => console.log(err)); // [Error: Not found!]
+```
+
+#### Examples
+
+```js
+let timer = new Promise((resolve, reject) => {
+    setTimeout(() => {
+        resolve(Date.now());
+    }, 1000);
+});
+
+timer.then(
+    result => console.log('Success:', result), // 'Success: 1453944667280'
+    error => console.log('Error:', error)
+);
+```
+
+```js
+let timer = new Promise((resolve, reject) => {
+    setTimeout(() => {
+        reject(new Error('Critical error!'));
+    }, 1000);
+});
+
+timer.then(
+    result => console.log('Success:', result),
+    error => console.log('Error:', error) // Error: [Error: Critical error!]
+);
+```
+
+#### Create promise
+
+```js
+function createDelay(delay) {
+    return new Promise((resolve, reject) => {
+        setTimeout(() => {
+            resolve(new Date().toISOString());
+        }, delay);
+    });
+}
+
+let timer = createDelay(1000);
+
+timer.then(
+    result => console.log('Success:', result), // 'Success: 2016-01-28T01:35:56.541Z'
+    error => console.log('Error:', error)
+);
+```
+
+#### Run one by one
+
+```js
+function createDelay(delay) {
+    return new Promise((resolve, reject) => {
+        setTimeout(() => {
+            resolve(delay + 100);
+        }, delay);
+    });
+}
+
+createDelay(1000)
+    .then(createDelay)
+    .then(createDelay)
+    .then(createDelay)
+    .then(result => console.log('Success:', result)); // 'Success: 1400'
+
+createDelay(1000)
+    .then(createDelay)
+    .then(result => result + 500)
+    .then(createDelay)
+    .then(result => result + 500)
+    .then(createDelay)
+    .then(result => console.log('Success:', result)); // 'Success: 2400'
+```
+
+#### Run in parallel 
+
+```js
+function createDelay(delay) {
+    return new Promise((resolve, reject) => {
+        setTimeout(() => {
+            resolve(delay + 100);
+        }, delay);
+    });
+}
+
+Promise.all([
+    createDelay(1000),
+    createDelay(1200),
+    createDelay(1400)
+]).then(results => console.log('Success:', results)); // 'Success: [ 1100, 1300, 1500 ]'
+```
+
+#### Only first result
+
+```js
+function createDelay(delay) {
+    return new Promise((resolve, reject) => {
+        setTimeout(() => {
+            resolve(delay + 100);
+        }, delay);
+    });
+}
+
+Promise.race([
+    createDelay(1000),
+    createDelay(1200),
+    createDelay(1400)
+]).then(result => console.log('Success:', result)); // 'Success: 1100'
+```
+
+### Generators
+
+```js
+function* generateSteps() {
+    yield { action: 'create' };
+    yield { action: 'check' };
+    return { action: 'send' };
+}
+
+let steps = generateSteps();
+
+console.log(steps.next()); // { value: { action: 'create' }, done: false }
+console.log(steps.next()); // { value: { action: 'check' }, done: false }
+console.log(steps.next()); // { value: { action: 'send' }, done: true }
+```
+
+```js
+function* generateSteps() {
+    yield { action: 'create' };
+    yield { action: 'check' };
+    return { action: 'send' };
+}
+
+let steps = generateSteps();
+
+for (let value of steps) {
+    console.log(value);
+}
+
+// { action: 'create' }
+// { action: 'check' }
+```
+
+```js
+function* runner() {
+    let result = yield 'Antonio';
+    console.log(result);
+}
+
+let generator = runner();
+
+let value = generator.next().value;
+
+setTimeout(() => generator.next(`Hello, ${value}! Current time ${new Date().toISOString()}`), 1000);
+```
+
+#### Example 
+
+```js
+function createDelay(delay) {
+    return new Promise((resolve, reject) => {
+        setTimeout(() => {
+            resolve(delay + 100);
+        }, delay);
+    });
+}
+
+function* taskExample() {
+
+    let firstTime = yield createDelay(1000);
+
+    console.log(Date.now(), firstTime);
+
+    let secondTime = yield createDelay(firstTime);
+
+    console.log(Date.now(), secondTime);
+
+    return secondTime * 10;
+}
+
+function runner(generator, yieldValue) {
+    let next = generator.next(yieldValue);
+
+    if (!next.done) {
+        next.value.then(
+            result => runner(generator, result),
+            err => generator.throw(err)
+        );
+    } else {
+        console.log(next.value);
+    }
+}
+
+runner(taskExample());
+
+// '1453947173485 1100'
+// '1453947174592 1200'
+// 12000
+```

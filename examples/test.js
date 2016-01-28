@@ -1,24 +1,37 @@
 'use strict';
 
-var set = new Set();
+function createDelay(delay) {
+    return new Promise((resolve, reject) => {
+        setTimeout(() => {
+            resolve(delay + 100);
+        }, delay);
+    });
+}
 
-set.add('001');
-set.add('002');
-set.add('003');
-set.add('003');
-set.add('002');
-set.add('001');
+function* taskExample() {
 
-console.log(set.size); // 3
+    let firstTime = yield createDelay(1000);
 
-console.log(set.has('001')); // true
+    console.log(Date.now(), firstTime);
 
-set.delete('001');
+    let secondTime = yield createDelay(firstTime);
 
-console.log(set.has('001')); // false
+    console.log(Date.now(), secondTime);
 
-console.log(set.size); // 2
+    return secondTime * 10;
+}
 
-set.clear();
+function runner(generator, yieldValue) {
+    let next = generator.next(yieldValue);
 
-console.log(set.size); // 0
+    if (!next.done) {
+        next.value.then(
+            result => runner(generator, result),
+            err => generator.throw(err)
+        );
+    } else {
+        console.log(next.value);
+    }
+}
+
+runner(taskExample());

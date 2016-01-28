@@ -32,7 +32,7 @@
  - **Asynchronous functions** 
  - ...
 
-### [New in ECMAScript 2015 (ES6)](lessons/02-js-ecmascript-2015.md) (1h)
+### [New in ECMAScript 2015 (ES6)](lessons/02-js-ecmascript-2015.md) (1-2h)
 
  - **Block scoping**
    - let
@@ -42,13 +42,13 @@
    - WeakMap
    - Set
    - WeakSet
- - **Clases**
- - **Typed arrays**
+ - **Classes**
  - **Generators**
  - **Promises**
  - **Symbols**
  - **Template strings**
  - **Arrow Functions**
+ - ...
 
 ### `Node.js`
 

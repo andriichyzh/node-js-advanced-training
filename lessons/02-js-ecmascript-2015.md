@@ -4,6 +4,7 @@
 
  * [Standard ECMA-262](http://www.ecma-international.org/publications/standards/Ecma-262.htm)
  * [ECMAScript 2015 (ES6) in Node.js](https://nodejs.org/en/docs/es6/)
+ * [ECMAScript 2015 (ES6) compatibility table](https://kangax.github.io/compat-table/es6/)
 
 
 ## Constants
@@ -129,14 +130,14 @@ var users = ['Ann', 'Valentino', 'Scott'];
 var namesLength = users.map(function(user) { return user.length });
 
 // ES6
-var namesLength = users.map( user => user.length );
+let namesLength = users.map( user => user.length );
 ```
 
 #### Without arguments
 
 ```js
 // ES6
-var getTimestamp = () => Date.now();
+let getTimestamp = () => Date.now();
 
 // ES5
 var getTimestamp = function() {
@@ -148,10 +149,10 @@ var getTimestamp = function() {
 
 ```js
 // ES6
-var getNext = index => index + 1;
+let getNext = index => index + 1;
 
 // ES6
-var getNext = (index) => index + 1;
+let getNext = (index) => index + 1;
 
 // ES5
 var getNext = function(index) {
@@ -163,10 +164,10 @@ var getNext = function(index) {
 
 ```js
 // ES6
-var getSum = (num1, num2) => num1 + num2;
+let getSum = (num1, num2) => num1 + num2;
 
 // ES6
-var getSum = (num1, num2) => { return num1 + num2 };
+let getSum = (num1, num2) => { return num1 + num2 };
 
 // ES5
 var getSum = function(num1, num2) {
@@ -181,14 +182,14 @@ var getSum = function(num1, num2) {
 var getFirstArg = function() { return arguments[0]; }
 
 // ES6, Not works in Node 4.2
-var getFirstArg = (...args) => args[0];
+let getFirstArg = (...args) => args[0];
 ```
 
 #### Return literal
 
 ```js
 // ES6
-var getUser = id => ({ id: id, app: 'ProTools' });
+let getUser = id => ({ id: id, app: 'ProTools' });
 
 // ES5
 var getUser = function(id) {
@@ -200,7 +201,7 @@ var getUser = function(id) {
 
 ```js 
 // ES6
-var delay = callback => {
+let delay = callback => {
     setTimeout(callback, 200);
 };
 
@@ -260,7 +261,7 @@ function Counter() {
     }, 1000);
 }
 
-var counter = new Counter();
+let counter = new Counter();
 ```
 
 #### Total
@@ -342,7 +343,7 @@ function createUploader(path, asset = createAsset()) {
     ...
 }
 
-var uploader = createUploader('/tmp/music.mp3');
+let uploader = createUploader('/tmp/music.mp3');
 ```
 
 
@@ -365,20 +366,20 @@ Intuitive expression interpolation for single-line and multi-line strings.
 
 ```js 
 // ES6
-var customer = { name: 'John' };
-var message = `Hello, ${customer.name}! How are you?`;
+let customer = { name: 'John' };
+let message = `Hello, ${customer.name}! How are you?`;
 
 console.log(message); // Hello, John! How are you?
 
 
 // ES6
-var car = {
+let car = {
     vendor: 'BMW',
     model: 'M4',
     power: 300
 };
 
-var text = `New car ${car.vendor} ${car.model}
+let text = `New car ${car.vendor} ${car.model}
 with engine ${car.power} hp`;
 
 console.log(text);
@@ -408,9 +409,9 @@ parseInt('2000', 8) === 1024; // true
 #### Function `Object.assign`
 
 ```js
-var target = { a: 100 };
-var first = { a: 1, b: { c: true } };
-var second = { b: { c: false, d: 'hello' } };
+let target = { a: 100 };
+let first = { a: 1, b: { c: true } };
+let second = { b: { c: false, d: 'hello' } };
 
 // target <- first <- second
 console.log(Object.assign(target, first, second)); // { a: 1, b: { c: false, d: 'hello' } }
@@ -418,9 +419,9 @@ console.log(target);                               // { a: 1, b: { c: false, d: 
 ```
 
 ```js
-var first = { a: 1, b: { c: true } };
+let first = { a: 1, b: { c: true } };
 
-var clone = Object.assign({}, first); // { a: 1, b: { c: true } }
+let clone = Object.assign({}, first); // { a: 1, b: { c: true } }
 ```
 
 #### Function `Object.is`
@@ -434,6 +435,44 @@ console.log(+0 === -0);         // true
 
 console.log(Object.is(NaN, NaN)); // true
 console.log(NaN === NaN);         // false
+```
+
+***
+
+## Iterator `for..of`
+
+```js
+let arr = [1, 2, 3];
+
+for (let value of arr) {
+    console.log(value);
+}
+
+// 1
+// 2
+// 3
+
+let str = 'Hello';
+
+for (let value of str) {
+    console.log(value);
+}
+
+// H
+// e
+// l
+// l
+// o
+
+let obj = { a: 1, b: 2, c: 3 };
+
+for (let value of Object.keys(obj)) {
+    console.log(value);
+}
+
+// a
+// b
+// c
 ```
 
 ***
@@ -473,10 +512,10 @@ let document = {
 };
 
 console.log(document); // { id: '123' }
-console.log(JSON.stringify(document)); // {"id":"123"}
+console.log(JSON.stringify(document)); // '{"id":"123"}'
 
 console.log(document[revision]); // 10
-console.log(document[privateId]); // 123abc
+console.log(document[privateId]); // '123abc'
 
 console.log(document[Symbol.for('zone')]); // 'US'
 ```
@@ -495,12 +534,12 @@ class Edge {
     }
 }
 
-var edge = new Edge('A', 'B');
+let edge = new Edge('A', 'B');
 ```
 
 ```js
 // Class declarations are not hoisted!
-var edge = new Edge(); // ReferenceError: Edge is not defined
+let edge = new Edge(); // ReferenceError: Edge is not defined
 
 class Edge {}
 ```
@@ -509,7 +548,7 @@ class Edge {}
 
 ```js
 // Unnamed
-var Edge = class {
+let Edge = class {
     constructor(source, target) {
         this.source = source;
         this.target = target;
@@ -517,7 +556,7 @@ var Edge = class {
 }
 
 // Named
-var Edge = class Edge {
+let Edge = class Edge {
     constructor(source, target) {
         this.source = source;
         this.target = target;
@@ -543,7 +582,7 @@ class Edge {
     }
 }
 
-var edge = new Edge('A', 'B');
+let edge = new Edge('A', 'B');
 
 console.log(edge.title); // A->B
 ```
@@ -562,8 +601,8 @@ class Edge {
     }
 }
 
-var edge1 = new Edge('A', 'B');
-var edge2 = new Edge('A', 'C');
+let edge1 = new Edge('A', 'B');
+let edge2 = new Edge('A', 'C');
 
 console.log(Edge.hasCommonVertex(edge1, edge2)); // true
 ```
@@ -588,8 +627,8 @@ class Edge extends BaseEdge {
     }
 }
 
-var edge1 = new Edge('A', 'B');
-var edge2 = new Edge('A', 'C');
+let edge1 = new Edge('A', 'B');
+let edge2 = new Edge('A', 'C');
 
 console.log(Edge.hasCommonVertex(edge1, edge2)); // true
 console.log(edge1.isValid()); // true
@@ -615,7 +654,7 @@ class Edge extends BaseEdge {
     }
 }
 
-var edge = new Edge('A', 'B');
+let edge = new Edge('A', 'B');
 
 console.log(edge.isValid()); // true
 ```
@@ -631,7 +670,7 @@ console.log(edge.isValid()); // true
 ### Map
 
 ```js
-var store = new Map();
+let store = new Map();
 
 store.set('ABC', 'done');
 store.set('123', { user: '123' });
@@ -656,13 +695,13 @@ console.log(store.size); // 0
 #### Iterating Maps with `for..of`
 
 ```js
-var store = new Map();
+let store = new Map();
 
 store.set(1, 'one');
 store.set(2, 'two');
 store.set(3, 'three');
 
-for (var key of store.keys()) {
+for (let key of store.keys()) {
     console.log(key);
 }
 
@@ -670,7 +709,7 @@ for (var key of store.keys()) {
 // 2
 // 3
 
-for (var value of store.values()) {
+for (let value of store.values()) {
     console.log(value);
 }
 
@@ -679,12 +718,12 @@ for (var value of store.values()) {
 // 'three'
 
 // Not works in Node 4.2
-for (var [key, value] of store.entries()) {
+for (let [key, value] of store.entries()) {
     console.log(key + ' => ' + value);
 }
 
 // Not works in Node 4.2
-for (var [key, value] of store) {
+for (let [key, value] of store) {
     console.log(key + ' => ' + value);
 }
 
@@ -696,7 +735,7 @@ for (var [key, value] of store) {
 #### Iterating Maps with `forEach()`
 
 ```js
-var store = new Map();
+let store = new Map();
 
 store.set(1, 'one');
 store.set(2, 'two');
@@ -714,9 +753,9 @@ store.forEach(function(value, key) {
 #### Relation with `Array`
 
 ```js
-var sourceData = [[1, 'one'], [2, 'two'], [3, 'three']];
+let sourceData = [[1, 'one'], [2, 'two'], [3, 'three']];
 
-var store = new Map(sourceData);
+let store = new Map(sourceData);
 
 store.forEach(function(value, key) {
     console.log(key + ' => ' + value);
@@ -725,4 +764,29 @@ store.forEach(function(value, key) {
 // 1 => one
 // 2 => two
 // 3 => three
+```
+
+### Set
+
+```js
+let set = new Set();
+
+set.add('001');
+set.add('002');
+set.add('003');
+set.add('003');
+set.add('002');
+set.add('001');
+
+console.log(set.size); // 3
+console.log(set.has('001')); // true
+
+set.delete('001');
+
+console.log(set.size); // 2
+console.log(set.has('001')); // false
+
+set.clear();
+
+console.log(set.size); // 0
 ```

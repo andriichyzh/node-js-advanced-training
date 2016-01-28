@@ -75,7 +75,7 @@ console.log(user); // ReferenceError: user is not defined
 
 // ES5
 for (var i = 0; i < 10; i++) {
-    let user = { index: i };
+    var user = { index: i };
 }
 
 console.log(user); // { index : 9 }

@@ -51,8 +51,16 @@
  - ...
  
  
- 
-### [JavaScript Code Style](https://github.com/airbnb/javascript) 
+### [JavaScript Style Guides](lessons/03-js-style-guides/materials.md)
+
+ - **Airbnb Coding Style**
+ - **Google JavaScript Style**
+ - **JavaScript "Standard" Style**
+ - **Crockfords’s Coding Standards**
+ - **Node.js Coding Style**
+ - **NPM "Funny" Coding Style**
+ - **Idiomatic JavaScript Coding Style**
+
 
 ### `Node.js`
 

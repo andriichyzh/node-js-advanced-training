@@ -2,7 +2,7 @@
 
 ## References
 
- * [ECMAScript 6 — New Features: Overview & Comparison](http://es6-features.org/#Constants)
+ * [ECMAScript 6 — New Features: Overview & Comparison](http://es6-features.org/)
  * [Standard ECMA-262](http://www.ecma-international.org/publications/standards/Ecma-262.htm)
  * [ECMAScript 2015 (ES6) in Node.js](https://nodejs.org/en/docs/es6/)
  * [ECMAScript 2015 (ES6) compatibility table](https://kangax.github.io/compat-table/es6/)
@@ -32,7 +32,7 @@ console.log(USER_SETTINGS); // { size: 1 }
 
 #### Notes: 
 
- * Remember constants created using `const` keyword have function level scope like variables created with `var` keyword.
+ * Remember constants created using `const` keyword have `block` level scope!
 
 ***
 
@@ -293,6 +293,7 @@ function() { return arguments[0]; }
  * Arrow functions capture the `this` value of the enclosing context
  
 ***
+
 
 ## Default Parameter Values
 

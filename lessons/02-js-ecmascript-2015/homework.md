@@ -14,5 +14,5 @@ Required methods:
  - `set(key, value)`
  - `get(key)`
  - `has(key)`
- - `delete([key])`
+ - `remove([key])`
 

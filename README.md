@@ -65,7 +65,7 @@
 
 ### `Node.js`
 
-#### [Philosophy](lessons/04-nodejs-philosofy/materials.md) (15m)
+#### [Philosophy](lessons/04-nodejs-philosophy/materials.md) (15m)
 
  - **Small core**
  - **Small modules**

@@ -20,9 +20,11 @@
 
 ## Program (total: 30h)
 
-### `Introduction` (15m)
+### `Training Overview` (15m)
 
-### [JavaScript Init Check Point](https://docs.google.com/presentation/d/1My6RpHXvAHyc1BCx5bEJhw_FmCyxBKgy5PKhjezjHCQ/edit?usp=sharing) (2h)
+### `JavaScript`
+
+#### [JavaScript Init Check Point](https://docs.google.com/presentation/d/1My6RpHXvAHyc1BCx5bEJhw_FmCyxBKgy5PKhjezjHCQ/edit?usp=sharing) (2h)
 
  - **Variables**
  - **Conditions**
@@ -32,7 +34,7 @@
  - **Asynchronous functions** 
  - ...
 
-### [New in ECMAScript 2015 (ES6)](lessons/02-js-ecmascript-2015/materials.md) (2h) [[Homework]](lessons/02-js-ecmascript-2015/homework.md)
+#### [New in ECMAScript 2015 (ES6)](lessons/02-js-ecmascript-2015/materials.md) (2h) [[Homework]](lessons/02-js-ecmascript-2015/homework.md)
 
  - **Block scoping**
    - let
@@ -49,9 +51,8 @@
  - **Template strings**
  - **Arrow Functions**
  - ...
- 
- 
-### [JavaScript Style Guides](lessons/03-js-style-guides/materials.md) (15m)
+
+#### [JavaScript Style Guides](lessons/03-js-style-guides/materials.md) (15m)
 
  - **Airbnb Coding Style**
  - **Google JavaScript Style**
@@ -97,6 +98,7 @@
    - **SyntaxError**
    - **ReferenceError**
    - **TypeError**
+   
  - **Assertion Errors**
  - **Custom errors**
 

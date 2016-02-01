@@ -64,35 +64,43 @@
 
 ### `Node.js`
 
-#### Philosophy (30m)
+#### [Philosophy](lessons/04-nodejs-philosofy/materials.md) (15m)
 
  - **Small core**
  - **Small modules**
  - **Small surface area**
  - **Simplicity and pragmatism**
 
-#### Design Fundamentals (1h)
+#### [Design Fundamentals](lessons/05-nodejs-design-fundamentals/materials.md) (1h)
 
  - **Conceptions**
-   - Asynchronous
-   - Event Loop
-   - IO operations
-   - Non blocking
+   - **Asynchronous**
+   - **Event Loop**
+   - **IO operations**
+   - **Non blocking**
 
  - **Components**
-   - V8
-   - libuv
+   - **V8**
+   - **libuv**
 
-#### Getting started on practice (1h)
+#### [Getting started](lessons/06-nodejs-getting-started/materials.md) (15m)
 
- - **System requirements**
- - **Installation Node.js (direct and NVM)**
+ - **Versions of Node.js**
+ - **Installation Node.js**
  - **CLI commands**
- - **First script**
- - **Understanding of errors stack trace**
- - **Approaches and tools for debug**
- 
-#### Loading system of modules and NPM (1h)
+ - **First scripts**
+
+#### [Errors Examples](lessons/07-nodejs-errors-examples/materials.md) (15m)
+
+ - **System errors**
+ - **Standard JavaScript errors**
+   - **SyntaxError**
+   - **ReferenceError**
+   - **TypeError**
+ - **Assertion Errors**
+ - **Custom errors**
+
+#### [Loading system of modules and NPM](lessons/08-nodejs-modules-and-npm/materials.md) (1h)
 
  - **How it works?**
  - **Supported formats**

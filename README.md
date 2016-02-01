@@ -32,7 +32,7 @@
  - **Asynchronous functions** 
  - ...
 
-### [New in ECMAScript 2015 (ES6)](lessons/02-js-ecmascript-2015/materials.md) (1-2h) [[Homework]](lessons/02-js-ecmascript-2015/homework.md)
+### [New in ECMAScript 2015 (ES6)](lessons/02-js-ecmascript-2015/materials.md) (2h) [[Homework]](lessons/02-js-ecmascript-2015/homework.md)
 
  - **Block scoping**
    - let
@@ -51,7 +51,7 @@
  - ...
  
  
-### [JavaScript Style Guides](lessons/03-js-style-guides/materials.md)
+### [JavaScript Style Guides](lessons/03-js-style-guides/materials.md) (15m)
 
  - **Airbnb Coding Style**
  - **Google JavaScript Style**

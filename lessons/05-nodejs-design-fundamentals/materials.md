@@ -13,8 +13,8 @@
    
 ## What Makes Node.js Faster Than Java? ([source](https://strongloop.com/strongblog/node-js-is-faster-than-java/))
 
-![Node.js](static/images/threading_node.png)
-![Java](static/images/threading_java.png)
+![Java Threading](static/images/threading-java-small.png)
+![Node.js Threading](static/images/threading-node-small.png)
    
 ## Components 
 

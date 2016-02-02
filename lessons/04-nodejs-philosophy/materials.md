@@ -11,26 +11,42 @@
 The Node.js core should be kept as small as possible.
 The ecosystem of modules living outside the core.
 
-    Write modules that do one thing well. Write a new module rather than complicate an old one.
+## Small modules
 
-    Write modules that encourage composition rather than extension.
+**Don't Repeat Yourself (DRY)**
 
-    Write modules that handle data Streams, because that is the universal interface.
+In Node.js, one of the most evangelized principles is to `design small modules`, not only in terms of `code size`, but most importantly in terms of `scope`. 
 
-    Write modules that are agnostic about the source of their input or the destination of their output.
+Small module is also considered to be the following:
+ 
+ - Easier to understand and use
+ - Simpler to test and maintain
+ - Perfect to share with the browser
 
-    Write modules that solve a problem you know, so you can learn about the ones you don’t.
+## Small surface area
 
-    Write modules that are small. Iterate quickly. Refactor ruthlessly. Rewrite bravely.
+Node.js modules usually have the characteristic of exposing only a minimal set of functionality.
 
-    Write modules quickly, to meet your needs, with just a few tests for compliance. Avoid extensive specifications. Add a test for each bug you fix.
+## Simplicity and pragmatism
 
-    Write modules for publication, even if you only use them privately. You will appreciate documentation in the future.
+**Keep It Simple, Stupid (KISS)**
 
-    Working is better than perfect.
-
-    Focus is better than features.
-
-    Compatibility is better than purity.
-
-    Simplicity is better than anything.
+> "The design must be simple, both in implementation and interface. 
+> It is more important for the implementation to be simple than the interface. 
+> Simplicity is the most important consideration in a design." 
+> (c) Richard P. Gabriel
+     
+# Principles from Isaac Z. Schlueter     
+     
+ - Write modules that `do one thing well`. Write a `new module` rather than `complicate an old one`.
+ - Write modules that `encourage composition` rather than `extension`.
+ - Write modules that handle data `Streams`, because that is the `universal interface`.
+ - Write modules that are `agnostic` about the `source of their input` or the `destination of their output`.
+ - Write modules that `solve a problem you know`, so you can learn about the ones you don’t.
+ - Write modules that are `small`. Iterate `quickly`. Refactor `ruthlessly`. Rewrite `bravely`.
+ - Write modules `quickly`, to meet your needs, with just a `few tests for compliance`. Avoid extensive specifications. Add a `test for each bug you fix`.
+ - Write modules `for publication`, even if you `only use them privately`. You will `appreciate documentation in the future`.
+ - `Working` is better than `perfect`.
+ - `Focus` is better than `features`.
+ - `Compatibility` is better than `purity`.
+ - `Simplicity` is better than `anything`.

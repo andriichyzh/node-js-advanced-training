@@ -102,7 +102,7 @@
  - **Assertion Errors**
  - **Custom errors**
 
-#### [Loading system of modules and NPM](lessons/08-nodejs-modules-and-npm/materials.md) (1h)
+#### [Modules and NPM](lessons/08-nodejs-modules-and-npm/materials.md) (1h)
 
  - **How it works?**
  - **Supported formats**

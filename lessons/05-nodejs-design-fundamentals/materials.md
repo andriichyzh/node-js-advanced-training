@@ -87,5 +87,3 @@
  - **OpenSSL** https://www.openssl.org/
  - **zlib** http://www.zlib.net/
  - **icu** http://site.icu-project.org/download
-
-

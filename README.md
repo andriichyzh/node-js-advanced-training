@@ -83,6 +83,7 @@
  - **Components**
    - **V8**
    - **libuv**
+   - ...
 
 #### [Getting started](lessons/06-nodejs-getting-started/materials.md) (15m)
 
@@ -102,7 +103,7 @@
  - **Assertion Errors**
  - **Custom errors**
 
-#### [Modules and NPM](lessons/08-nodejs-modules-and-npm/materials.md) (1h)
+#### [Modules and NPM](lessons/08-nodejs-modules-and-npm/materials.md) (1h) [[Homework]](lessons/08-nodejs-modules-and-npm/homework.md)
 
  - **How it works?**
  - **Supported formats**
@@ -110,7 +111,7 @@
  - **The module cache**
  - **NPM registry**
 
-#### Core modules (2h)
+#### [Core modules](lessons/09-nodejs-core-modules/materials.md) (2h)
 
  - **Console**
  - **Timers**

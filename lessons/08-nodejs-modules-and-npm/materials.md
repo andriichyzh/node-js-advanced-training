@@ -537,3 +537,7 @@ const logger = require('./logger');
 
 logger.trace(); // 'This is trace'
 ```
+
+## NPM
+
+Link: https://www.npmjs.com/

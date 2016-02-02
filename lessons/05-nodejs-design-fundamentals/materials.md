@@ -70,6 +70,12 @@
 
 **JS + V8 + libuv = Node.js**
 
+### Overview
+
+![Node.js Codebase](../../static/images/node-system.png)
+
+### Codebase
+
 ![Node.js Codebase](../../static/images/node-codebase.jpg)
 
 ### V8

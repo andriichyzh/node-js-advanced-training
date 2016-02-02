@@ -36,7 +36,7 @@ Node.js modules usually have the characteristic of exposing only a minimal set o
 > Simplicity is the most important consideration in a design." 
 > (c) Richard P. Gabriel
      
-# Principles from Isaac Z. Schlueter     
+# Principles from Isaac Z. Schlueter ([source](http://blog.izs.me/post/48281998870/unix-philosophy-and-nodejs))    
      
  - Write modules that `do one thing well`. Write a `new module` rather than `complicate an old one`.
  - Write modules that `encourage composition` rather than `extension`.

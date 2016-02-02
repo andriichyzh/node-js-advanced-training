@@ -78,11 +78,14 @@
 
 ![Node.js Codebase](../../static/images/node-codebase.jpg)
 
-### V8
+### Links
 
-Link: https://developers.google.com/v8/
+ - **V8** https://developers.google.com/v8/
+ - **libuv** http://nikhilm.github.io/uvbook/index.html
+ - **c-ares** http://c-ares.haxx.se/
+ - **http-parser** https://github.com/nodejs/http-parser
+ - **OpenSSL** https://www.openssl.org/
+ - **zlib** http://www.zlib.net/
+ - **icu** http://site.icu-project.org/download
 
-### Libuv
-
-Link: http://nikhilm.github.io/uvbook/index.html
 

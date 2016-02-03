@@ -6,5 +6,5 @@ Read: https://nodejs.org/dist/latest-v4.x/docs/api/
 
 2. **Install Node.js**
 
-In you have Linux will be great use `NVM`
+If you have Linux - will be great use `NVM`
 

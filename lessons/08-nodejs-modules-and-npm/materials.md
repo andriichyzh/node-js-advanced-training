@@ -540,4 +540,189 @@ logger.trace(); // 'This is trace'
 
 ## NPM
 
-Link: https://www.npmjs.com/
+ - **Link:** https://www.npmjs.com/
+
+ - **Documentation:** https://docs.npmjs.com/
+
+### Installing packages locally
+
+```bash
+ npm install <package_name>
+```
+
+**Example:**
+
+```bash
+npm install lodash
+```
+
+```bash
+lodash@4.2.1 node_modules/lodash
+```
+
+**Check node_modules:**
+
+```bash
+ls -l node_modules 
+```
+
+```bash
+drwxrwxr-x 3 achyzh achyzh 20480 Feb  3 22:29 lodash
+```
+
+### Using a `package.json`
+
+**Example:**
+
+```json
+{
+  "name": "some-package",
+  "version": "1.0.0"
+}
+```
+
+### Creating a `package.json` (interactive mode)
+
+```bash
+npm init
+```
+
+### Creating a `package.json` (with defaults)
+
+```bash
+npm init --yes
+```
+
+```json
+Wrote to /home/achyzh/Projects/node-js-advanced-training/package.json:
+
+{
+  "name": "node-js-advanced-training",
+  "version": "1.0.0",
+  "description": "![Node.js](static/images/logo.png)",
+  "main": "index.js",
+  "directories": {
+    "example": "examples"
+  },
+  "dependencies": {
+    "lodash": "^4.2.1"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/andriichyzh/node-js-advanced-training.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/andriichyzh/node-js-advanced-training/issues"
+  },
+  "homepage": "https://github.com/andriichyzh/node-js-advanced-training#readme"
+}
+```
+
+### Config options
+
+```bash
+> npm set init.author.email "andrii.chyzh@npmjs.com"
+> npm set init.author.name "andrii.chyzh"
+> npm set init.license "MIT"
+```
+
+### Specifying Packages
+
+ - **"dependencies"**: these packages are `required by your application in production`
+ - **"devDependencies"**: these packages are `only` needed for `development and testing`
+
+### Install packages with flags
+
+ - To add an entry to your `package.json`'s `dependencies`:
+ 
+    ```bash
+    npm install <package_name> --save
+    ```
+
+ - To add an entry to your `package.json`'s `devDependencies`:
+ 
+    ```bash
+    npm install <package_name> --save-dev
+    ```
+   
+### Semver for consumers
+
+If you were starting with a package `1.0.4`, this is how you would specify the ranges:
+
+ - `Patch` releases: `1.0` or `1.0.x` or `~1.0.4`
+ - `Minor` releases: `1` or `1.x` or `^1.0.4`
+ - `Major` releases: `*` or `x`
+
+More details: https://docs.npmjs.com/misc/semver
+
+### Local packages
+
+#### Updating local packages
+
+```bash
+npm update
+```
+
+#### Check outdated packages
+
+```bash
+npm outdated
+```
+
+**Output:**
+
+```bash
+Package               Current  Wanted  Latest  Location
+lodash                 3.10.1  3.10.1   4.2.1  lodash
+mongoose               3.8.39  3.8.39   4.4.0  mongoose
+retry                   0.6.1   0.6.1   0.9.0  retry
+should                  6.0.3   6.0.3   8.2.1  should
+```
+
+#### Uninstalling local packages
+
+```bash
+npm uninstall lodash
+```
+
+**With deleting from `package.json`:**
+
+```bash
+npm uninstall --save lodash
+```
+
+
+### Global packages
+
+#### Installing npm packages globally
+
+```bash
+npm install -g gulp
+```
+
+#### Updating global packages
+
+```bash
+npm update -g gulp
+```
+
+```bash
+npm update -g
+```
+
+#### Uninstalling global packages
+
+```bash
+npm uninstall -g gulp
+```
+
+### Cli commands
+
+Link: https://docs.npmjs.com/cli/cache

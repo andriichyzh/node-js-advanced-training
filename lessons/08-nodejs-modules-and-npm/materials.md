@@ -51,33 +51,33 @@ function loadModule(filename, module, require) {
 
 ```js
 let require = function(moduleName) {
-  console.log('Require invoked for module: ' + moduleName);
+    console.log('Require invoked for module: ' + moduleName);
   
-  let id = require.resolve(moduleName);
-  if (require.cache[id]) {
-    return require.cache[id].exports;
-  }
+    let id = require.resolve(moduleName);
+    if (require.cache[id]) {
+        return require.cache[id].exports;
+    }
  
-  // Module metadata
-  let module = {
-    exports: {},
-    id: id
-  };
+    // Module metadata
+    let module = {
+        exports: {},
+        id: id
+    };
   
-  // Update the cache
-  require.cache[id] = module;
+    // Update the cache
+    require.cache[id] = module;
 
-  // Load the module
-  loadModule(id, module, require);
+    // Load the module
+    loadModule(id, module, require);
   
-  // Return exported variables
-  return module.exports;
+    // Return exported variables
+    return module.exports;
 };
 
 require.cache = {};
 
 require.resolve = function(moduleName) {
-  /* resolve a full module id from the moduleName */
+    /* resolve a full module id from the moduleName */
 };
 ```
 

@@ -723,6 +723,6 @@ npm update -g
 npm uninstall -g gulp
 ```
 
-### Cli commands
+### CLI commands
 
 Link: https://docs.npmjs.com/cli/cache

@@ -114,6 +114,7 @@
 #### [Core modules](lessons/09-nodejs-core-modules/materials.md) (2h)
 
  - **Console**
+ - **Process**
  - **Timers**
  - **Errors**
  - **Events**

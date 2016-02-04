@@ -1,0 +1,1 @@
+cmd_Release/obj.target/sysinfo.node := g++ -shared -pthread -rdynamic -m64  -Wl,-soname=sysinfo.node -o Release/obj.target/sysinfo.node -Wl,--start-group Release/obj.target/sysinfo/src/binding.o -Wl,--end-group 

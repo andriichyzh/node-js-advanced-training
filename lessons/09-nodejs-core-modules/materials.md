@@ -200,3 +200,83 @@ logger.info('New request', { params: { id: '12345' } });
 
 ## [Process](https://nodejs.org/dist/latest-v4.x/docs/api/process.html)
 
+### process.cwd()
+   
+Returns the current working directory of the process.
+
+```js
+console.log('Current directory:', process.cwd()); // Current directory: /home/achyzh/Projects/node-js-advanced-training
+```
+
+### process.chdir(directory)
+
+```js
+console.log('Current directory:', process.cwd()); // Current directory: /home/achyzh/Projects/node-js-advanced-training
+
+process.chdir('/tmp');
+
+console.log('Current directory:', process.cwd()); // Current directory: /tmp
+```
+
+### process.env
+
+An object containing the user environment
+
+#### Get
+
+```js
+console.log(process.env);
+```
+
+```js
+{ 
+  TERM: 'xterm-256color',
+  PAPERSIZE: 'letter',
+  XDG_SESSION_PATH: '/org/freedesktop/DisplayManager/Session0',
+  UPSTART_SESSION: 'unix:abstract=/com/ubuntu/upstart-session/1000/2919',
+  ...
+  DESKTOP_SESSION: 'ubuntu',
+  DISPLAY: ':0',
+  LC_MONETARY: 'en_US.UTF-8',
+  USER: 'achyzh',
+  HOME: '/home/achyzh',
+}
+```
+
+#### Set
+
+```js
+process.env.NODE_ENV = 'test';
+console.log(process.env.NODE_ENV); // 'test'
+```
+
+### process.argv
+
+An array containing the command line arguments. 
+The first element will be 'node', the second element will be the name of the JavaScript file. 
+The next elements will be any additional command line arguments.
+ 
+Create file `test.js`:
+
+```js
+console.log(process.argv);
+// [ '/home/achyzh/.nvm/versions/node/v4.2.6/bin/node', '/home/achyzh/Projects/node-js-advanced-training/examples/test.js', '--test' ]
+```
+
+Run:
+
+```bash
+node examples/test.js --test
+```
+
+Output:
+
+```js
+[ '/home/achyzh/.nvm/versions/node/v4.2.6/bin/node', 
+  '/home/achyzh/Projects/node-js-advanced-training/examples/test.js', 
+  '--test' ]
+```
+
+## Stream
+
+Link: https://itarchitectblog.wordpress.com/2014/11/18/node-js-streams/

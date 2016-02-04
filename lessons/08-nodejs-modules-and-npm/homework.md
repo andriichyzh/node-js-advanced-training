@@ -1,10 +1,29 @@
 ## Homework
 
-1. **Overview API documentation of Node.js core modules**
+1. **Overview NPM CLI commands**
 
-Read: https://nodejs.org/dist/latest-v4.x/docs/api/
+Read: https://docs.npmjs.com/cli
 
-2. **Install Node.js**
+2. **Create Node application**
 
-If you have Linux - will be great use `NVM`
+ - name: `publish-service`
+ - version: `0.1.1`
 
+3. Install to `deps`:
+
+ - `express`
+ - `mongodb`
+ - `redis`
+ 
+4. Install to `dev deps`:
+
+ - `mocha`
+ - `should`
+
+5. Create file `index.js` and require all modules from `deps`
+
+6. Create most simple Express application with 1 route:
+
+```bash
+GET /status
+```

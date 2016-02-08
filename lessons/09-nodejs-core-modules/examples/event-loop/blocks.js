@@ -4,6 +4,8 @@ var mode = process.argv[2];
 
 var steps = 0;
 
+console.time('Total time');
+
 function run() {
     steps++;
 
@@ -12,6 +14,7 @@ function run() {
     }
 
     if (steps === 10) {
+        console.timeEnd('Total time');
         return;
     }
 
@@ -34,17 +37,18 @@ function run() {
     }
 }
 
-function checkBlocked() {
+function checkIsBlocked() {
     var delay = 10;
     var start = process.hrtime();
 
     setTimeout(function() {
         var elapsed = process.hrtime(start);
         var time = (elapsed[0] * 1000) + (elapsed[1] / 1e6);
-        console.log("I took %s ms! Expected to take %s ms!", time.toFixed(3), delay);
+
+        console.log("I took %s ms! Expected to take %s ms!", time.toFixed(2), delay);
     }, delay);
 }
 
-checkBlocked();
 
+checkIsBlocked();
 run();

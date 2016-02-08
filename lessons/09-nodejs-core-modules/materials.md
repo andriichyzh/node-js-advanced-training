@@ -7,11 +7,11 @@ The `console` module provides a simple debugging console
 **Exports two specific components:**
 
  - A `Console` class with methods:
-    - console.log()
-    - console.error()
-    - console.warn()
- - A global `console` instance write to `stdout` and `stderr`. 
- - Can be used without calling `require('console')`.
+    - `console.log()`
+    - `console.info()`
+    - `console.error()`
+    - `console.warn()`
+ - A global `console` instance write to `stdout` and `stderr`. Can be used without calling `require('console')`.
 
 ### Global `console`:
 
@@ -40,10 +40,7 @@ const Console = console.Console;
 ```
 
 ```js
-const out = getOutStream(); // writable out
-const err = getErrStream(); // writable err
-
-const customConsole = new console.Console(out, err);
+const customConsole = new console.Console(process.stdout, process.stderr);
 
 customConsole.log('Hello, User A!');
 // 'Hello, User A!' (to out)
@@ -58,7 +55,7 @@ customConsole.warn('Validation failed!');
 // 'Validation failed!' (to err)
 ```
 
-### Function `console.error()`
+### `console.error()`
 
 Prints to `stderr` with newline. `Multiple arguments` can be passed, with the first used as the primary message.
 
@@ -69,7 +66,7 @@ console.error([data][, ...])
 ```
 
 
-### Function `console.log()`
+### `console.log()`
 
 Prints to `stdout` with newline. `Multiple arguments` can be passed, with the first used as the primary message.
 
@@ -80,7 +77,7 @@ console.log([data][, ...])
 ```
 
 
-### Function `console.assert()`
+### `console.assert()`
 
 A simple assertion test that verifies whether value is `truthy`.
 
@@ -98,7 +95,7 @@ console.assert(false, 'Parameter `port` is required!');
 ```
 
 
-### Function `console.dir()`
+### `console.dir()`
 
 ```js
 console.dir(obj[, options])
@@ -125,7 +122,7 @@ console.dir(/node/, { showHidden: true });
   [lastIndex]: 0 }
 ```
 
-### Functions `console.time()` and `console.timeEnd()`
+### `console.time()` and `console.timeEnd()`
 
 Used to calculate the duration of a specific operation. 
 
@@ -141,9 +138,9 @@ console.timeEnd('fib');
 // fib: 18ms
 ```
 
-### Function `console.trace()`
+### `console.trace()`
 
-Prints to stderr the formatted message and stack trace to the current position in the code. 
+Prints to `stderr` the formatted message and stack trace to the current position in the code. 
 
 ```js
 console.trace('Control point');
@@ -187,20 +184,22 @@ New request { params: { id: '12345' } }
 ```js
 const Console = require('console').Console;
 
-const transformer = loggerFormatter(process.stdout, process.stderr);
+const transformer = loggerFormatter(process.stdout);
 
 const logger = new Console(transformer);
 
 logger.info('New request', { params: { id: '12345' } });
 
 // 'New request { params: { id: '12345' } }' (original)
-// '2016-02-03T23:27:26.719Z [INFO] New request { params: { id: '12345' } }' (formatted)
+// '2016-02-03T23:27:26.719Z [INFO] New request { "params": { "id": "12345" } }' (formatted)
 ```
+
+***
 
 
 ## [Process](https://nodejs.org/dist/latest-v4.x/docs/api/process.html)
 
-### process.cwd()
+### `process.cwd()`
    
 Returns the current working directory of the process.
 
@@ -208,7 +207,7 @@ Returns the current working directory of the process.
 console.log('Current directory:', process.cwd()); // Current directory: /home/achyzh/Projects/node-js-advanced-training
 ```
 
-### process.chdir(directory)
+### `process.chdir(directory)`
 
 ```js
 console.log('Current directory:', process.cwd()); // Current directory: /home/achyzh/Projects/node-js-advanced-training
@@ -218,7 +217,7 @@ process.chdir('/tmp');
 console.log('Current directory:', process.cwd()); // Current directory: /tmp
 ```
 
-### process.env
+### `process.env`
 
 An object containing the user environment
 
@@ -250,7 +249,15 @@ process.env.NODE_ENV = 'test';
 console.log(process.env.NODE_ENV); // 'test'
 ```
 
-### process.argv
+### process.pid
+
+The `PID` of the process.
+
+```js
+console.log(process.pid); // 2891
+```
+
+### `process.argv`
 
 An array containing the command line arguments. 
 The first element will be 'node', the second element will be the name of the JavaScript file. 
@@ -260,7 +267,6 @@ Create file `test.js`:
 
 ```js
 console.log(process.argv);
-// [ '/home/achyzh/.nvm/versions/node/v4.2.6/bin/node', '/home/achyzh/Projects/node-js-advanced-training/examples/test.js', '--test' ]
 ```
 
 Run:
@@ -277,6 +283,437 @@ Output:
   '--test' ]
 ```
 
-## Stream
+### `process.execArgv`
+
+This is the set of Node.js-specific command line options from the executable that started the process. These options are useful in order to spawn child processes with the same execution environment as the parent.
+
+```bash
+$ node --expose-gc script.js --version
+```
+
+```js
+console.log(process.execArgv); // ['--expose-gc']
+console.log(process.argv); // ['/usr/local/bin/node', 'script.js', '--version']
+```
+
+### `process.exit([code])`
+
+Ends the process with the specified code. If omitted, exit uses the 'success' code 0.
+
+```js
+process.exit(); // success
+
+process.exit(1); // failure
+```
+
+### `process.hrtime()`
+
+Returns the current high-resolution real time in a [seconds, nanoseconds] tuple Array. The primary use is for measuring performance between intervals.
+
+You may pass in the result of a previous call to `process.hrtime()` to get a diff reading, useful for benchmarks and measuring intervals:
+
+```js
+var time = process.hrtime();
+// [ 1800216, 25 ]
+
+setTimeout(() => {
+  var diff = process.hrtime(time);
+  // [ 1, 552 ]
+
+  console.log('benchmark took %d nanoseconds', diff[0] * 1e9 + diff[1]);
+  // benchmark took 1000000527 nanoseconds
+}, 1000);
+```
+
+### `process.memoryUsage()`
+
+Returns an object describing the `memory usage` of the Node.js process measured in bytes.
+
+```js
+console.log(process.memoryUsage());
+```
+
+Output:
+
+```js
+{ rss: 4935680,
+  heapTotal: 1826816,
+  heapUsed: 650472 }
+```
+
+Note: `heapTotal` and `heapUsed` refer to `V8`'s memory usage. 
+
+
+### `process.nextTick(callback[, arg][, ...])`
+    
+Once the current event loop turn runs to completion, call the callback function.
+    
+This is not a simple alias to `setTimeout(fn, 0)`, it's much more efficient. 
+**It runs `before any additional I/O events` (including timers) fire in subsequent ticks of the event loop.**
+    
+```js
+console.log('start');
+process.nextTick(() => {
+  console.log('nextTick callback');
+});
+console.log('scheduled');
+```
+
+Output:
+
+```
+// start
+// scheduled
+// nextTick callback
+```
+      
+This is important in developing APIs where you want to give the user the chance to assign event handlers after an object has been constructed, but before any I/O has occurred.
+   
+```js
+function MyThing(options) {
+  this.setupOptions(options);
+
+  process.nextTick(() => {
+    this.startDoingStuff();
+  }.bind(this));
+}
+
+var thing = new MyThing();
+thing.getReadyForStuff();
+
+// thing.startDoingStuff() gets called now, not before.
+```
+
+It is very important for APIs to be either `100% synchronous` or `100% asynchronous`. 
+
+Consider this example:
+
+```js
+// WARNING! DO NOT USE! BAD UNSAFE HAZARD!
+function maybeSync(arg, cb) {
+    if (arg) {
+        return cb();
+    }
+
+    fs.stat('file', cb);
+}
+```    
+
+This API is hazardous. If you do this:
+
+```js
+maybeSync(true, function() {
+    foo();
+});
+
+bar();
+```
+
+then it's not clear whether `foo()` or `bar()` will be called first.
+    
+This approach is much better:
+   
+```js
+function definitelyAsync(arg, cb) {
+    if (arg) {
+        return process.nextTick(cb);
+    }
+
+    fs.stat('file', cb);
+}
+```
+ 
+Note: The `nextTick` queue is completely drained on each pass of the event loop `before additional I/O is processed`. 
+**As a result, `recursively setting nextTick callbacks will block any I/O from happening`, just like a while(true); loop.**
+
+
+## [Timers](https://nodejs.org/dist/latest-v4.x/docs/api/timers.html)
+
+All of the timer functions are `globals`. You do not need to `require()` this module in order to use them. 
+
+### `setTimeout(callback, delay[, arg][, ...])`
+
+To schedule execution of a `one-time callback after delay milliseconds`. 
+
+Returns a `timeoutObject` for possible use with `clearTimeout()`. Optionally you can also pass arguments to the callback.
+
+It is important to `note that your callback will probably not be called in exactly delay milliseconds`.
+`Node.js makes no guarantees about the exact timing of when the callback will fire`, nor of the ordering things will fire in. 
+`The callback will be called as close as possible to the time specified.`
+
+To follow browser behavior, when using delays larger than `2147483647` milliseconds (approximately 25 days) or less than `1`, the timeout is executed immediately, as if the delay was set to `1`.
+
+
+### `setInterval(callback, delay[, arg][, ...])`
+
+To schedule the `repeated execution of callback every delay milliseconds`. 
+
+Returns a `intervalObject` for possible use with `clearInterval()`. Optionally you can also pass arguments to the callback.
+
+To follow browser behavior, when using delays larger than `2147483647` milliseconds (approximately 25 days) or less than `1`, Node.js will use `1` as the delay.
+
+
+### `setImmediate(callback[, arg][, ...])`
+
+To schedule the `"immediate" execution of callback after I/O events callbacks` and `before setTimeout() and setInterval()`. 
+
+Returns an `immediateObject` for possible use with `clearImmediate()`. Optionally you can also pass arguments to the callback.
+
+`Callbacks for immediates are queued in the order in which they were created.` 
+
+The entire callback queue is processed every event loop iteration. 
+If you queue an immediate from inside an executing callback, that immediate won't fire until the next event loop iteration.
+
+
+### `unref()`
+
+The opaque value returned by `setTimeout` and `setInterval` also has the method `timer.unref()` which will allow you to create a timer that is active but if it is the only item left in the event loop, it won't keep the program running. 
+If the timer is already `unrefd` calling `unref` again will have no effect.
+
+In the case of `setTimeout` when you `unref` you create a separate timer that will `wakeup the event loop`, creating too many of these may adversely effect event loop performance -- use wisely.
+
+Returns the `timer`. 
+
+
+### `ref()`
+
+If you had previously `unref()` a timer you can call `ref()` to explicitly request the timer hold the program open. 
+If the timer is already `refd` calling `ref` again will have no effect.
+
+Returns the `timer`. 
+
+
+### `clearImmediate(immediateObject)`
+
+Stops an immediate from triggering.
+
+
+### `clearInterval(intervalObject)`
+
+Stops an interval from triggering.
+
+
+### `clearTimeout(timeoutObject)`
+
+Prevents a timeout from triggering.
+
+
+
+## `Important!` Difference `setImmediate()` vs `process.nextTick()`
+
+![setImmediate() vs process.nextTick()](../../static/images/event-loop.jpg)
+
+
+**References:**
+
+ - [Tracking Down Performance Bottlenecks in Node.js with Meteor & StrongLoop](https://strongloop.com/strongblog/node-js-performance-meteor/)
+
+### Execution order
+
+```js
+const fs = require('fs');
+
+// I/O operation
+fs.stat(__filename, function() {
+    console.log('[1] I/O operation');
+});
+
+// setTimeout 0
+setTimeout(function() {
+    console.log('[2] setTimeout 0');
+}, 0);
+
+// setTimeout 25
+setTimeout(function() {
+    console.log('[3] setTimeout 25');
+}, 25);
+
+// setImmediate
+setImmediate(function() {
+    console.log('[4] setImmediate');
+});
+
+// process.nextTick
+process.nextTick(function() {
+    console.log('[5] process.nextTick');
+});
+
+console.log('[6] sync operation');
+```
+
+Output:
+
+```bash
+[6] sync operation
+[5] process.nextTick
+[2] setTimeout 0
+[1] I/O operation
+[4] setImmediate
+[3] setTimeout 25
+```
+
+### Blocking of event loop
+
+```js
+var mode = process.argv[2];
+
+var steps = 0;
+
+console.time('Total time');
+
+function run() {
+    steps++;
+
+    for (var i = 0, max = 1e7; i < max; i++) {
+        Math.pow(Math.random(), Math.random());
+    }
+
+    if (steps === 10) {
+        console.timeEnd('Total time');
+        return;
+    }
+
+    switch(mode) {
+        case 'blocked':
+            run();
+            break;
+
+        case 'nexttick':
+            process.nextTick(run);
+            break;
+
+        case 'setimmediate':
+            setImmediate(run);
+            break;
+
+        case 'settimeout':
+            setTimeout(run, 10);
+            break;
+    }
+}
+
+function checkIsBlocked() {
+    var delay = 10;
+    var start = process.hrtime();
+
+    setTimeout(function() {
+        var elapsed = process.hrtime(start);
+        var time = (elapsed[0] * 1000) + (elapsed[1] / 1e6);
+
+        console.log("I took %s ms! Expected to take %s ms!", time.toFixed(2), delay);
+    }, delay);
+}
+
+
+checkIsBlocked();
+run();
+```
+
+Run:
+
+```bash
+node lessons/09-nodejs-core-modules/examples/event-loop/blocks.js
+
+// I took 132.87 ms! Expected to take 10 ms!
+```
+
+```bash
+node lessons/09-nodejs-core-modules/examples/event-loop/blocks.js nexttick
+
+// Total time: 1263ms
+// I took 1263.86 ms! Expected to take 10 ms!
+```
+
+```bash
+node lessons/09-nodejs-core-modules/examples/event-loop/blocks.js setimmediate                                               
+
+// I took 153.51 ms! Expected to take 10 ms!
+// Total time: 1266ms
+```
+
+```bash
+node lessons/09-nodejs-core-modules/examples/event-loop/blocks.js settimeout  
+
+// I took 132.59 ms! Expected to take 10 ms!
+// Total time: 2855ms                                   
+```
+
+
+## [Utils](https://nodejs.org/dist/latest-v4.x/docs/api/util.html)
+
+These functions are in the module 'util'. Use `require('util')` to access them. 
+
+### util.inherits(constructor, superConstructor)
+
+`Inherit the prototype methods from one constructor into another.` The prototype of constructor will be set to a new object created from superConstructor.
+
+Example:
+
+```js
+const util = require('util');
+const EventEmitter = require('events');
+
+function MyStream() {
+    EventEmitter.call(this);
+}
+
+util.inherits(MyStream, EventEmitter);
+
+MyStream.prototype.write = function(data) {
+    this.emit('data', data);
+}
+
+
+var stream = new MyStream();
+
+console.log(stream instanceof EventEmitter); // true
+
+stream.on('data', (data) => {
+    console.log(`Received data: "${data}"`);
+});
+
+stream.write('It works!'); // Received data: "It works!"
+```
+
+### util.format(format[, ...])
+   
+Returns a formatted string using the first argument as a printf-like format.
+    
+The first argument is a string that contains zero or more placeholders. Each placeholder is replaced with the converted value from its corresponding argument. Supported placeholders are:
+
+ -  `%s` - String.
+ -  `%d` - Number (both integer and float).
+ -  `%j` - JSON. Replaced with the string '[Circular]' if the argument contains circular references.
+ -  `%%` - single percent sign ('%'). This does not consume an argument.
+
+If the placeholder `does not have a corresponding argument`, `the placeholder is not replaced`.
+
+```js
+util.format('%s:%s', 'foo'); // 'foo:%s'
+```
+    
+If there are more arguments than placeholders, the extra arguments are coerced to strings (for objects and symbols, util.inspect() is used) and then concatenated, delimited by a space.
+
+```js    
+util.format('%s:%s', 'foo', 'bar', 'baz'); // 'foo:bar baz'
+```
+   
+If the first argument is not a format string then util.format() returns a string that is the `concatenation of all its arguments separated by spaces`. Each argument is converted to a string with util.inspect().
+
+```js   
+util.format(1, 2, 3); // '1 2 3'
+```
+
+
+## [Errors](https://nodejs.org/dist/latest-v4.x/docs/api/errors.html)
+
+
+
+
+
+
+
+
+## [Stream]()
 
 Link: https://itarchitectblog.wordpress.com/2014/11/18/node-js-streams/

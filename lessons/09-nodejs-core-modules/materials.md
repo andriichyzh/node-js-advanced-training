@@ -1,5 +1,79 @@
 # Core Modules
 
+## [Globals](https://nodejs.org/dist/latest-v4.x/docs/api/globals.html)
+
+### `Class: Buffer`
+
+Used to handle binary data.
+
+### `__dirname`
+
+The name of the directory that the currently executing script resides in. 
+
+### `__filename`
+
+The filename of the code being executed. This is the resolved absolute path of this code file. 
+
+### `console`
+
+Used to print to `stdout` and `stderr`.
+
+### `exports`
+
+A reference to the module.exports that is shorter to type. 
+
+### `global`
+
+The global namespace object.
+
+### `module`
+
+A reference to the current module. In particular module.exports is used for defining what a module exports and makes available through require(). 
+
+### `process`
+
+The process object.
+
+### `require()`
+
+To require modules.
+
+### `setInterval(cb, ms)`
+
+Run callback cb repeatedly every ms milliseconds. 
+Note that the actual interval may vary, depending on external factors like OS timer granularity and system load. 
+It's never less than ms but it may be longer. 
+
+### `setTimeout(cb, ms)`
+
+Run callback cb after at least ms milliseconds. 
+The actual delay depends on external factors like OS timer granularity and system load. 
+
+### `clearInterval(t)`
+### `clearTimeout(t)`
+
+
+## [Assertion Testing](https://nodejs.org/dist/latest-v4.x/docs/api/assert.html)
+
+The `assert` module provides a simple set of assertion tests that can be used to test invariants. 
+The module is intended for internal use by Node.js, but can be used in application code via `require('assert')`. 
+However, `assert is not a testing framework`, and is `not intended to be used as a general purpose assertion library`. 
+
+## `assert(value[, message]), assert.ok(value[, message])`
+## `assert.deepEqual(actual, expected[, message])`
+## `assert.deepStrictEqual(actual, expected[, message])`
+## `assert.doesNotThrow(block[, error][, message])`
+## `assert.equal(actual, expected[, message])`
+## `assert.fail(actual, expected, message, operator)`
+## `assert.ifError(value)`
+## `assert.notDeepEqual(actual, expected[, message])`
+## `assert.notDeepStrictEqual(actual, expected[, message])`
+## `assert.notEqual(actual, expected[, message])`
+## `assert.notStrictEqual(actual, expected[, message])`
+## `assert.strictEqual(actual, expected[, message])`
+## `assert.throws(block[, error][, message])`
+
+
 ## [Console](https://nodejs.org/dist/latest-v4.x/docs/api/console.html)
 
 The `console` module provides a simple debugging console 
@@ -427,6 +501,70 @@ Note: The `nextTick` queue is completely drained on each pass of the event loop 
 **As a result, `recursively setting nextTick callbacks will block any I/O from happening`, just like a while(true); loop.**
 
 
+### `process.stdin`
+
+A `Readable Stream` for `stdin` (on fd 0).
+
+### `process.stdout`
+
+A `Writable Stream` to `stdout` (on fd 1). 
+
+### `process.stderr`
+
+A `Writable Stream` to `stderr` (on fd 2).
+
+Notes: `process.stderr` and `process.stdout` are unlike other streams in Node.js in that they `cannot be closed` (end() will throw).
+They `never emit the finish event` and that writes `can block when output is redirected to a file` (although disks are fast and operating systems normally employ write-back caching so it should be a very rare occurrence indeed.)
+
+
+### `Event: 'uncaughtException'`
+
+Emitted when an exception bubbles all the way back to the event loop. 
+If a listener is added for this exception, the default action (which is to print a stack trace and exit) will not occur. 
+
+```js
+process.on('uncaughtException', (err) => {
+  console.log(`Caught exception: ${err}`);
+});
+
+setTimeout(() => {
+  console.log('This will still run.');
+}, 500);
+
+// Intentionally cause an exception, but don't catch it.
+nonexistentFunc();
+console.log('This will not run.');
+```
+
+```bash
+// Caught exception: ReferenceError: nonexistentFunc is not defined
+// This will still run.
+```
+
+Note that `uncaughtException` is a very crude mechanism for exception handling. 
+
+`uncaughtException` should be used to perform synchronous cleanup before shutting down the process. 
+It is not safe to resume normal operation after 'uncaughtException'. 
+If you do use it, restart your application after every unhandled exception! 
+
+#### Exit Codes
+
+Node.js will normally exit with a 0 status code when no more async operations are pending. The following status codes are used in other cases:
+
+ - `1 Uncaught Fatal Exception` - There was an uncaught exception, and it was not handled by a domain or an 'uncaughtException' event handler.
+ - `2` - Unused (reserved by Bash for builtin misuse)
+ - `3 Internal JavaScript Parse Error` - The JavaScript source code internal in Node.js's bootstrapping process caused a parse error. This is extremely rare, and generally can only happen during development of Node.js itself.
+ - `4 Internal JavaScript Evaluation Failure` - The JavaScript source code internal in Node.js's bootstrapping process failed to return a function value when evaluated. This is extremely rare, and generally can only happen during development of Node.js itself.
+ - `5 Fatal Error` - There was a fatal unrecoverable error in V8. Typically a message will be printed to stderr with the prefix FATAL ERROR.
+ - `6 Non-function Internal Exception Handler` - There was an uncaught exception, but the internal fatal exception handler function was somehow set to a non-function, and could not be called.
+ - `7 Internal Exception Handler Run-Time Failure` - There was an uncaught exception, and the internal fatal exception handler function itself threw an error while attempting to handle it. This can happen, for example, if a process.on('uncaughtException') or domain.on('error') handler throws an error.
+ - `8` - Unused. In previous versions of Node.js, exit code 8 sometimes indicated an uncaught exception.
+ - `9 - Invalid Argument` - Either an unknown option was specified, or an option requiring a value was provided without a value.
+ - `10 Internal JavaScript Run-Time Failure` - The JavaScript source code internal in Node.js's bootstrapping process threw an error when the bootstrapping function was called. This is extremely rare, and generally can only happen during development of Node.js itself.
+ - `12 Invalid Debug Argument` - The --debug and/or --debug-brk options were set, but an invalid port number was chosen.
+ - `>128 Signal Exits` - If Node.js receives a fatal signal such as SIGKILL or SIGHUP, then its exit code will be 128 plus the value of the signal code. This is a standard Unix practice, since exit codes are defined to be 7-bit integers, and signal exits set the high-order bit, and then contain the value of the signal code.
+    
+
 ## [Timers](https://nodejs.org/dist/latest-v4.x/docs/api/timers.html)
 
 All of the timer functions are `globals`. You do not need to `require()` this module in order to use them. 
@@ -707,12 +845,192 @@ util.format(1, 2, 3); // '1 2 3'
 
 ## [Errors](https://nodejs.org/dist/latest-v4.x/docs/api/errors.html)
 
+### Error Propagation and Interception
+
+#### `Synchronous`
+
+```js
+// Throws with a ReferenceError because z is undefined
+try {
+  const m = 1;
+  const n = m + z;
+} catch (err) {
+  // Handle the error here.
+}
+```
+
+#### `Asynchronous`
+
+ - Most asynchronous methods that accept a `callback function will accept an Error object passed as the first argument to that function`. 
+ If that first argument is `not null` and is `an instance of Error`, then an error occurred that should be handled.
+
+```js
+const fs = require('fs');
+
+fs.readFile('a file that does not exist', (err, data) => {
+    if (err) {
+        console.error('There was an error reading the file!', err);
+        return;
+    }
+    // Otherwise handle the data
+});
+```
+
+Most asynchronous methods exposed by the Node.js core API follow an idiomatic pattern referred to as a "Node.js style callback". 
+With this pattern, a callback function is passed to the method as an argument. 
+When the operation either completes or an error is raised, the callback function is called with the Error object (if any) passed as the first argument. 
+If no error was raised, the first argument will be passed as null.
+
+```js
+const fs = require('fs');
+
+function nodeStyleCallback(err, data) {
+    if (err) {
+        console.error('There was an error', err);
+        return;
+    }
+    console.log(data);
+}
+
+fs.readFile('/some/file/that/does-not-exist', nodeStyleCallback);
+fs.readFile('/some/file/that/does-exist', nodeStyleCallback)
+```
+
+The JavaScript `try / catch` mechanism `cannot be used to intercept errors generated by asynchronous APIs`. 
+A common mistake for beginners is to try to use throw inside a Node.js style callback: 
+
+```js
+// THIS WILL NOT WORK:
+const fs = require('fs');
+
+try {
+    fs.readFile('/some/file/that/does-not-exist', (err, data) => {
+        // mistaken assumption: throwing here...
+        if (err) {
+            throw err;
+        }
+    });
+} catch(err) {
+    // This will not catch the throw!
+    console.log(err);
+}
+```
+
+ - When an asynchronous method is called on an object that is an `EventEmitter`, errors can be routed to that object's 'error' event.
+ 
+```js
+const net = require('net');
+const connection = net.connect('localhost');
+
+// Adding an 'error' event handler to a stream:
+connection.on('error', (err) => {
+    // If the connection is reset by the server, or if it can't
+    // connect at all, or on any sort of error encountered by
+    // the connection, the error will be sent here.
+    console.error(err);
+});
+
+connection.pipe(process.stdout);
+```
+
+For all `EventEmitter` objects, if an 'error' event handler is not provided, the error will be thrown, causing the Node.js process to report an unhandled exception and crash unless either: The domain module is used appropriately or a handler has been registered for the process.on('uncaughtException') event.
+
+```js
+const EventEmitter = require('events');
+const ee = new EventEmitter();
+
+setImmediate(() => {
+    // This will crash the process because no 'error' event
+    // handler has been added.
+    ee.emit('error', new Error('This will crash'));
+});
+```
+
+**Errors generated in this way cannot be intercepted using try / catch as they are thrown after the calling code has already exited.**
+
+### `Class: Error`
+
+A generic JavaScript Error object that does not denote any specific circumstance of why the error occurred. 
+Error objects capture a "stack trace" detailing the point in the code at which the Error was instantiated, and may provide a text description of the error.
+
+All errors generated by Node.js, including all System and JavaScript errors, will either be instances of, or inherit from, the Error class. 
+
+### `new Error(message)`
+
+Creates a `new Error` object and sets the `error.message` property to the provided text message. 
+If an object is passed as message, the text message is generated by calling `message.toString()`. 
+The `error.stack` property will represent the point in the code at which `new Error()` was called. 
+
+### `Error.captureStackTrace(targetObject[, constructorOpt])`
+
+Creates a `.stack` property on `targetObject`, which when accessed returns a string representing the location in the code at which `Error.captureStackTrace()` was called. 
+
+The optional `constructorOpt` argument accepts a function. 
+If given, all frames above `constructorOpt`, including `constructorOpt`, will be `omitted from the generated stack trace`. 
+
+The `constructorOpt` argument is useful for `hiding implementation details of error generation from an end user`.
+
+```js
+function MyError() {
+    Error.captureStackTrace(this, MyError);
+}
+```
+
+### `Error.stackTraceLimit`
+
+The `Error.stackTraceLimit` property specifies the `number of stack frames collected by a stack trace`.
+
+The default value is `10` but may be set to any valid JavaScript number. 
+Changes will affect any stack trace captured after the value has been changed. 
+
+### `error.message`
+
+Returns the `string description of error` as set by calling `new Error(message)`.
+The `message` passed to the constructor will also appear `in the first line of the stack trace of the Error`.
+
+```js
+const err = new Error('The error');
+
+console.log(err.message); // 'The error'
+```
+
+### `error.stack`
+
+Returns a `string describing the point in the code` at which the `Error` was instantiated.
+
+```bash
+Error: Things keep happening!
+   at /home/gbusey/file.js:525:2
+   at Frobnicator.refrobulate (/home/gbusey/business-logic.js:424:21)
+   at Actor.<anonymous> (/home/gbusey/actors.js:400:8)
+   at increaseSynergy (/home/gbusey/actors.js:701:6)
+```
+
+### `Exceptions vs. Errors`
+    
+A JavaScript exception is a value that is thrown as a `result of an invalid operation or as the target of a throw statement`. 
+While it is not required that these values are instances of Error or classes which inherit from Error, all exceptions thrown by Node.js or the JavaScript runtime will be instances of Error. 
 
 
+## [V8](https://nodejs.org/dist/latest-v4.x/docs/api/v8.html)
 
+This module exposes events and interfaces specific to the version of V8 built with Node.js. 
+These interfaces are subject to change by upstream and are therefore not covered under the stability index. 
 
+### `getHeapStatistics()`
 
-
+Returns an object with the following properties
+ 
+```js
+{
+  total_heap_size: 7326976,
+  total_heap_size_executable: 4194304,
+  total_physical_size: 7326976,
+  total_available_size: 1152656,
+  used_heap_size: 3476208,
+  heap_size_limit: 1535115264
+}
+```
 
 ## [Stream]()
 

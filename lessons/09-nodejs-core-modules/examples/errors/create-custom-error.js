@@ -13,6 +13,8 @@ function CustomError(message, status) {
     this.status = status;
     this.level = 'info';
 
+    //Error.stackTraceLimit = 1;
+    //Error.captureStackTrace(this);
     //Error.captureStackTrace(this, CustomError);
 }
 
@@ -35,5 +37,5 @@ function getPath(callback) {
 
 getPath(function(err) {
     console.log(err);
-    //console.log(err.stack);
+    console.log(err.stack);
 });

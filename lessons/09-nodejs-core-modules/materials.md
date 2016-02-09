@@ -19,11 +19,8 @@ The `console` module provides a simple debugging console
 console.log('Hello, User A!');
 // 'Hello, User A!' (to stdout)
 
-console.log('Connected!', 'I am Robot!');
+console.info('Connected!', 'I am Robot!');
 // 'Connected! I am Robot!' (to stdout)
-
-customConsole.info('Hello, User B!');
-// 'Hello, User B!' (to stdout)
 
 console.error(new Error('Critical error!'));
 // [Error: Critical error!] (to stderr)
@@ -710,7 +707,7 @@ util.format(1, 2, 3); // '1 2 3'
 
 
 
-
+## Events
 
 
 

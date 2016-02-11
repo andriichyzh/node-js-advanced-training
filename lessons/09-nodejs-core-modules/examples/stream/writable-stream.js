@@ -17,9 +17,10 @@ writable.on('finish', function() {
     console.error('All writes are now complete');
 });
 
-for (var i = 0; i < 10; i++) {
+for (var i = 0; i < 500; i++) {
     var data = JSON.stringify(process.memoryUsage()) + os.EOL;
-    writable.write(data);
+    var res = writable.write(data);
+    console.log(' - write', i, res);
 }
 
 writable.end();

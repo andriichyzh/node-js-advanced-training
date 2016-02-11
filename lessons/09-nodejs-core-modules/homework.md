@@ -122,4 +122,4 @@ for (i = arr.length; i > 0; i--) {
 
 4. Create `Writable` stream which save to file only 10 bytes from each chunk.
 
-5. Create `Transform` stream which counts current bandwidth (kbps) between generator of Binary data and writer to file (for connect try use `pipe`)
+5. Create `Transform` stream which counts current average bandwidth (kbps) between generator of Binary data and writer to file (for connect try use `pipe`)

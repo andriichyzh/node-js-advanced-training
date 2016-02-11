@@ -118,7 +118,7 @@ for (i = arr.length; i > 0; i--) {
  - Log level (eg `info`, `warn`)
 
 
-3. Create `Readable` stream which generate Binary data with random size.
+3. Create `Readable` stream which generate Binary data with random size (5-1000 bytes).
 
 4. Create `Writable` stream which save to file only 10 bytes from each chunk.
 

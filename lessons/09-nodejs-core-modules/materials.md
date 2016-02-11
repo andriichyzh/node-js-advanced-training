@@ -1560,6 +1560,8 @@ All streams are `EventEmitters`, but they also have other custom methods and pro
 If a stream is both `Readable` and `Writable`, then it implements all of the methods and events below. 
 So, a `Duplex` or `Transform` stream is fully described by this API, though their implementation may be somewhat different. 
 
+![](../../static/images/conveyor-belt.png)
+
 #### `Class: stream.Readable`
 
 The Readable stream interface is the abstraction for a source of data that you are reading from. 
@@ -1571,6 +1573,8 @@ Readable streams have two "modes": a `flowing mode` and a `paused` mode.
 When in `flowing mode`, data is read from the underlying system and provided to your program as fast as possible. 
 In `paused mode`, you must explicitly call stream.read() to get chunks of data out. 
 Streams start out in `paused mode`. 
+
+![](../../static/images/varying-flow-pull-and-push.png)
 
 
 #### `Class: stream.Writable`

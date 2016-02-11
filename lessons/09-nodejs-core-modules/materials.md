@@ -774,6 +774,162 @@ node lessons/09-nodejs-core-modules/examples/event-loop/blocks.js settimeout
 ```
 
 
+
+## [V8](https://nodejs.org/dist/latest-v4.x/docs/api/v8.html)
+
+This module exposes events and interfaces specific to the version of V8 built with Node.js. 
+These interfaces are subject to change by upstream and are therefore not covered under the stability index. 
+
+### `getHeapStatistics()`
+
+Returns an object with the following properties
+ 
+```js
+{
+  total_heap_size: 7326976,
+  total_heap_size_executable: 4194304,
+  total_physical_size: 7326976,
+  total_available_size: 1152656,
+  used_heap_size: 3476208,
+  heap_size_limit: 1535115264
+}
+```
+
+
+
+## [OS](https://nodejs.org/dist/latest-v4.x/docs/api/os.html)
+
+### `EOL`
+
+A constant defining the appropriate `End-of-line` marker for the operating system. 
+
+```bash
+'\n'
+```  
+
+### `arch()`
+
+Returns the operating system CPU architecture. 
+Possible values are 'x64', 'arm' and 'ia32'. 
+Returns the value of process.arch.
+
+### `platform()`
+
+Returns the operating system platform. 
+Possible values are 'darwin', 'freebsd', 'linux', 'sunos' or 'win32'. 
+Returns the value of process.platform. 
+        
+### `cpus()`
+
+Returns an array of objects containing information about each CPU/core installed: model, speed (in MHz), and times (an object containing the number of milliseconds the CPU/core spent in: user, nice, sys, idle, and irq). 
+
+```js
+[ { model: 'Intel(R) Core(TM)2 Duo CPU  P8800  @ 2.66GHz',
+    speed: 2660,
+    times: { user: 2678470, nice: 0, sys: 1034200, idle: 6800870, irq: 0 } },
+  { model: 'Intel(R) Core(TM)2 Duo CPU  P8800  @ 2.66GHz',
+    speed: 2660,
+    times: { user: 2851230, nice: 0, sys: 839510, idle: 6821950, irq: 0 } } ]
+```
+
+### `loadavg()`
+
+Returns an array containing the 1, 5, and 15 minute load averages.
+
+The load average is a measure of system activity, calculated by the operating system and expressed as a fractional number. 
+As a rule of thumb, the load average should ideally be less than the number of logical CPUs in the system. 
+
+```js
+[ 3.68115234375, 4.0693359375, 4.09619140625 ]
+```
+
+### `freemem()`
+
+Returns the amount of free system memory in bytes. 
+
+```js
+2026799104
+```
+
+### `totalmem()`
+        
+Returns the total amount of system memory in bytes. 
+
+```js
+8589934592
+```
+
+### `hostname()`
+
+Returns the hostname of the operating system. 
+
+```js
+'andriis-mbp.sync.com'
+```   
+
+### `networkInterfaces()`
+
+Get a list of network interfaces: 
+
+```js
+{ lo0: 
+   [ { address: '::1',
+       netmask: 'ffff:ffff:ffff:ffff:ffff:ffff:ffff:ffff',
+       family: 'IPv6',
+       mac: '00:00:00:00:00:00',
+       scopeid: 0,
+       internal: true },
+     { address: '127.0.0.1',
+       netmask: '255.0.0.0',
+       family: 'IPv4',
+       mac: '00:00:00:00:00:00',
+       internal: true },
+     { address: 'fe80::1',
+       netmask: 'ffff:ffff:ffff:ffff::',
+       family: 'IPv6',
+       mac: '00:00:00:00:00:00',
+       scopeid: 1,
+       internal: true } ],
+  en1: 
+   [ { address: 'fe80::fa1e:dfff:fedb:6531',
+       netmask: 'ffff:ffff:ffff:ffff::',
+       family: 'IPv6',
+       mac: 'f8:1e:df:db:65:31',
+       scopeid: 5,
+       internal: false },
+     { address: '172.22.199.109',
+       netmask: '255.255.255.0',
+       family: 'IPv4',
+       mac: 'f8:1e:df:db:65:31',
+       internal: false } ] }
+```
+
+### `uptime()`  
+      
+Returns the system uptime in seconds. 
+        
+```js        
+11789        
+```
+        
+### `homedir()`
+
+Returns the home directory of the current user. 
+
+```js
+'/Users/achyzh'
+```
+
+### `tmpdir()`
+
+Returns the operating system's default directory for temporary files. 
+
+```js
+'/var/folders/lp/ggx7v95530l3bzr9zbmbtlgm0000gn/T'
+```
+
+
+
 ## [Utils](https://nodejs.org/dist/latest-v4.x/docs/api/util.html)
 
 These functions are in the module 'util'. Use `require('util')` to access them. 
@@ -816,10 +972,10 @@ Returns a formatted string using the first argument as a printf-like format.
     
 The first argument is a string that contains zero or more placeholders. Each placeholder is replaced with the converted value from its corresponding argument. Supported placeholders are:
 
- -  `%s` - String.
- -  `%d` - Number (both integer and float).
- -  `%j` - JSON. Replaced with the string '[Circular]' if the argument contains circular references.
- -  `%%` - single percent sign ('%'). This does not consume an argument.
+ - `%s` - String.
+ - `%d` - Number (both integer and float).
+ - `%j` - JSON. Replaced with the string '[Circular]' if the argument contains circular references.
+ - `%%` - single percent sign ('%'). This does not consume an argument.
 
 If the placeholder `does not have a corresponding argument`, `the placeholder is not replaced`.
 
@@ -978,7 +1134,7 @@ function MyError() {
 The `Error.stackTraceLimit` property specifies the `number of stack frames collected by a stack trace`.
 
 The default value is `10` but may be set to any valid JavaScript number. 
-Changes will affect any stack trace captured after the value has been changed. 
+Changes will affect any stack trace captured `after` the value has been changed. 
 
 ### `error.message`
 
@@ -1009,25 +1165,7 @@ A JavaScript exception is a value that is thrown as a `result of an invalid oper
 While it is not required that these values are instances of Error or classes which inherit from Error, all exceptions thrown by Node.js or the JavaScript runtime will be instances of Error. 
 
 
-## [V8](https://nodejs.org/dist/latest-v4.x/docs/api/v8.html)
 
-This module exposes events and interfaces specific to the version of V8 built with Node.js. 
-These interfaces are subject to change by upstream and are therefore not covered under the stability index. 
-
-### `getHeapStatistics()`
-
-Returns an object with the following properties
- 
-```js
-{
-  total_heap_size: 7326976,
-  total_heap_size_executable: 4194304,
-  total_physical_size: 7326976,
-  total_available_size: 1152656,
-  used_heap_size: 3476208,
-  heap_size_limit: 1535115264
-}
-```
 
 ## [Stream]()
 

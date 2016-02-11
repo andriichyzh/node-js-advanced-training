@@ -117,3 +117,9 @@ for (i = arr.length; i > 0; i--) {
  - `Name of component` where was created this error
  - Log level (eg `info`, `warn`)
 
+
+3. Create `Readable` stream which generate Binary data with random size.
+
+4. Create `Writable` stream which save to file only 10 bytes from each chunk.
+
+5. Create `Transform` stream which counts current bandwidth (kbps) between generator of Binary data and writer to file (for connect try use `pipe`)

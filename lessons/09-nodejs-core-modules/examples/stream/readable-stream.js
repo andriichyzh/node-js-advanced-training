@@ -8,9 +8,9 @@ readable.on('error', function(err) {
     console.log('Error', err);
 });
 
-readable.on('readable', function() {
-    console.log('Readable', readable.read());
-});
+//readable.on('readable', function() {
+//    console.log('Readable', readable.read());
+//});
 
 readable.on('data', function(data) {
     console.log('Data', data.length);

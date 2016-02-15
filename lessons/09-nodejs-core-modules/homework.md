@@ -123,3 +123,7 @@ for (i = arr.length; i > 0; i--) {
 4. Create `Writable` stream which save to file only 10 bytes from each chunk.
 
 5. Create `Transform` stream which counts current average bandwidth (kbps) between generator of Binary data and writer to file (for connect try use `pipe`)
+
+6. Create module for `sync` autoload files by path. In result you should have object with `key = module name` and `value = require('module')`
+
+7. Write `async` module which count `factorial value` in different process (eg use `fork` or `exec` of child process)

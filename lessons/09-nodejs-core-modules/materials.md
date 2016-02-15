@@ -1538,6 +1538,158 @@ The value can be set to Infinity (or 0) for to indicate an unlimited number of l
 Returns a `reference to the EventEmitter` so calls `can be chained`. 
 
 
+## [Child Processes](https://nodejs.org/dist/latest-v4.x/docs/api/child_process.html)
+
+### Class: ChildProcess
+
+ChildProcess is an `EventEmitter`.
+
+Child processes always have three streams associated with them. child.stdin, child.stdout, and child.stderr. 
+These may be shared with the stdio streams of the parent process, or they may be separate stream objects which can be piped to and from.
+
+The `ChildProcess` class is not intended to be used directly. 
+Use the `spawn()`, `exec()`, `execFile()`, or `fork()` methods to create an instance of `ChildProcess`. 
+
+#### Event: 'close'
+
+ - `code` Number the exit code, if it exited normally.
+ - `signal` String the signal passed to kill the child process, if it was killed by the parent.
+
+This event is emitted when the stdio streams of a child process have all terminated. 
+This is distinct from 'exit', since multiple processes might share the same stdio streams. 
+
+#### Event: 'disconnect'
+
+This event is emitted after calling the `.disconnect()` method in the parent or in the child. 
+After disconnecting it is no longer possible to send messages, and the .connected property is false. 
+
+#### Event: 'error'
+
+Emitted when:
+
+ - The process could not be spawned, or
+ - The process could not be killed, or
+ - Sending a message to the child process failed.
+
+Note that the 'exit' event may or may not fire after an error has occurred. 
+If you are listening on both events to fire a function, remember to guard against calling your function twice. 
+
+#### Event: 'exit'
+
+ - `code` Number the exit code, if it exited normally.
+ - `signal` String the signal passed to kill the child process, if it was killed by the parent.
+
+This event is emitted after the child process ends. 
+If the process terminated normally, code is the final exit code of the process, otherwise null. 
+If the process terminated due to receipt of a signal, signal is the string name of the signal, otherwise null. 
+
+#### Event: 'message'
+
+ - `message` Object a parsed JSON object or primitive value.
+ - `sendHandle` Handle object a net.Socket or net.Server object, or undefined.
+
+Messages sent by .send(message, [sendHandle]) are obtained using the 'message' event. 
+
+#### child.kill([signal])
+     
+Send a signal to the child process. If no argument is given, the process will be sent 'SIGTERM'
+
+### child.pid
+
+The process identifier (PID) of the child process.
+
+Example:
+
+```js
+const spawn = require('child_process').spawn;
+const grep = spawn('grep', ['ssh']);
+
+console.log('Spawned child pid: ${grep.pid}');
+grep.stdin.end();
+```
+
+### Asynchronous Process Creation
+
+#### child_process.exec(command[, options], callback)
+ 
+Runs a command in a shell and buffers the output.
+
+```js
+const exec = require('child_process').exec;
+
+const child = exec('cat *.js bad_file | wc -l', (error, stdout, stderr) => {
+    console.log('stdout: ${stdout}');
+    console.log('stderr: ${stderr}');
+    if (error !== null) {
+      console.log('exec error: ${error}');
+    }
+}); 
+```
+
+#### child_process.execFile(file[, args][, options][, callback])
+
+This is similar to child_process.exec() except it does not execute a subshell but rather the specified file directly. 
+This makes it slightly leaner than child_process.exec(). It has the same options. 
+
+
+#### child_process.fork(modulePath[, args][, options])
+
+This is a special case of the child_process.spawn() functionality for spawning Node.js processes. 
+In addition to having all the methods in a normal ChildProcess instance, the returned object has a communication channel built-in. See ChildProcess#send() for details.
+
+These child Node.js processes are still whole new instances of V8. 
+Assume at least 30ms startup and 10mb memory for each new Node.js. That is, you cannot create many thousands of them. 
+
+
+#### child_process.spawn(command[, args][, options])
+
+```js
+const spawn = require('child_process').spawn;
+const ls = spawn('ls', ['-lh', '/usr']);
+
+ls.stdout.on('data', (data) => {
+  console.log(`stdout: ${data}`);
+});
+
+ls.stderr.on('data', (data) => {
+  console.log(`stderr: ${data}`);
+});
+
+ls.on('close', (code) => {
+  console.log(`child process exited with code ${code}`);
+});
+```
+
+
+### Synchronous Process Creation
+
+#### child_process.execFileSync(file[, args][, options])
+
+**return: Buffer|String The stdout from the command**
+
+
+#### child_process.execSync(command[, options])
+ 
+**return: Buffer|String The stdout from the command**
+ 
+ 
+#### child_process.spawnSync(command[, args][, options])
+
+**return: Object**
+
+ - `pid` Number Pid of the child process
+ - `output` Array Array of results from stdio output
+ - `stdout` Buffer|String The contents of output[1]
+ - `stderr` Buffer|String The contents of output[2]
+ - `status` Number The exit code of the child process
+ - `signal` String The signal used to kill the child process
+ - `error` Error The error object if the child process failed or timed out
+
+
+
+
+
+
 ## [Stream]()
 
 Link: https://itarchitectblog.wordpress.com/2014/11/18/node-js-streams/
@@ -1594,3 +1746,12 @@ They implement both the `Readable` and `Writable` interfaces.
 
 
 ### [API for Stream Implementors](https://nodejs.org/dist/latest-v4.x/docs/api/stream.html#stream_api_for_stream_implementors)
+
+
+## File System
+
+## Crypto
+
+## Buffer
+
+## HTTP

@@ -1560,7 +1560,7 @@ All streams are `EventEmitters`, but they also have other custom methods and pro
 If a stream is both `Readable` and `Writable`, then it implements all of the methods and events below. 
 So, a `Duplex` or `Transform` stream is fully described by this API, though their implementation may be somewhat different. 
 
-![](../../static/images/conveyor-belt.png)
+![](../../static/images/stream-animation.gif)
 
 #### `Class: stream.Readable`
 

@@ -1759,10 +1759,31 @@ They implement both the `Readable` and `Writable` interfaces.
 ### [API for Stream Implementors](https://nodejs.org/dist/latest-v4.x/docs/api/stream.html#stream_api_for_stream_implementors)
 
 
-## File System
+#### Class: stream.Readable
+      - new stream.Readable([options])
+      - readable._read(size)
+      - readable.push(chunk[, encoding])
 
-## Crypto
+#### Class: stream.Writable
+      - new stream.Writable([options])
+      - writable._write(chunk, encoding, callback)
+      - writable._writev(chunks, callback)
+        
+#### Class: stream.Duplex
+      - new stream.Duplex(options)
+        
+#### Class: stream.Transform
+      - new stream.Transform([options])
+      - Events: 'finish' and 'end'
+      - transform._flush(callback)
+      - transform._transform(chunk, encoding, callback)
+       
+       
 
-## Buffer
+## [File System](https://nodejs.org/dist/latest-v4.x/docs/api/fs.html)
 
-## HTTP
+## [Crypto](https://nodejs.org/dist/latest-v4.x/docs/api/crypto.html)
+
+## [Buffer](https://nodejs.org/dist/latest-v4.x/docs/api/buffer.html)
+
+## [HTTP](https://nodejs.org/dist/latest-v4.x/docs/api/http.html)

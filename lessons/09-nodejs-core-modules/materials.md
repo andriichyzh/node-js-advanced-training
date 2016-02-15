@@ -1540,6 +1540,20 @@ Returns a `reference to the EventEmitter` so calls `can be chained`.
 
 ## [Child Processes](https://nodejs.org/dist/latest-v4.x/docs/api/child_process.html)
 
+ - Class: ChildProcess
+
+ - Asynchronous Process Creation
+   - child_process.exec(command[, options], callback)
+   - child_process.execFile(file[, args][, options][, callback])
+   - child_process.fork(modulePath[, args][, options])
+   - child_process.spawn(command[, args][, options])
+
+ - Synchronous Process Creation
+   - child_process.execFileSync(file[, args][, options])
+   - child_process.execSync(command[, options])
+   - child_process.spawnSync(command[, args][, options])
+
+
 ### Class: ChildProcess
 
 ChildProcess is an `EventEmitter`.
@@ -1687,10 +1701,7 @@ ls.on('close', (code) => {
 
 
 
-
-
-
-## [Stream]()
+## [Stream](https://nodejs.org/dist/latest-v4.x/docs/api/stream.html)
 
 Link: https://itarchitectblog.wordpress.com/2014/11/18/node-js-streams/
 

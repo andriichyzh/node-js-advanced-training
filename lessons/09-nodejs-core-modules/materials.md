@@ -1781,11 +1781,153 @@ They implement both the `Readable` and `Writable` interfaces.
       - transform._transform(chunk, encoding, callback)
        
        
-
 ## [File System](https://nodejs.org/dist/latest-v4.x/docs/api/fs.html)
+
+
 
 ## [Crypto](https://nodejs.org/dist/latest-v4.x/docs/api/crypto.html)
 
+```js
+const fs = require('fs');
+const crypto = require('crypto');
+
+const readable = fs.createReadStream('./file.txt');
+
+const md5Sum = crypto.createHash('md5');
+
+readable.on('error', function(err) {
+    console.log('Error', err);
+});
+
+readable.on('data', function(data) {
+    md5Sum.update(data);
+});
+
+readable.on('end', function() {
+    let md5 = md5Sum.digest('hex');
+    console.log('MD5:', md5);
+});
+```
+
 ## [Buffer](https://nodejs.org/dist/latest-v4.x/docs/api/buffer.html)
+
+### Class: Buffer
+
+The Buffer class is a global type for dealing with binary data directly. It can be constructed in a variety of ways.
+
+#### new Buffer(array)
+
+ - `array` Array
+
+Allocates a new buffer using an array of octets.
+
+
+#### new Buffer(buffer)
+
+ - `buffer` Buffer
+
+Copies the passed buffer data onto a new Buffer instance.
+
+
+#### new Buffer(size)
+
+ - `size` Number
+
+Allocates a new buffer of size bytes. size must be less than 1,073,741,824 bytes (1 GB) on 32-bit architectures or 2,147,483,648 bytes (2 GB) on 64-bit architectures. Otherwise, a RangeError is thrown.
+
+Unlike ArrayBuffers, the underlying memory for buffers is not initialized. So the contents of a newly created Buffer are unknown and could contain sensitive data. Use buf.fill(0) to initialize a buffer to zeroes.
+
+
+#### new Buffer(str[, encoding])
+
+ - `str` String - string to encode.
+ - `encoding` String - encoding to use, Optional.
+
+Allocates a new buffer containing the given str. encoding defaults to 'utf8'. 
+
+
+#### buf.toString([encoding][, start][, end])
+
+ - `encoding` String, Optional, Default: 'utf8'
+ - `start` Number, Optional, Default: 0
+ - `end` Number, Optional, Default: buffer.length
+
+Decodes and returns a string from buffer data encoded using the specified character set encoding. 
+If encoding is undefined or null, then encoding defaults to 'utf8'. 
+The start and end parameters default to 0 and buffer.length when undefined. 
+
+
+#### buf.fill(value[, offset][, end])
+
+ - `value`
+ - `offset` Number, Optional
+ - `end` Number, Optional
+
+Fills the buffer with the specified value. If the offset (defaults to 0) and end (defaults to buffer.length) are not given it will fill the entire buffer.
+
+```js
+var b = new Buffer(50);
+b.fill('h');
+
+console.log(b); // <Buffer 68 68 68 68 68 68 68 68 68 68 68 68 68 68 68 68 68 68 68 68 68 68 68 68 68 68 68 68 68 68 68 68 68 68 68 68 68 68 68 68 68 68 68 68 68 68 68 68 68 68>
+console.log(b.toString()); // 'hhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhh'
+```
+
+#### buf.copy(targetBuffer[, targetStart][, sourceStart][, sourceEnd])
+
+ - `targetBuffer` Buffer object - Buffer to copy into
+ - `targetStart` Number, Optional, Default: 0
+ - `sourceStart` Number, Optional, Default: 0
+ - `sourceEnd` Number, Optional, Default: buffer.length
+
+Copies data from a region of this buffer to a region in the target buffer even if the target memory region overlaps with the source. 
+If undefined, the targetStart and sourceStart parameters default to 0 while sourceEnd defaults to buffer.length.
+
+Returns the number of bytes copied. 
+
+#### buf.length
+
+ - `Number`
+
+The size of the buffer in bytes. 
+Note that this is not necessarily the size of the contents. 
+length refers to the amount of memory allocated for the buffer object. 
+It does not change when the contents of the buffer are changed.
+
+```js
+buf = new Buffer(1234);
+
+console.log(buf.length); // 1234
+buf.write('some string', 0, 'ascii');
+console.log(buf.length); // 1234
+```
+
+#### buf.slice([start[, end]])
+
+ - `start` Number, Optional, Default: 0
+ - `end` Number, Optional, Default: buffer.length
+
+Returns a new buffer which references the same memory as the old, but offset and cropped by the start (defaults to 0) and end (defaults to buffer.length) indexes. 
+Negative indexes start from the end of the buffer. 
+
+
+#### ES6 iteration
+
+Buffers can be iterated over using for..of syntax:
+
+```js
+var buf = new Buffer([1, 2, 3]);
+
+for (var b of buf) {
+  console.log(b);
+}
+// 1
+// 2
+// 3
+```
+
+Additionally, the `buffer.values()`, `buffer.keys()`, and `buffer.entries()` methods can be used to create iterators. 
+
+
 
 ## [HTTP](https://nodejs.org/dist/latest-v4.x/docs/api/http.html)

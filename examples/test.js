@@ -1,20 +1,9 @@
 'use strict';
 
 
-const EventEmitter = require('events');
-const util = require('util');
+var b = new Buffer(50);
+b.fill('h');
 
-
-function MyEmitter() {
-    EventEmitter.call(this);
-}
-
-util.inherits(MyEmitter, EventEmitter);
-
-const myEmitter = new MyEmitter();
-
-myEmitter.on('event', function(a, b) {
-    console.log(a, b, this instanceof MyEmitter);
-});
-
-myEmitter.emit('event', 'a', 'b');
+console.log(b);
+console.log(b.toString());
+console.log(b.toJSON());

@@ -1931,3 +1931,81 @@ Additionally, the `buffer.values()`, `buffer.keys()`, and `buffer.entries()` met
 
 
 ## [HTTP](https://nodejs.org/dist/latest-v4.x/docs/api/http.html)
+
+### Class: http.Agent
+
+ - `new Agent([options])`
+ - `agent.destroy()`
+ - `agent.freeSockets`
+ - `agent.getName(options)`
+ - `agent.maxFreeSockets`
+ - `agent.maxSockets`
+ - `agent.requests`
+ - `agent.sockets`
+
+### Class: http.ClientRequest
+
+ - `Event: 'abort'`
+ - `Event: 'connect'`
+ - `Event: 'continue'`
+ - `Event: 'response'`
+ - `Event: 'socket'`
+ - `Event: 'upgrade'`
+ - `request.abort()`
+ - `request.end([data][, encoding][, callback])`
+ - `request.flushHeaders()`
+ - `request.setNoDelay([noDelay])`
+ - `request.setSocketKeepAlive([enable][, initialDelay])`
+ - `request.setTimeout(timeout[, callback])`
+ - `request.write(chunk[, encoding][, callback])`
+
+### Class: http.Server
+
+ - `Event: 'checkContinue'`
+ - `Event: 'clientError'`
+ - `Event: 'close'`
+ - `Event: 'connect'`
+ - `Event: 'connection'`
+ - `Event: 'request'`
+ - `Event: 'upgrade'`
+ - `server.close([callback])`
+ - `server.listen(handle[, callback])`
+ - `server.listen(path[, callback])`
+ - `server.listen(port[, hostname][, backlog][, callback])`
+ - `server.maxHeadersCount`
+ - `server.setTimeout(msecs, callback)`
+ - `server.timeout`
+
+### Class: http.ServerResponse
+
+ - `Event: 'close'`
+ - `Event: 'finish'`
+ - `response.addTrailers(headers)`
+ - `response.end([data][, encoding][, callback])`
+ - `response.finished`
+ - `response.getHeader(name)`
+ - `response.headersSent`
+ - `response.removeHeader(name)`
+ - `response.sendDate`
+ - `response.setHeader(name, value)`
+ - `response.setTimeout(msecs, callback)`
+ - `response.statusCode`
+ - `response.statusMessage`
+ - `response.write(chunk[, encoding][, callback])`
+ - `response.writeContinue()`
+ - `response.writeHead(statusCode[, statusMessage][, headers])`
+
+### Class: http.IncomingMessage
+
+ - `Event: 'close'`
+ - `message.headers`
+ - `message.httpVersion`
+ - `message.method`
+ - `message.rawHeaders`
+ - `message.rawTrailers`
+ - `message.setTimeout(msecs, callback)`
+ - `message.statusCode`
+ - `message.statusMessage`
+ - `message.socket`
+ - `message.url`
+

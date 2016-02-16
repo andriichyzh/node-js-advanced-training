@@ -1538,6 +1538,86 @@ The value can be set to Infinity (or 0) for to indicate an unlimited number of l
 Returns a `reference to the EventEmitter` so calls `can be chained`. 
 
 
+## [Stream](https://nodejs.org/dist/latest-v4.x/docs/api/stream.html)
+
+Link: https://itarchitectblog.wordpress.com/2014/11/18/node-js-streams/
+
+A stream is an abstract interface implemented by various objects in Node.js. 
+
+For example a request to an HTTP server is a stream, as is stdout. 
+Streams are readable, writable, or both. 
+All streams are instances of EventEmitter.
+
+You can load the Stream base classes by doing `require('stream')`. 
+There are base classes provided for `Readable` streams, `Writable` streams, `Duplex` streams, and `Transform` streams.
+
+### API for Stream Consumers
+
+Streams can be either `Readable`, `Writable`, or both (`Duplex`).
+
+All streams are `EventEmitters`, but they also have other custom methods and properties depending on whether they are `Readable`, `Writable`, or `Duplex`.
+
+If a stream is both `Readable` and `Writable`, then it implements all of the methods and events below. 
+So, a `Duplex` or `Transform` stream is fully described by this API, though their implementation may be somewhat different. 
+
+![](../../static/images/streams.png)
+
+![](../../static/images/stream-animation.gif)
+
+#### `Class: stream.Readable`
+
+The Readable stream interface is the abstraction for a source of data that you are reading from. 
+In other words, data comes out of a Readable stream.
+
+A Readable stream will not start emitting data until you indicate that you are ready to receive it.
+
+Readable streams have two "modes": a `flowing mode` and a `paused` mode. 
+When in `flowing mode`, data is read from the underlying system and provided to your program as fast as possible. 
+In `paused mode`, you must explicitly call stream.read() to get chunks of data out. 
+Streams start out in `paused mode`. 
+
+![](../../static/images/varying-flow-pull-and-push.png)
+
+
+#### `Class: stream.Writable`
+
+The Writable stream interface is an abstraction for a destination that you are writing data to.
+
+
+#### `Class: stream.Duplex`
+     
+`Duplex` streams are streams that implement both the `Readable` and `Writable` interfaces. 
+
+
+#### `Class: stream.Transform`
+   
+`Transform` streams are `Duplex` streams where the output is in some way computed from the input. 
+They implement both the `Readable` and `Writable` interfaces.
+
+
+### [API for Stream Implementors](https://nodejs.org/dist/latest-v4.x/docs/api/stream.html#stream_api_for_stream_implementors)
+
+
+#### Class: stream.Readable
+      - new stream.Readable([options])
+      - readable._read(size)
+      - readable.push(chunk[, encoding])
+
+#### Class: stream.Writable
+      - new stream.Writable([options])
+      - writable._write(chunk, encoding, callback)
+      - writable._writev(chunks, callback)
+        
+#### Class: stream.Duplex
+      - new stream.Duplex(options)
+        
+#### Class: stream.Transform
+      - new stream.Transform([options])
+      - Events: 'finish' and 'end'
+      - transform._flush(callback)
+      - transform._transform(chunk, encoding, callback)
+       
+       
 ## [Child Processes](https://nodejs.org/dist/latest-v4.x/docs/api/child_process.html)
 
  - Class: ChildProcess
@@ -1698,92 +1778,11 @@ ls.on('close', (code) => {
  - `status` Number The exit code of the child process
  - `signal` String The signal used to kill the child process
  - `error` Error The error object if the child process failed or timed out
-
-
-
-## [Stream](https://nodejs.org/dist/latest-v4.x/docs/api/stream.html)
-
-Link: https://itarchitectblog.wordpress.com/2014/11/18/node-js-streams/
-
-A stream is an abstract interface implemented by various objects in Node.js. 
-
-For example a request to an HTTP server is a stream, as is stdout. 
-Streams are readable, writable, or both. 
-All streams are instances of EventEmitter.
-
-You can load the Stream base classes by doing `require('stream')`. 
-There are base classes provided for `Readable` streams, `Writable` streams, `Duplex` streams, and `Transform` streams.
-
-### API for Stream Consumers
-
-Streams can be either `Readable`, `Writable`, or both (`Duplex`).
-
-All streams are `EventEmitters`, but they also have other custom methods and properties depending on whether they are `Readable`, `Writable`, or `Duplex`.
-
-If a stream is both `Readable` and `Writable`, then it implements all of the methods and events below. 
-So, a `Duplex` or `Transform` stream is fully described by this API, though their implementation may be somewhat different. 
-
-![](../../static/images/streams.png)
-
-![](../../static/images/stream-animation.gif)
-
-#### `Class: stream.Readable`
-
-The Readable stream interface is the abstraction for a source of data that you are reading from. 
-In other words, data comes out of a Readable stream.
-
-A Readable stream will not start emitting data until you indicate that you are ready to receive it.
-
-Readable streams have two "modes": a `flowing mode` and a `paused` mode. 
-When in `flowing mode`, data is read from the underlying system and provided to your program as fast as possible. 
-In `paused mode`, you must explicitly call stream.read() to get chunks of data out. 
-Streams start out in `paused mode`. 
-
-![](../../static/images/varying-flow-pull-and-push.png)
-
-
-#### `Class: stream.Writable`
-
-The Writable stream interface is an abstraction for a destination that you are writing data to.
-
-
-#### `Class: stream.Duplex`
-     
-`Duplex` streams are streams that implement both the `Readable` and `Writable` interfaces. 
-
-
-#### `Class: stream.Transform`
-   
-`Transform` streams are `Duplex` streams where the output is in some way computed from the input. 
-They implement both the `Readable` and `Writable` interfaces.
-
-
-### [API for Stream Implementors](https://nodejs.org/dist/latest-v4.x/docs/api/stream.html#stream_api_for_stream_implementors)
-
-
-#### Class: stream.Readable
-      - new stream.Readable([options])
-      - readable._read(size)
-      - readable.push(chunk[, encoding])
-
-#### Class: stream.Writable
-      - new stream.Writable([options])
-      - writable._write(chunk, encoding, callback)
-      - writable._writev(chunks, callback)
-        
-#### Class: stream.Duplex
-      - new stream.Duplex(options)
-        
-#### Class: stream.Transform
-      - new stream.Transform([options])
-      - Events: 'finish' and 'end'
-      - transform._flush(callback)
-      - transform._transform(chunk, encoding, callback)
        
        
 ## [File System](https://nodejs.org/dist/latest-v4.x/docs/api/fs.html)
 
-
+### See docs
 
 ## [Crypto](https://nodejs.org/dist/latest-v4.x/docs/api/crypto.html)
 

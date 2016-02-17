@@ -87,6 +87,8 @@ npm install moment --save
 
 ### [Express](https://www.npmjs.com/package/express)
 
+![](https://i.cloudup.com/zfY6lL7eFa-3000x3000.png)
+
 Fast, unopinionated, minimalist web framework for Node.js
 
 ```bash
@@ -95,6 +97,8 @@ npm install express --save
 
 
 ### [Hapi](https://www.npmjs.com/package/hapi)
+
+![](https://raw.github.com/hapijs/hapi/master/images/hapi.png)
 
 hapi is a simple to use configuration-centric framework with built-in support for input validation, caching, authentication, and other essential facilities for building web and services applications. 
 hapi enables developers to focus on writing reusable application logic in a highly modular and prescriptive approach.

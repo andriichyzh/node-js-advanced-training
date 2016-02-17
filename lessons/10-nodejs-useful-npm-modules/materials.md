@@ -82,6 +82,43 @@ Parse, validate, manipulate, and display dates
 npm install moment --save
 ```
 
+## CLI
+
+### [Commander](https://www.npmjs.com/package/commander)
+
+The complete solution for node.js command-line programs
+
+```bash
+npm install commander --save
+```
+
+
+### [Minimist](https://www.npmjs.com/package/minimist)
+
+This module is the guts of optimist's argument parser without all the fanciful decoration.
+
+```bash
+npm install minimist --save
+```
+
+
+### [Colors](https://www.npmjs.com/package/colors)
+
+Get colors in your Node.js console
+
+```bash
+npm install colors --save
+```
+
+### [Chalk](https://www.npmjs.com/package/chalk)
+
+Terminal string styling done right. Much color.
+
+```bash
+npm install chalk --save
+```
+
+
 
 ## HTTP / WebSocket
 
@@ -157,3 +194,41 @@ It is powerful enough for production usage, but it's simple and hackable enough 
 npm install -g http-server
 ```
 
+
+## Loggers
+
+### [Bunyan](https://www.npmjs.com/package/bunyan)
+
+A JSON logging library for Node.js services
+
+```bash
+npm install bunyan --save
+```
+
+
+### [Winston](https://www.npmjs.com/package/winston)
+
+A multi-transport async logging library for Node.js
+
+```bash
+npm install winston --save
+```
+
+
+## Configuration
+
+### [Convict](https://www.npmjs.com/package/convict)
+
+Unruly configuration management for Node.js
+
+```bash
+npm install convict --save
+```
+
+
+
+## Testing and Code Linting
+
+### [Mocha](https://www.npmjs.com/package/mocha)
+
+![](http://f.cl.ly/items/3l1k0n2A1U3M1I1L210p/Screen%20Shot%202012-02-24%20at%202.21.43%20PM.png)

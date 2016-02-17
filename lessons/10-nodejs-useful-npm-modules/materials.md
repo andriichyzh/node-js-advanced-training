@@ -110,7 +110,7 @@ npm install hapi --save
 
 ### [Koa](https://www.npmjs.com/package/koa)
 
-![](https://dl.dropboxusercontent.com/u/6396913/koa/logo.png)
+<img src="https://dl.dropboxusercontent.com/u/6396913/koa/logo.png" alt="koa middleware framework for nodejs" width="255px" />
 
 Expressive HTTP middleware for node.js to make web applications and APIs more enjoyable to write. 
 Koa's middleware stack flows in a stack-like manner, allowing you to perform actions downstream then filter and manipulate the response upstream. 

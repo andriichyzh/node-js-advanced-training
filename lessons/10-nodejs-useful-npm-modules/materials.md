@@ -162,6 +162,15 @@ npm install express --save
 ```
 
 
+### [Connect](https://www.npmjs.com/package/connect)
+
+Connect is an extensible HTTP server framework for node using "plugins" known as `middleware`.
+
+```bash
+npm install connect --save
+```
+
+
 ### [Hapi](https://www.npmjs.com/package/hapi)
 
 ![](https://raw.github.com/hapijs/hapi/master/images/hapi.png)
@@ -288,6 +297,16 @@ npm install convict --save
 ```
 
 
+### [Nconf](https://www.npmjs.com/package/nconf)
+
+Hierarchical node.js configuration with files, environment variables, command-line arguments, and atomic object merging.
+
+```bash
+npm install nconf --save
+```
+
+
+
 
 ## Testing and Code Linting
 
@@ -300,6 +319,16 @@ Mocha is a simple, flexible, fun JavaScript test framework for node.js and the b
 ```bash
 npm install mocha --save-dev
 ```
+
+
+### [Should](https://www.npmjs.com/package/should)
+
+Test framework agnostic BDD-style assertions
+
+```bash
+npm install should --save-dev
+```
+
 
 ### [Chai](https://www.npmjs.com/package/chai)
 

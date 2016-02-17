@@ -139,12 +139,22 @@ Get colors in your Node.js console
 npm install colors --save
 ```
 
+
 ### [Chalk](https://www.npmjs.com/package/chalk)
 
 Terminal string styling done right. Much color.
 
 ```bash
 npm install chalk --save
+```
+
+
+### [Progress](https://www.npmjs.com/package/progress)
+
+Flexible ascii progress bar
+
+```bash
+npm install progress --save
 ```
 
 
@@ -241,6 +251,7 @@ It is powerful enough for production usage, but it's simple and hackable enough 
 npm install -g http-server
 ```
 
+
 ### [HTTP-Proxy](https://www.npmjs.com/package/http-proxy)
 
 node-http-proxy is an HTTP programmable proxying library that supports websockets. 
@@ -265,6 +276,66 @@ npm install nodemailer --save
 ```
 
 
+## DB Drivers
+
+### [MongoDB](https://www.npmjs.com/package/mongodb)
+
+MongoDB legacy driver emulation layer on top of `mongodb-core`
+
+```bash
+npm install mongodb --save
+```
+
+
+### [Redis](https://www.npmjs.com/package/redis)
+
+This is a complete and feature rich Redis client for node.js. It supports all Redis commands and focuses on high performance.
+
+```bash
+npm install redis --save
+```
+
+
+### [PostgreSQL](https://www.npmjs.com/package/pg)
+
+PostgreSQL client for Node.js. Pure JavaScript and optional native `libpq` bindings.
+
+
+```bash
+npm install pg pg-native --save
+```
+
+
+### [MySQL](https://www.npmjs.com/package/mysql)
+
+A node.js driver for MySQL. It is written in JavaScript, does not require compiling, and is 100% MIT licensed.
+
+```bash
+npm install mysql --save
+```
+
+
+### [SQLite3](https://www.npmjs.com/package/sqlite3)
+
+Asynchronous, non-blocking SQLite3 bindings
+
+```bash
+npm install mysql --save
+```
+
+
+
+## ODM / ORM
+
+### [Mongoose](https://www.npmjs.com/package/mongoose) (use only for projects with small load!)
+
+Mongoose is a MongoDB object modeling tool designed to work in an asynchronous environment.
+
+```bash
+npm install mongoose --save
+```
+
+
 
 ## Loggers
 
@@ -284,6 +355,7 @@ A multi-transport async logging library for Node.js
 ```bash
 npm install winston --save
 ```
+
 
 
 ## Configuration
@@ -379,3 +451,11 @@ You can configure JSCS for your project/company using over 150 validation rules,
 npm install jscs --save-dev
 ```
 
+
+### [Benchmark](https://www.npmjs.com/package/benchmark)
+
+A benchmarking library that supports high-resolution timers and returns statistically significant results.
+
+```bash
+npm install benchmark --save-dev
+```

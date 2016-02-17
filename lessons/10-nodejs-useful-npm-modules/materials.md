@@ -444,6 +444,8 @@ npm install istanbul --save-dev
 
 ### [JSHint](https://www.npmjs.com/package/jshint)
 
+![](http://jshint.com/res/jshint.png)
+
 JSHint is a community-driven tool to detect errors and potential problems in JavaScript code and to enforce your team's coding conventions. 
 It is very flexible so you can easily adjust it to your particular coding guidelines and the environment you expect your code to execute in.
 
@@ -457,6 +459,8 @@ npm install jshint --save-dev
 
 
 ### [JSCS](https://www.npmjs.com/package/jscs)
+
+![](https://talks.bitexpert.de/dpc15-js-qa/images/jscs.png)
 
 JSCS is a code style linter/formatter for programmatically enforcing your style guide. 
 You can configure JSCS for your project/company using over 150 validation rules, including presets from popular style guides like jQuery, Airbnb, Google, and more.

@@ -40,7 +40,8 @@ npm install -g pm2
 The streaming build system
 
 ```bash
-npm install -g gulp 
+npm install -g gulp-cli 
+npm install gulp --save-dev
 ```
 
 

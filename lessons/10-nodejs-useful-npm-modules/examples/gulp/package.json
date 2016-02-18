@@ -1,0 +1,30 @@
+{
+  "name": "node-js-advanced-training",
+  "version": "1.0.0",
+  "description": "![Node.js](static/images/logo.png)",
+  "main": "index.js",
+  "directories": {
+    "example": "examples"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/andriichyzh/node-js-advanced-training.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/andriichyzh/node-js-advanced-training/issues"
+  },
+  "homepage": "https://github.com/andriichyzh/node-js-advanced-training#readme",
+  "devDependencies": {
+    "gulp": "^3.9.1",
+    "gulp-jshint": "^2.0.0",
+    "gulp-notify": "^2.2.0",
+    "gulp-notify-growl": "^1.0.2",
+    "jshint": "^2.9.1",
+    "jshint-stylish": "^2.1.0"
+  }
+}

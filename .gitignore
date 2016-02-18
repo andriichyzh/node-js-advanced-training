@@ -1,6 +1,8 @@
 .idea/
-
 .DS_Store
+
+node_modules
+**/node_modules
 
 lessons/09-nodejs-core-modules/examples/console/custom-logger-stdout.log
 lessons/09-nodejs-core-modules/examples/console/custom-logger-stderr.log

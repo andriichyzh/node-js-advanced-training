@@ -1,0 +1,7 @@
+{
+  "node" : true,
+  "esversion": 6,
+  "indent" : 4,
+  "curly"  : true,   // Require {} for every new block or scope.
+  "eqeqeq" : true    // Require triple equals i.e. `===`.
+}

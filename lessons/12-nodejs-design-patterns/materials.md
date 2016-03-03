@@ -620,3 +620,98 @@ while (i--) {
 }
 ```
 
+#### Example:
+
+```js
+function ZmqMiddlewareManager(socket) {
+  this.socket = socket;
+  this.inboundMiddleware = [];          
+  this.outboundMiddleware = [];
+  
+  var self = this;
+  
+  socket.on('message', function(message) {     
+    self.executeMiddleware(self.inboundMiddleware, { data: message });
+  });
+}
+
+
+ZmqMiddlewareManager.prototype.send = function(data) {
+  var self = this;
+  var message = {
+    data: data
+  };
+  
+  self.executeMiddleware(self.outboundMiddleware, message, function() {
+      self.socket.send(message.data);
+  });
+}
+
+
+ZmqMiddlewareManager.prototype.use = function(middleware) {
+  if(middleware.inbound) {
+    this.inboundMiddleware.push(middleware.inbound);
+  }
+  
+  if(middleware.outbound) {
+    this.outboundMiddleware.unshift(middleware.outbound);
+  }
+}
+
+
+ZmqMiddlewareManager.prototype.executeMiddleware =
+  function(middleware, arg, finish) {
+    var self = this;
+    
+    (function iterator(index) {
+      if(index === middleware.length) {
+        return finish && finish();
+      }
+      
+      middleware[index].call(self, arg, function(err) {
+        if(err) {
+          console.log('There was an error: ' + err.message);
+        }
+        
+        iterator(++index);
+      });
+      
+    })(0);
+  }
+}
+
+module.exports = ZmqMiddlewareManager;
+```
+
+#### Example of middleware to support JSON messages
+
+```js
+module.exports.json = function() {
+  return {
+    inbound: function(message, next) {
+      message.data = JSON.parse(message.data.toString());
+      next();
+    },
+    outbound: function(message, next) {
+      message.data = new Buffer(JSON.stringify(message.data));
+      next();
+    }
+  }
+}
+```
+
+#### Server 
+
+```js
+var zmq = require('zmq');
+var ZmqMiddlewareManager = require('./zmqMiddlewareManager');
+var middleware = require('./middleware');
+
+var reply = zmq.socket('rep');
+reply.bind('tcp://127.0.0.1:5000');
+
+var zmqm = new ZmqMiddlewareManager(reply);
+zmqm.use(middleware.zlib());
+zmqm.use(middleware.json());
+
+```

@@ -429,3 +429,194 @@ function decorate(component) {
 }
 ```
 
+### Adapter
+
+Convert the interface of a class into another interface clients expect. 
+Adapter lets classes work together that couldn't otherwise because of incompatible interfaces. 
+
+The Adapter pattern allows us to access the functionality of an object using a different interface. 
+As the name suggests, it adapts an object so that it can be used by components expecting a different interface.
+
+![](../../static/images/pattern-adapter.png)
+
+#### Example:
+
+```js
+var path = require('path');
+
+module.exports = function createFsAdapter(db) {
+    var fs = {};
+
+    fs.readFile = function(filename, options, callback) {
+      if(typeof options === 'function') {
+        callback = options;
+        options = {};
+        
+      } else if(typeof options === 'string') {
+        options = {encoding: options};
+      }
+      
+      db.get(path.resolve(filename), { valueEncoding: options.encoding }, function(err, value) {
+          if(err) {
+            if(err.type === 'NotFoundError') {       
+              err = new Error('ENOENT, open \'' + filename +'\'');
+              err.code = 'ENOENT';
+              err.errno = 34;
+              err.path = filename;
+            }
+            
+            return callback && callback(err);
+          }
+          
+          callback && callback(null, value);
+        }
+      );
+    };
+    
+    fs.writeFile = function(filename, contents, options, callback) {
+      if(typeof options === 'function') {
+        callback = options;
+        options = {};
+      } else if(typeof options === 'string') {
+        options = {encoding: options};
+      }
+      
+      db.put(path.resolve(filename), contents, {
+        valueEncoding: options.encoding
+      }, callback);
+    }
+    
+    return fs;
+}    
+```
+
+##### Real `fs` module 
+
+```js
+var fs = require('fs');
+
+fs.writeFile('file.txt', 'Hello!', function() {
+  fs.readFile('file.txt', { encoding: 'utf8' }, function(err, res) {
+    console.log(res);
+  });
+});
+
+//try to read a missing file
+fs.readFile('missing.txt', { encoding: 'utf8' }, function(err, res){
+  console.log(err);
+});
+
+// { [Error: ENOENT, open 'missing.txt'] errno: 34, code: 'ENOENT', path: 'missing.txt' }
+// Hello!
+```
+
+##### Adapter for LevelDB
+
+```js
+var levelup = require('level');
+var fsAdapter = require('./fsAdapter');
+
+var db = levelup('./fsDB', { valueEncoding: 'binary' });
+var fs = fsAdapter(db);
+
+fs.writeFile('file.txt', 'Hello!', function() {
+  fs.readFile('file.txt', { encoding: 'utf8' }, function(err, res) {
+    console.log(res);
+  });
+});
+
+//try to read a missing file
+fs.readFile('missing.txt', { encoding: 'utf8' }, function(err, res){
+  console.log(err);
+});
+
+// { [Error: ENOENT, open 'missing.txt'] errno: 34, code: 'ENOENT', path: 'missing.txt' }
+// Hello!
+
+```
+
+## Behavioral Patterns
+
+### Observer
+
+Define a one-to-many dependency between objects so that when one object changes state, all its dependents are notified and updated automatically. 
+
+This pattern implements a single object (the subject) that maintains a reference to a collection of objects (known as "observers") and broadcasts notifications when a change to state occurs. 
+When we don't want to observe an object, we simply remove it from the collection of objects being observed. 
+The observer pattern is similar to both the pub/sub implementation and the mediator pattern but still different in purpose & theory. 
+
+![](../../static/images/pattern-observer.png)
+
+An object maintains a list of dependents/observers and notifies them automatically on state changes. 
+To implement the observer pattern, EventEmitter comes to the rescue.
+
+```js
+var util = require('util');  
+var EventEmitter = require('events').EventEmitter;
+
+function MyFancyObservable() {  
+  EventEmitter.call(this);
+}
+
+util.inherits(MyFancyObservable, EventEmitter);
+
+MyFancyObservable.prototype.hello = function (name) {  
+  this.emit('hello', name);
+};
+
+module.exports = MyFancyObservable;
+```
+
+```js
+var MyFancyObservable = require('./observer.js');  
+var observable = new MyFancyObservable();
+
+observable.on('hello', function (name) {  
+  console.log(name);
+});
+
+observable.hello('john'); 
+```
+
+### Middleware
+
+Middlewares are a powerful yet simple concept: the output of one unit/function is the input for the next.
+
+![](../../static/images/pattern-middleware.png)
+
+The technique used to implement middleware is not new; in fact, it can be considered the Node.js incarnation of the Intercepting Filter pattern and the Chain of Responsibility pattern. 
+In more generic terms, it also represents a processing pipeline, which reminds us about streams. 
+Today, in Node.js, the word middleware is used well beyond the boundaries of the express framework, and indicates a particular pattern whereby a set of processing units, filters, and handlers, under the form of functions are connected to form an asynchronous sequence in order to perform preprocessing and postprocessing of any kind of data. 
+The main advantage of this pattern is flexibility; in fact, this pattern allows us to obtain a plugin infrastructure with incredibly little effort, providing an unobtrusive way for extending a system with new filters and handlers.
+
+
+The essential component of the pattern is the Middleware Manager, which is responsible for organizing and executing the middleware functions. The most important implementation details of the pattern are as follows:
+
+ - New middleware can be registered by invoking the use() function (the name of this function is a common convention in many implementations of this pattern, but we can choose any name). Usually, new middleware can only be appended at the end of the pipeline, but this is not a strict rule.
+ - When new data to process is received, the registered middleware is invoked in an asynchronous sequential execution flow. Each unit in the pipeline receives in input the result of the execution of the previous unit.
+ - Each middleware can decide to stop further processing of the data by simply not invoking its callback or by passing an error to the callback. An error situation usually triggers the execution of another sequence of middleware that is specifically dedicated to handling errors.
+
+There is no strict rule on how the data is processed and propagated in the pipeline. The strategies include:
+
+ - Augmenting the data with additional properties or functions
+ - Replacing the data with the result of some kind of processing
+ - Maintaining the immutability of the data and always returning fresh copies as result of the processing
+
+The right approach that we need to take depends on the way the Middleware Manager is implemented and on the type of processing carried out by the middleware itself.
+
+```js
+app.use = function(fn){  
+  this.middleware.push(fn);
+  return this;
+};
+```
+
+So basically when you add a middleware it just gets pushed into a middleware array. So far so good, but what happens when a request hits the server?
+
+```js
+var i = middleware.length;  
+while (i--) {  
+  next = middleware[i].call(this, next);
+}
+```
+

@@ -535,6 +535,265 @@ fs.readFile('missing.txt', { encoding: 'utf8' }, function(err, res){
 
 ```
 
+### Facade
+
+Facade pattern hides the complexities of the system and provides an interface to the client using which the client can access the system. 
+This type of design pattern comes under structural pattern as this pattern adds an interface to existing system to hide its complexities.
+
+This pattern involves a single class which provides simplified methods required by client and delegates calls to methods of existing system classes.
+
+![](../../static/images/pattern-facade.png)
+
+#### Example
+
+##### Subsystems or subdomains
+
+```js
+function Cash(money) {
+    this._money = money;
+}
+
+Cash.prototype.pay = function (payment) {
+    return this._money > payment;
+};
+```
+
+```js
+function Cart() {
+    this._items = [];
+}
+
+Cart.prototype.add = function (item) {
+    this._items.push(item);
+    return this;
+};
+
+Cart.prototype.clean = function () {
+    this._items = [];
+    return this;
+};
+
+Cart.prototype.getCost = function () {
+    var i = 0, sum = 0, length = this._items.length;
+
+    for(; i < length; i++){
+        sum += this._items[i];
+    }
+
+    return sum;
+};
+```
+
+```js
+function Warehouse(goods) {
+    this._goods = goods;
+
+    /** Goods sample
+     * {
+     *   milk: { count: 200, price: 6 },
+     *   bread: { count: 150, price: 5 },
+     *   meat: { count: 120, price: 20 }
+     * }
+     * */
+}
+
+Warehouse.prototype.getItem = function (item) {
+    this._goods[item].count--;
+    return this._goods[item].price;
+};
+
+Warehouse.prototype.getItemCount = function (item) {
+    return this._goods[item].count;
+};
+```
+
+##### Result interface
+
+```js
+function Supermarket(shoppingList, money, goods) {
+    this._list = shoppingList;
+    this._money = money;
+
+    this._cash = new Cash(this._money);
+    this._cart = new Cart();
+    this._store = new Warehouse(goods);
+}
+
+Supermarket.prototype.goShopping = function () {
+    var i = 0, length = this._list.length;
+
+    for(;i < length; i++) {
+        this._cart.add(this._store.getItem(this._list[i]));
+    }
+
+    return this._cash.pay(this._cart.getCost());
+}
+```
+
+### Mixin
+
+Mixin is a class that contains methods for use by other classes without having to be the parent class of those other classes. How those other classes gain access to the mixin's methods depends on the language. 
+Mixins are sometimes described as being "included" rather than "inherited".
+
+Mixins encourage code reuse and can be used to avoid the inheritance ambiguity that multiple inheritance can cause, or to work around lack of support for multiple inheritance in a language. 
+A mixin can also be viewed as an interface with implemented methods. 
+
+![](../../static/images/pattern-mixin.png)
+
+#### Example (literal)
+
+##### Base
+
+```js
+var BookLiteral = (function () {
+
+    function BookLiteral(author, title) {
+        this._title = title;
+        this._author = author;
+    }
+
+    BookLiteral.prototype.getInfo = function () {
+        return this._author + ' - ' + this._title;
+    };
+
+    return BookLiteral;
+})();
+```
+
+##### Mixin
+
+```js
+var BookLiteralMixin = {
+
+    getAuthor: function () {
+        return this._author;
+    },
+
+    getTitle: function () {
+        return this._title;
+    }
+};
+```
+
+##### Using
+
+```js
+var Book = _.extend(BookLiteral.prototype, BookLiteralMixin);
+```
+
+#### Example (function)
+
+##### Base
+
+```js
+var BookFunctional = (function () {
+
+    function BookFunctional(author, title) {
+        this._title = title;
+        this._author = author;
+    }
+
+    BookFunctional.prototype.getInfo = function () {
+        return this._author + ' - ' + this._title;
+    };
+
+    return BookFunctional;
+})();
+```
+
+##### Mixin
+
+```js
+var BookFunctionalMixin = function () {
+
+    this.getAuthor = function () {
+        return this._author;
+    };
+
+    this.getTitle = function () {
+        return this._title;
+    };
+
+    return this;
+};
+```
+
+##### Using
+
+```js
+var Book = BookFunctionalMixin.call(BookFunctional.prototype);
+```
+
+
+### Iterator
+
+This pattern is used to get a way to access the elements of a collection object in sequential manner without any need to know its underlying representation. 
+
+![](../../static/images/pattern-iterator.png)
+
+#### Example
+
+```js
+var Iterator = (function () {
+
+    function Iterator(items) {
+        this._cursor = 0;
+        this._items = items;
+    }
+
+    Iterator.prototype.current = function () {
+        return this._items[this._cursor];
+    };
+
+    Iterator.prototype.first = function () {
+        this.reset();
+        return this.current();
+    };
+
+    Iterator.prototype.next = function () {
+        if (this.hasNext()) {
+            this._cursor++;
+            return this.current();
+        }
+    };
+
+    Iterator.prototype.previous = function () {
+        if (this.hasPrevious()) {
+            this._cursor--;
+            return this.current();
+        }
+    };
+
+    Iterator.prototype.last = function () {
+        this._cursor = this._items.length - 1;
+        return this.current();
+    };
+
+    Iterator.prototype.reset = function () {
+        this._cursor = 0;
+    };
+
+    Iterator.prototype.hasNext = function () {
+        return this._cursor < this._items.length;
+    };
+
+    Iterator.prototype.hasPrevious = function () {
+        return this._cursor > 0;
+    };
+
+    Iterator.prototype.each = function (callback) {
+        var item = this.first();
+        
+        for(; this.hasNext(); item = this.next()) {
+            callback(item);
+        }
+    };
+
+    return Iterator;
+})();
+```
+
+
 ## Behavioral Patterns
 
 ### Observer

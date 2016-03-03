@@ -249,7 +249,7 @@ A proxy is an object that controls the access to another object called `subject`
 The proxy and the subject have an identical interface and this allows us to transparently swap one for the other; in fact, the alternative name for this pattern is `surrogate`. 
 A proxy intercepts all or some of the operations that are meant to be executed on the subject, augmenting or complementing their behavior. 
 
-![](static/images/pattern-proxy.png)
+![](../static/images/pattern-proxy.png)
 
 **A proxy is useful in several circumstances, for example, consider the following ones:**
 
@@ -387,7 +387,7 @@ It's different from classical inheritance, because the behavior is not added to 
 
 Implementation-wise, it is very similar to the Proxy pattern, but instead of enhancing or modifying the behavior of the existing interface of an object, it augments it with new functionalities.
 
-![](static/images/pattern-decorator.png)
+![](../static/images/pattern-decorator.png)
 
 #### Object composition example
 

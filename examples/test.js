@@ -1,9 +1,7 @@
 'use strict';
 
+let count = 0;
 
-var b = new Buffer(50);
-b.fill('h');
-
-console.log(b);
-console.log(b.toString());
-console.log(b.toJSON());
+exports.inc = function() {
+    console.log(++count);
+};

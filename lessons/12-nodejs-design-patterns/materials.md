@@ -843,12 +843,6 @@ Middlewares are a powerful yet simple concept: the output of one unit/function i
 
 ![](../../static/images/pattern-middleware.png)
 
-The technique used to implement middleware is not new; in fact, it can be considered the Node.js incarnation of the Intercepting Filter pattern and the Chain of Responsibility pattern. 
-In more generic terms, it also represents a processing pipeline, which reminds us about streams. 
-Today, in Node.js, the word middleware is used well beyond the boundaries of the express framework, and indicates a particular pattern whereby a set of processing units, filters, and handlers, under the form of functions are connected to form an asynchronous sequence in order to perform preprocessing and postprocessing of any kind of data. 
-The main advantage of this pattern is flexibility; in fact, this pattern allows us to obtain a plugin infrastructure with incredibly little effort, providing an unobtrusive way for extending a system with new filters and handlers.
-
-
 The essential component of the pattern is the Middleware Manager, which is responsible for organizing and executing the middleware functions. The most important implementation details of the pattern are as follows:
 
  - New middleware can be registered by invoking the use() function (the name of this function is a common convention in many implementations of this pattern, but we can choose any name). Usually, new middleware can only be appended at the end of the pipeline, but this is not a strict rule.
@@ -1010,3 +1004,139 @@ setInterval(function() {
   zmqm.send({action: 'ping', echo: Date.now()});
 }, 1000);
 ```
+
+
+## Command
+
+We can consider a `command` as any object that `encapsulates all the information necessary to perform an action at a later time`. 
+So, instead of invoking a method or a function directly, we create an object representing the intention to perform such an invocation.
+
+![](../../static/images/pattern-command.png)
+
+The typical organization of the Command pattern can be described as follows:
+
+ - `Command`: This is the object encapsulating the information necessary to invoke a method or function.
+ - `Client`: This creates the Command and provides it to the Invoker.
+ - `Invoker`: This is responsible for executing the Command on the Target.
+ - `Target` (or `Receiver`): This is the subject of the invocation. It can be a lone function or the method of an object.
+ 
+### Basic example 
+
+```js
+function createTask(target, args) {
+    return function() {
+        target.apply(null, args);
+    }
+}
+```
+
+### Complex example 
+
+#### Target
+
+```js 
+const statusUpdateService = {
+    statusUpdates: {},
+    
+    sendUpdate: function(status) {
+        console.log('Status sent: ' + status);
+        var id = Math.floor(Math.random() * 1e6);
+        statusUpdateService.statusUpdates[id] = status;
+        return id;
+    },
+    
+    destroyUpdate: function(id) {
+        console.log('Status removed: ' + id);
+        delete statusUpdateService.statusUpdates[id];
+    }
+}
+```
+
+#### Command
+
+```js
+function createSendStatusCmd(service, status) {
+    let postId = null;
+    
+    const command = function() {
+        postId = service.sendUpdate(status);
+    };
+    
+    command.undo = function() {
+        if (postId) {
+            service.destroyUpdate(postId);
+            postId = null;
+        }
+    };
+    
+    command.serialize = function() {
+        return { type: 'status', action: 'post', status: status };
+    }
+    
+    return command;
+}
+```
+
+#### Invoker
+
+```js
+function Invoker() {
+    this.history = [];
+}
+
+Invoker.prototype.run = function(cmd) {
+    this.history.push(cmd);
+    cmd();
+    console.log('Command executed', cmd.serialize());
+};
+
+Invoker.prototype.delay = function(cmd, delay) {
+    let self = this;
+    
+    setTimeout(function() {
+        self.run(cmd);
+    }, delay)
+}
+
+Invoker.prototype.undo = function() {
+    let cmd = this.history.pop();
+    cmd.undo();
+    console.log('Command undone', cmd.serialize());
+}
+
+Invoker.prototype.runRemotely = function(cmd) {
+    let self = this;
+    
+    request.post('http://localhost:3000/cmd', { json: cmd.serialize() }, function(err) {
+        console.log('Command executed remotely', cmd.serialize());
+    });
+}
+
+module.exports = Invoker;
+```
+
+#### Example of usage:
+
+```js
+var invoker = new Invoker();
+
+// Command
+var command = createSendStatusCmd(statusUpdateService, 'HI!');
+
+// Dispatch it immediately
+invoker.run(command);
+
+// Revert to the state
+invoker.undo();
+
+// Schedule the task to be run in a hour from now:
+invoker.delay(command, 1000 * 60 * 60);
+
+// Distribute the load of the application by migrating the task to another machine:
+invoker.runRemotely(command);
+```
+
+# Additional materials
+
+ - [Mastering JavaScript Design Patterns](http://it-ebooks.info/book/4648/)
+ 

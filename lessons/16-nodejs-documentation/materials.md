@@ -173,3 +173,64 @@ Some of the key benefits are:
 
   - **Pros:** Easy to understand, simple to write
   - **Cons:** Low adoption, lacks advanced constructs in general, complex installation
+
+
+### Optional: HAL
+
+```json
+{
+    "_links": {
+        "self": { "href": "/orders" },
+        "curies": [{ "name": "ea", "href": "http://example.com/docs/rels/{rel}", "templated": true }],
+        "next": { "href": "/orders?page=2" },
+        "ea:find": {
+            "href": "/orders{?id}",
+            "templated": true
+        },
+        "ea:admin": [{
+            "href": "/admins/2",
+            "title": "Fred"
+        }, {
+            "href": "/admins/5",
+            "title": "Kate"
+        }]
+    },
+    "currentlyProcessing": 14,
+    "shippedToday": 20,
+    "_embedded": {
+        "ea:order": [{
+            "_links": {
+                "self": { "href": "/orders/123" },
+                "ea:basket": { "href": "/baskets/98712" },
+                "ea:customer": { "href": "/customers/7809" }
+            },
+            "total": 30.00,
+            "currency": "USD",
+            "status": "shipped"
+        }, {
+            "_links": {
+                "self": { "href": "/orders/124" },
+                "ea:basket": { "href": "/baskets/97213" },
+                "ea:customer": { "href": "/customers/12369" }
+            },
+            "total": 20.00,
+            "currency": "USD",
+            "status": "processing"
+        }]
+    }
+}
+```
+
+`HAL` is a simple format that gives a consistent and easy way to hyperlink between resources in your API.
+
+Adopting `HAL` will make your API explorable, and its documentation easily discoverable from within the API itself. 
+In short, it will make your API easier to work with and therefore more attractive to client developers.
+
+APIs that adopt `HAL` can be easily served and consumed using open source libraries available for most major programming languages. 
+It's also simple enough that you can just deal with it as you would any other JSON.
+
+#### The HAL Browser
+ 
+Links:
+
+ - Example https://api-sandbox.foxycart.com/hal-browser/browser.html

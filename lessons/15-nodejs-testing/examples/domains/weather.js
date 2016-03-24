@@ -19,7 +19,7 @@ class Weather {
                 return callback(null, data);
             }
 
-            this._weatherApiRepo.getInfo(city, callback);
+            this._weatherApiRepo.getByCondition({ city: city }, callback);
         });
     }
 

@@ -71,15 +71,16 @@
 
 ## Infrastructure
 
- - Handle SIGTERM as “graceful stop” of service with success finishing of all current operations
+ - Handle `SIGTERM` as “graceful stop” of service with success finishing of all current operations
  - Maximize robustness with fast startup (eg parallel initialization of resources)
  - Build maximum stateless services
  - Use queues for background tasks
-
 
 ## Scaling
 
  - Scale out via the process model
  - Better have a lots of little processes which are handling specific needs (microservices pattern)
+ - Plan data model for the optimization of user queries in the future
+ - Do not bind strongly different domains in the same service, most likely you will have to divide them into separate microservices
 
 Details: https://docs.google.com/presentation/d/1DE3E3wN-oxaDQxXL152LXISv5qTRMni2aJUmhSWB-KQ/edit?usp=sharing

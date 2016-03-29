@@ -11,9 +11,9 @@
 
 ## Logging
 
- - Write logs to STDOUT
+ - Write logs to `STDOUT`
  - Add component names for different parts of service
- - Set correct log levels (INFO, WARN, ERROR etc) for messages
+ - Set correct log levels (`INFO`, `WARN`, `ERROR` etc) for messages
  - Set common log level by environment variable
  - Use `correlationId` for all way of request
  - Not save to log messages tokens and private information of users
@@ -52,7 +52,7 @@
  - The code for services makes no distinction between local and third party services
  - Try use most lightware patterns for work with external services (eg Repository)
  - Handle “disconnect” events and set “isDisconnected” flag
- - Use retry for connections and requests to external services (retry time with exponential backoff, see [link](https://www.npmjs.com/package/retry))
+ - Use retry for connections and requests to external services (retry time with `exponential backoff`, see [link](https://www.npmjs.com/package/retry))
  - Reduce use of async initialization of clients of external services
 
 ## Domain Logic
@@ -65,7 +65,7 @@
 
  - Always use limits and pagination in API
  - Handle “isDisconnected” flag and return to clients 500 Internal Server Errors
- - Use single schema (eg JSON Schema) for validation input parameters in requests and generating public documentation
+ - Use single schema (eg `JSON Schema`) for validation input parameters in requests and generating public documentation
  - Return detailed messages in case validation error
  - Check backward and forward compatible
 
@@ -81,3 +81,5 @@
 
  - Scale out via the process model
  - Better have a lots of little processes which are handling specific needs (microservices pattern)
+
+Details: https://docs.google.com/presentation/d/1DE3E3wN-oxaDQxXL152LXISv5qTRMni2aJUmhSWB-KQ/edit?usp=sharing

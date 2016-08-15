@@ -10,7 +10,7 @@
  - [MongoDB Base](requirements/mongodb-base.md)
  - [Redis Base](requirements/redis-base.md)
  - [Linux Base](requirements/linux-base.md)
- 
+
 
 ## Actual for versions:
  - **Node.js 4.2+**
@@ -31,7 +31,7 @@
  - **Loops**
  - **Functions**
  - **Prototypes**
- - **Asynchronous functions** 
+ - **Asynchronous functions**
  - ...
 
 #### [New in ECMAScript 2015 (ES6)](lessons/02-js-ecmascript-2015/materials.md) (2h) [[Homework]](lessons/02-js-ecmascript-2015/homework.md)
@@ -99,7 +99,7 @@
    - **SyntaxError**
    - **ReferenceError**
    - **TypeError**
-   
+
  - **Assertion Errors**
  - **Custom errors**
 
@@ -125,7 +125,7 @@
  - **Child Processes**
  - ...
 
-#### Useful NPM modules (1h)
+#### [Useful NPM modules](lessons/10-nodejs-useful-npm-modules/materials.md) (1h)
 
  - **Lodash**
  - **Async / Neo-async**
@@ -135,7 +135,7 @@
  - **Postgres**
  - ...
 
-#### Build your own modules (1h)
+#### [Build your own modules](lessons/11-nodejs-create-own-npm-module/materials.md) (1h)
 
  - **File structure**
  - **Deep with package.json**
@@ -143,8 +143,8 @@
  - **Publish to NPM Registry**
  - **Using in application**
  - ...
- 
-#### Common Patterns in Node.js (1h)
+
+####  Common Patterns in Node.js (1h)
 
  - **Callbacks**
  - **Error-first**
@@ -152,14 +152,14 @@
  - **Recursive async functions**
  - ...
 
-#### Design Patterns in Node.js (4h)
+#### [Design Patterns in Node.js](lessons/12-nodejs-design-patterns/materials.md) (4h)
 
  - **Creational Design Patterns**
    - Singleton
    - Factory
    - Abstract Factory
    - ...
-   
+
  - **Structural Design Patterns**
    - Adapter
    - Composite
@@ -168,11 +168,11 @@
    - Bridge
    - Proxy
    - ...
- 
+
  - **Behavioral Design Patterns**
    - Observer
    - ...
-   
+
 #### Asynchronous Control Flow (2h)
 
  - **The difficulties**
@@ -190,7 +190,7 @@
    - Promises
    - Generators
 
-#### Wiring modules (1h)
+#### [Wiring modules](lessons/13-nodejs-wiring-modules/materials.md) (1h)
 
  - **Hardcoded dependency**
  - **Dependency injection**
@@ -205,7 +205,7 @@
  - **Repository pattern**
  - ...
 
-#### Testing in Node.js (3h)
+#### [Testing in Node.js](lessons/15-nodejs-testing/materials.md) (3h)
 
  - **What we test?**
    - Cases
@@ -217,7 +217,7 @@
    - Piramida
  - **Approaches**
    - TDD
-   - BDD 
+   - BDD
    - Pairwise
    - Mocks
  - **Tools and libraries**
@@ -233,7 +233,7 @@
  - **Continuous Delivery**
    - Conception
 
-#### Documentation (1h)
+#### [Documentation](lessons/16-nodejs-documentation/materials.md) (1h)
 
  - **Approaches**
    - README Driven Development
@@ -253,8 +253,8 @@
  - **SOA**
  - **Micro-services**
  - ...
- 
-#### Projects: Common recommendations (1h)
+
+#### [Projects: Common recommendations](lessons/18-nodejs-services-recommendations/materials.md) (1h)
 
  - **12 factors app**
  - **Configuration**
@@ -291,23 +291,23 @@
    - Methods of scaling applications
 
  - **Performance**
-   - What is performance? 
+   - What is performance?
    - What should we measure?
    - Tools for performance tests (Yandex.Tank, ab, siege)
    - Analysis of the results
    - Recommendations for scaling
- 
+
  - **Cache in applications**
 
 #### Profiling and optimizations of application and system (2h)
 
  - **Top most common mistakes which fail performance**
- 
+
  - **Profiling**
    - Memory
    - CPU
    - Blocking of EventLoop
- 
+
  - **Tools**
 
 #### Yours applications in production (1h)

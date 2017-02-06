@@ -32,25 +32,17 @@
  - **Functions**
  - **Prototypes**
  - **Asynchronous functions**
- - ...
 
 #### [New in ECMAScript 2015 (ES6)](lessons/02-js-ecmascript-2015/materials.md) (2h) [[Homework]](lessons/02-js-ecmascript-2015/homework.md)
 
  - **Block scoping**
-   - let
-   - const
  - **Collections**
-   - Map
-   - WeakMap
-   - Set
-   - WeakSet
  - **Classes**
  - **Generators**
  - **Promises**
  - **Symbols**
  - **Template strings**
  - **Arrow Functions**
- - ...
 
 #### [JavaScript Style Guides](lessons/03-js-style-guides/materials.md) (15m)
 
@@ -83,7 +75,6 @@
  - **Components**
    - **V8**
    - **libuv**
-   - ...
 
 #### [Getting started](lessons/06-nodejs-getting-started/materials.md) (15m)
 
@@ -96,10 +87,6 @@
 
  - **System errors**
  - **Standard JavaScript errors**
-   - **SyntaxError**
-   - **ReferenceError**
-   - **TypeError**
-
  - **Assertion Errors**
  - **Custom errors**
 
@@ -123,7 +110,6 @@
  - **HTTP**
  - **Crypto**
  - **Child Processes**
- - ...
 
 #### [Useful NPM modules](lessons/10-nodejs-useful-npm-modules/materials.md) (1h)
 
@@ -133,7 +119,6 @@
  - **MongoDB**
  - **Redis**
  - **Postgres**
- - ...
 
 #### [Build your own modules](lessons/11-nodejs-create-own-npm-module/materials.md) (1h)
 
@@ -142,7 +127,6 @@
  - **Local packages**
  - **Publish to NPM Registry**
  - **Using in application**
- - ...
 
 ####  Common Patterns in Node.js (1h)
 
@@ -150,7 +134,6 @@
  - **Error-first**
  - **Async function in any case**
  - **Recursive async functions**
- - ...
 
 #### [Design Patterns in Node.js](lessons/12-nodejs-design-patterns/materials.md) (4h)
 
@@ -158,7 +141,6 @@
    - Singleton
    - Factory
    - Abstract Factory
-   - ...
 
  - **Structural Design Patterns**
    - Adapter
@@ -167,11 +149,9 @@
    - Facade
    - Bridge
    - Proxy
-   - ...
 
  - **Behavioral Design Patterns**
    - Observer
-   - ...
 
 #### Asynchronous Control Flow (2h)
 
@@ -252,7 +232,6 @@
  - **DDD**
  - **SOA**
  - **Micro-services**
- - ...
 
 #### [Projects: Common recommendations](lessons/18-nodejs-services-recommendations/materials.md) (1h)
 
@@ -262,7 +241,6 @@
  - **Monitoring**
  - **Profiling**
  - **Connection to DBs and external services**
- - ...
 
 #### Project 1: Simple web-site
 
@@ -314,15 +292,13 @@
 
  - **Best practices of logging**
  - **Orchestration (Ansible)**
- - ...
-
+ 
 #### Distribution of your application (Docker) (1h)
 
  - **What is Docker?**
  - **Create Docker image with your application**
  - **Run your applications**
  - **How to run own cloud in 1 click? (Docker Compose)**
- - ...
 
 #### Final Q&A (1h)
 

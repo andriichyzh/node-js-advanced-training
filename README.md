@@ -1,9 +1,7 @@
 
 ![Node.js](static/images/logo.png)
 
-# Node.js Advanced Training [![Gitter](https://badges.gitter.im/Join Chat.svg)](https://gitter.im/andriichyzh/node-js-advanced-training?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge)
-
-[![Join the chat at https://gitter.im/andriichyzh/node-js-advanced-training](https://badges.gitter.im/andriichyzh/node-js-advanced-training.svg)](https://gitter.im/andriichyzh/node-js-advanced-training?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
+# Node.js Advanced Training [![Join the chat at https://gitter.im/andriichyzh/node-js-advanced-training](https://badges.gitter.im/andriichyzh/node-js-advanced-training.svg)](https://gitter.im/andriichyzh/node-js-advanced-training?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
 
 ## Required
 

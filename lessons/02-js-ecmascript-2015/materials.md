@@ -297,32 +297,32 @@ function() { return arguments[0]; }
 
 ## Default Parameter Values
 
-Simple and intuitive default values for function parameters.
+Simple and intuitive `default values` for function parameters.
 
 ```js
-// ES6, Not works in Node 4.2
-function createUser(name, age = 18, isExisted = true) {
-    return {
-        name,
-        age,
-        isExisted
-    };
+// ES6 (from Node 6.0.0.+)
+const createUser = (name = 'anonymous', age = 18, isExisted = true) => {
+    return { name, age, isExisted };
 }
 
+createUser(); // { name: 'anonymous', age: 18, isExisted: true }
+
 // ES5
-function createUser(name, age, isExisted) {
+var createUser = function(name, age, isExisted) {
     return {
-        name: name,
+        name: name || 'anonymous',
         age: age || 18,
         isExisted: isExisted === undefined ? true : isExisted
     };
 }
+
+createUser(); // { name: 'anonymous', age: 18, isExisted: true }
 ```
 
 #### Evaluated at call time
 
 ```js
-// ES6
+// ES6 (from Node 6.0.0.+)
 function add(value, cache = []) {
   cache.push(value);
   return cache;
@@ -333,10 +333,10 @@ add(2); // [2]
 ```
 
 
-#### Default parameters can get default value from other function
+#### Default parameters can get default value as result of call other function
 
 ```js
-// Not works in Node 4.2
+// ES6 (from Node 6.0.0.+)
 function createAsset() {
     return { alias: 'default' };
 }
@@ -352,7 +352,7 @@ let uploader = createUploader('/tmp/music.mp3');
 #### Default parameters are available to later default parameters
 
 ```js
-// Not works in Node 4.2
+// ES6 (from Node 6.0.0.+)
 function getMessage(userId, userName = 'User:' + userId) {
     ...
 }
@@ -368,20 +368,20 @@ Intuitive expression interpolation for single-line and multi-line strings.
 
 ```js 
 // ES6
-let customer = { name: 'John' };
-let message = `Hello, ${customer.name}! How are you?`;
+const customer = { name: 'John' };
+const message = `Hello, ${customer.name}! How are you?`;
 
 console.log(message); // Hello, John! How are you?
 
 
 // ES6
-let car = {
+const car = {
     vendor: 'BMW',
     model: 'M4',
     power: 300
 };
 
-let text = `New car ${car.vendor} ${car.model}
+const text = `New car ${car.vendor} ${car.model}
 with engine ${car.power} hp`;
 
 console.log(text);

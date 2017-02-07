@@ -128,17 +128,19 @@ Notes:
 var users = ['Ann', 'Valentino', 'Scott'];
 
 // ES5
-var namesLength = users.map(function(user) { return user.length });
+var namesLength = users.map(function(user) { 
+    return user.length 
+});
 
 // ES6
-let namesLength = users.map( user => user.length );
+const namesLength = users.map(user => user.length);
 ```
 
 #### Without arguments
 
 ```js
 // ES6
-let getTimestamp = () => Date.now();
+const getTimestamp = () => Date.now();
 
 // ES5
 var getTimestamp = function() {
@@ -150,10 +152,8 @@ var getTimestamp = function() {
 
 ```js
 // ES6
-let getNext = index => index + 1;
-
-// ES6
-let getNext = (index) => index + 1;
+const getNext = (index) => index + 1;
+const getNext = index => index + 1;
 
 // ES5
 var getNext = function(index) {
@@ -165,10 +165,8 @@ var getNext = function(index) {
 
 ```js
 // ES6
-let getSum = (num1, num2) => num1 + num2;
-
-// ES6
-let getSum = (num1, num2) => { return num1 + num2 };
+const getSum = (num1, num2) => { return num1 + num2 };
+const getSum = (num1, num2) => num1 + num2;
 
 // ES5
 var getSum = function(num1, num2) {
@@ -190,7 +188,7 @@ let getFirstArg = (...args) => args[0];
 
 ```js
 // ES6
-let getUser = id => ({ id: id, app: 'ProTools' });
+const getUser = id => ({ id: id, app: 'ProTools' });
 
 // ES5
 var getUser = function(id) {
@@ -202,7 +200,7 @@ var getUser = function(id) {
 
 ```js 
 // ES6
-let delay = callback => {
+const delay = callback => {
     setTimeout(callback, 200);
 };
 
@@ -373,7 +371,6 @@ const message = `Hello, ${customer.name}! How are you?`;
 
 console.log(message); // Hello, John! How are you?
 
-
 // ES6
 const car = {
     vendor: 'BMW',
@@ -411,6 +408,7 @@ parseInt('2000', 8) === 1024; // true
 #### Function `Object.assign`
 
 ```js
+// ES6
 let target = { a: 100 };
 let first = { a: 1, b: { c: true } };
 let second = { b: { c: false, d: 'hello' } };
@@ -421,8 +419,8 @@ console.log(target);                               // { a: 1, b: { c: false, d: 
 ```
 
 ```js
+// ES6
 let first = { a: 1, b: { c: true } };
-
 let clone = Object.assign({}, first); // { a: 1, b: { c: true } }
 ```
 
@@ -486,7 +484,6 @@ for (let value of Object.keys(obj)) {
 let sym = Symbol();
 console.log(typeof sym); // symbol
 
-
 console.log(Symbol('id') == Symbol('id')); // false
 ```
 
@@ -530,10 +527,12 @@ console.log(document[Symbol.for('zone')]); // 'US'
 
 ```js
 class Edge {
+
     constructor(source, target) {
-        this.source = source;
-        this.target = target;
+        this._source = source;
+        this._target = target;
     }
+    
 }
 
 let edge = new Edge('A', 'B');
@@ -551,17 +550,21 @@ class Edge {}
 ```js
 // Unnamed
 let Edge = class {
+
     constructor(source, target) {
-        this.source = source;
-        this.target = target;
+        this._source = source;
+        this._target = target;
     }
+    
 }
 
 // Named
 let Edge = class Edge {
+
     constructor(source, target) {
-        this.source = source;
-        this.target = target;
+        this._source = source;
+        this._target = target;
+        
     }
 }
 ```
@@ -570,9 +573,10 @@ let Edge = class Edge {
 
 ```js
 class Edge {
+
     constructor(source, target) {
-        this.source = source;
-        this.target = target;
+        this._source = source;
+        this._target = target;
     }
 
     get title() {
@@ -580,7 +584,7 @@ class Edge {
     }
 
     getTitle() {
-        return this.source + '->' + this.target;
+        return `${this._source}->${this._target}`;
     }
 }
 

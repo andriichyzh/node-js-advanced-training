@@ -1399,6 +1399,7 @@ myEmitter.emit('event');
   // Prints:
   //   B
   //   A
+```
 
 #### `Event: 'removeListener'`
 
